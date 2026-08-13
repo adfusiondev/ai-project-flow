@@ -1,0 +1,315 @@
+/* ============================================================
+   AI Project Flow — Design System
+   Implements docs/DESIGN_SYSTEM.md
+   Token prefix: --apf-*
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Design tokens — Dark theme (default)
+   ------------------------------------------------------------ */
+:root {
+	/* Color — dark */
+	--apf-color-bg: hsl(220 12% 8%);
+	--apf-color-surface: hsl(220 12% 12%);
+	--apf-color-surface-raise: hsl(220 12% 15%);
+	--apf-color-text: hsl(220 16% 94%);
+	--apf-color-text-secondary: hsl(220 8% 74%);
+	--apf-color-text-muted: hsl(220 7% 55%);
+	--apf-color-hairline: hsl(220 10% 18%);
+	--apf-color-accent: hsl(239 68% 68%);
+	--apf-color-accent-high: hsl(239 80% 80%);
+	--apf-color-accent-low: hsl(239 40% 20%);
+	--apf-color-code-bg: hsl(220 14% 10%);
+	--apf-color-code-border: hsl(220 12% 16%);
+	--apf-color-focus: hsl(239 80% 78%);
+
+	/* Typography */
+	--apf-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+		'Noto Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+		'Noto Color Emoji';
+	--apf-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+		'Courier New', monospace;
+
+	/* Spacing */
+	--apf-space-1: 0.25rem;
+	--apf-space-2: 0.5rem;
+	--apf-space-3: 0.75rem;
+	--apf-space-4: 1rem;
+	--apf-space-5: 1.5rem;
+	--apf-space-6: 2rem;
+	--apf-space-7: 3rem;
+	--apf-space-8: 4rem;
+
+	/* Borders */
+	--apf-radius-small: 0.25rem;
+	--apf-radius-medium: 0.5rem;
+
+	/* Layout */
+	--apf-content-width: 48rem;
+	--apf-sidebar-width: 18.75rem;
+	--apf-nav-height: 4rem;
+
+	/* Map design tokens onto Starlight theme variables */
+	--sl-color-white: var(--apf-color-text);
+	--sl-color-gray-1: var(--apf-color-text);
+	--sl-color-gray-2: var(--apf-color-text-secondary);
+	--sl-color-gray-3: var(--apf-color-text-muted);
+	--sl-color-gray-4: var(--apf-color-text-muted);
+	--sl-color-gray-5: var(--apf-color-hairline);
+	--sl-color-gray-6: var(--apf-color-surface);
+	--sl-color-gray-7: var(--apf-color-surface-raise);
+	--sl-color-black: var(--apf-color-bg);
+
+	--sl-color-accent-low: var(--apf-color-accent-low);
+	--sl-color-accent: var(--apf-color-accent);
+	--sl-color-accent-high: var(--apf-color-accent-high);
+
+	--sl-color-text: var(--apf-color-text-secondary);
+	--sl-color-text-accent: var(--apf-color-accent-high);
+	--sl-color-text-invert: var(--apf-color-accent-low);
+	--sl-color-bg: var(--apf-color-bg);
+	--sl-color-bg-nav: var(--apf-color-surface);
+	--sl-color-bg-sidebar: var(--apf-color-bg);
+	--sl-color-bg-inline-code: var(--apf-color-surface-raise);
+	--sl-color-bg-accent: var(--apf-color-accent);
+	--sl-color-hairline-light: var(--apf-color-hairline);
+	--sl-color-hairline: var(--apf-color-hairline);
+	--sl-color-hairline-shade: var(--apf-color-hairline);
+	--sl-color-backdrop-overlay: hsla(220 12% 4% / 0.7);
+
+	/* Layout mapping */
+	--sl-content-width: var(--apf-content-width);
+	--sl-sidebar-width: var(--apf-sidebar-width);
+	--sl-nav-height: var(--apf-nav-height);
+
+	/* Typography mapping */
+	--sl-font-system: var(--apf-font-sans);
+	--sl-font-system-mono: var(--apf-font-mono);
+	--sl-text-h1: 2rem;
+	--sl-text-h2: 1.5rem;
+	--sl-text-h3: 1.25rem;
+	--sl-text-h4: 1.125rem;
+	--sl-text-h5: 1.125rem;
+	--sl-line-height: 1.7;
+	--sl-line-height-headings: 1.25;
+}
+
+/* ------------------------------------------------------------
+   2. Design tokens — Light theme
+   ------------------------------------------------------------ */
+:root[data-theme='light'] {
+	--apf-color-bg: hsl(0 0% 100%);
+	--apf-color-surface: hsl(220 18% 97%);
+	--apf-color-surface-raise: hsl(0 0% 100%);
+	--apf-color-text: hsl(220 14% 18%);
+	--apf-color-text-secondary: hsl(220 8% 36%);
+	--apf-color-text-muted: hsl(220 7% 52%);
+	--apf-color-hairline: hsl(220 16% 90%);
+	--apf-color-accent: hsl(239 60% 52%);
+	--apf-color-accent-high: hsl(239 58% 42%);
+	--apf-color-accent-low: hsl(239 70% 95%);
+	--apf-color-code-bg: hsl(220 20% 97%);
+	--apf-color-code-border: hsl(220 16% 90%);
+	--apf-color-focus: hsl(239 58% 46%);
+}
+
+/* ------------------------------------------------------------
+   3. Base typography
+   ------------------------------------------------------------ */
+.sl-markdown-content {
+	font-size: 1rem;
+	line-height: var(--sl-line-height);
+}
+
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4,
+.sl-markdown-content h5,
+.sl-markdown-content h6 {
+	line-height: var(--sl-line-height-headings);
+	letter-spacing: -0.01em;
+}
+
+/* Inline code */
+.sl-markdown-content :not(pre, code) > code {
+	background: var(--sl-color-bg-inline-code);
+	border: 1px solid var(--sl-color-hairline);
+	border-radius: var(--apf-radius-small);
+	padding: 0.15em 0.35em;
+	font-size: 0.875rem;
+	font-family: var(--apf-font-mono);
+}
+
+/* Selection */
+::selection {
+	background: var(--apf-color-accent-low);
+	color: var(--apf-color-text);
+}
+
+/* ------------------------------------------------------------
+   4. Focus visibility
+   ------------------------------------------------------------ */
+:focus-visible {
+	outline: 2px solid var(--apf-color-focus);
+	outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------
+   5. Sidebar
+   ------------------------------------------------------------ */
+.sidebar {
+	background: var(--sl-color-bg-sidebar);
+	border-inline-end: 1px solid var(--sl-color-hairline);
+}
+
+.sidebar-content a {
+	border-radius: var(--apf-radius-small);
+}
+
+.sidebar-content a:hover,
+.sidebar-content a:focus {
+	color: var(--apf-color-accent-high);
+}
+
+.sidebar-content [aria-current='page'],
+.sidebar-content [aria-current='page']:hover,
+.sidebar-content [aria-current='page']:focus {
+	color: var(--apf-color-accent);
+	background: var(--apf-color-accent-low);
+	font-weight: 600;
+}
+
+/* Section group labels */
+.sidebar-content details summary .group-label .large {
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--apf-color-text-muted);
+}
+
+/* ------------------------------------------------------------
+   6. Code blocks (Expressive Code)
+   ------------------------------------------------------------ */
+.expressive-code {
+	font-family: var(--apf-font-mono);
+	border-radius: var(--apf-radius-medium);
+}
+
+.expressive-code .frame {
+	border: 1px solid var(--apf-color-code-border);
+	border-radius: var(--apf-radius-medium);
+	background: var(--apf-color-code-bg);
+	overflow: hidden;
+}
+
+.expressive-code .frame .header {
+	background: var(--apf-color-surface);
+	border-block-end: 1px solid var(--apf-color-code-border);
+}
+
+.expressive-code .ec-line {
+	line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   7. Copy controls
+   ------------------------------------------------------------ */
+.copy-control {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	background: transparent;
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: var(--apf-radius-small);
+	color: var(--apf-color-text-secondary);
+	font-size: 0.75rem;
+	font-family: var(--apf-font-sans);
+	padding: 0.3em 0.6em;
+	cursor: pointer;
+	transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease;
+}
+
+.copy-control:hover,
+.copy-control:focus-visible {
+	color: var(--apf-color-accent);
+	background: var(--apf-color-accent-low);
+	border-color: var(--apf-color-accent);
+}
+
+/* Expressive Code built-in copy button */
+.expressive-code .copy button {
+	border-radius: var(--apf-radius-small);
+}
+
+/* ------------------------------------------------------------
+   8. Prompt blocks
+   ------------------------------------------------------------ */
+.prompt-block {
+	position: relative;
+	background: var(--apf-color-surface);
+	border: 1px solid var(--apf-color-hairline);
+	border-inline-start: 3px solid var(--apf-color-accent);
+	border-radius: var(--apf-radius-medium);
+	padding: var(--apf-space-4) var(--apf-space-5);
+	margin-block: var(--apf-space-5);
+}
+
+.prompt-block__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--apf-space-3);
+	margin-block-end: var(--apf-space-3);
+}
+
+.prompt-block__label {
+	font-family: var(--apf-font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--apf-color-text-muted);
+}
+
+.prompt-block__body {
+	line-height: 1.7;
+	color: var(--apf-color-text);
+}
+
+.prompt-block__body code {
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+/* ------------------------------------------------------------
+   9. Responsive rules
+   ------------------------------------------------------------ */
+@media (max-width: 50em) {
+	.prompt-block {
+		padding: var(--apf-space-3) var(--apf-space-4);
+	}
+}
+
+@media (min-width: 50em) {
+	.sl-markdown-content h1 {
+		font-size: 2rem;
+	}
+}
+
+@media (min-width: 72rem) {
+	.sl-container {
+		--sl-content-pad-x: 1.5rem;
+	}
+}
+
+/* ------------------------------------------------------------
+   10. RTL/LTR foundation
+   ------------------------------------------------------------ */
+[dir='rtl'] .expressive-code,
+[dir='rtl'] .prompt-block code {
+	direction: ltr;
+	unicode-bidi: isolate;
+	text-align: left;
+}
