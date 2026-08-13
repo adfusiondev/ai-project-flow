@@ -40,7 +40,7 @@ Phase 9's documentation reconciliation is complete. `PROJECT_CONTEXT.md` reflect
 
 Phase 10's handoff checkpoint is complete. The repository alone lets a new agent determine what the project is, how to run it, what is complete, what remains, what decisions were made, and the next step, without requiring previous conversation history. Run instructions were confirmed against `package.json`, and the build (141 pages) and development server were re-verified.
 
-The MVP plan is complete. The next step is outside the plan: deploy the site (set a `site` URL to enable the sitemap) and optionally begin the deferred future-scope items.
+The MVP plan is complete. The next step is outside the plan: deploy the site to Vercel and optionally begin the deferred future-scope items.
 
 ---
 
@@ -115,7 +115,7 @@ The MVP currently excludes:
   - Verified: build (141 pages), `/ar/` RTL mirroring, English unchanged, language selector works both ways, mobile 390px RTL without horizontal overflow, Lighthouse Accessibility 100 on `/ar/`, no console errors.
 
 - Completed Phase 8 — Verification:
-  - Build passes (141 pages); only the known sitemap warning.
+  - Build passes (141 pages); sitemap index successfully generated at `dist/sitemap-index.xml`.
   - Runtime: all routes HTTP 200 on dev server and production preview; no console errors; 404 page points users to search.
   - Navigation: sidebar, table of contents, Pagefind search, language selector, pagination in lifecycle order, and mobile menu all verified.
   - Responsive: no overflow at 1440px, 768px, or 390px; sidebar becomes a drawer on mobile.
@@ -270,7 +270,7 @@ Before making changes, read:
 
 None currently.
 
-Note: the build prints a non-blocking warning that the sitemap integration requires a `site` URL. This is expected until a deployment domain is known.
+Note: the build is configured with `site: 'https://ai-project-flow.vercel.app'` for production sitemap generation.
 
 ---
 
@@ -284,7 +284,7 @@ None currently.
 
 The planned MVP is complete. Continue outside the current plan:
 
-1. Deploy the site — configure a `site` URL in `astro.config.mjs` (removes the sitemap warning) and choose a hosting provider.
+1. Deploy the site to Vercel.
 2. Optionally begin the deferred future-scope items (`PROJECT_CONTEXT.md` Future Scope). The most relevant next item is the bilingual Arabic content: the Arabic locale currently ships one proof page (`/ar/`); the sidebar labels and the remaining Arabic pages still show English content until that work is done.
 
 ---

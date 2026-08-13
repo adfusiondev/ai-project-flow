@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://ai-project-flow.vercel.app',
 	integrations: [
 		starlight({
 			title: 'AI Project Flow',

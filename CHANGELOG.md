@@ -108,7 +108,7 @@ All meaningful project changes should be recorded here.
 
 Phase 8 verified the MVP against the documented requirements across every verification area in `PLAN.md`:
 
-- Build: `npm run build` succeeds (141 pages) with only the known sitemap warning.
+- Build: `npm run build` succeeds (141 pages) with sitemap index successfully generated at `dist/sitemap-index.xml`.
 - Runtime: dev server and production preview serve all routes with HTTP 200; no browser console errors; the 404 page points users to search.
 - Navigation: sidebar, on-page table of contents, Pagefind search (production builds), language selector, pagination in lifecycle order, and the mobile menu drawer all work.
 - Responsive: verified at 1440px, 768px, and 390px with no horizontal overflow; the sidebar becomes a drawer on mobile.
@@ -123,7 +123,7 @@ Phase 8 verified the MVP against the documented requirements across every verifi
 
 ### Phase 8 Known Issues
 
-- Sitemap warning until a deployment `site` URL is configured (pre-existing).
+- Sitemap warning resolved by configuring `site: 'https://ai-project-flow.vercel.app'`.
 - The 404 page has no meta description and no home link in its main content (it offers search instead); cosmetic.
 - Lighthouse flags two SEO items from Starlight's own chrome (search button accessible-name vs keyboard hint, and the footer "Learn more" link), not project content.
 - Pagefind search only works in production builds and preview (Starlight behavior by design).
@@ -186,5 +186,5 @@ Handoff checkpoint (Phase 10) is complete: a new agent can continue from the rep
 
 ### Next
 
-- Deploy the site: configure a `site` URL in `astro.config.mjs` (removes the sitemap warning) and choose a hosting provider.
+- Deploy the site to Vercel.
 - Optionally begin the deferred future-scope items, starting with the bilingual Arabic content (all `/ar/*` pages other than the proof page are still English fallbacks).

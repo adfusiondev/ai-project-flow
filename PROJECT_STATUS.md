@@ -101,7 +101,7 @@ Complete
 
 ### Phase 8 — Verification
 
-* Build passes (141 pages) with only the known sitemap warning.
+* Build passes (141 pages) with sitemap generated.
 * Runtime verified: dev server and production preview serve routes with HTTP 200; no console errors; the 404 page points users to search.
 * Navigation verified: sidebar, table of contents (scrolls to sections), Pagefind search (12 results for a test query, opens results), language selector, pagination in lifecycle order, and mobile menu drawer.
 * Responsive verified at 1440px, 768px, and 390px: no horizontal overflow; the sidebar becomes a drawer and the table of contents relocates on smaller screens.
@@ -173,7 +173,7 @@ The MVP is a documentation-focused website containing:
 
 ## Known Issues
 
-* The build prints a non-blocking warning that the sitemap integration requires a `site` URL. Expected until a deployment domain is known.
+None currently.
 
 ---
 
@@ -200,7 +200,7 @@ None currently.
 
 The planned MVP is complete. Continue outside the current plan:
 
-1. Deploy the site: configure a `site` URL in `astro.config.mjs` (removes the sitemap warning) and choose a hosting provider.
+1. Deploy the site to Vercel.
 2. Optionally begin the deferred future-scope items, starting with the bilingual Arabic content (all `/ar/*` pages are still fallbacks).
 
 ---

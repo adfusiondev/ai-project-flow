@@ -369,7 +369,7 @@ Verify the MVP against documented requirements.
 
 ### Results
 
-* Build — Passed. `npm run build` completes without errors: 141 pages (71 English + 70 Arabic routes). The only warning is the known sitemap warning until a deployment `site` URL is set.
+* Build — Passed. `npm run build` completes without errors: 141 pages (71 English + 70 Arabic routes). The sitemap index is generated successfully at `dist/sitemap-index.xml`.
 * Runtime — Passed. Development server and production preview serve routes with HTTP 200. No browser console errors. The 404 page renders and points users to search.
 * Navigation — Passed. Sidebar (70 links), on-page table of contents (scrolls to sections), Pagefind search (returns and opens results; available in production builds by design), language selector, pagination (lifecycle order follows FR-08), and the mobile menu drawer all work.
 * Responsive behavior — Passed. Verified at 1440px, 768px, and 390px. No horizontal overflow; the sidebar becomes a drawer on mobile and the table of contents relocates on smaller screens; prompt copy buttons fit the prompt header.
@@ -383,7 +383,7 @@ Verify the MVP against documented requirements.
 
 ### Known Issues
 
-* Sitemap integration prints a warning until a `site` URL is configured (expected until a deployment domain is known).
+* Sitemap integration successfully configured and verified.
 * The 404 page has no meta description and no home link in its main content (it offers search instead). Cosmetic only.
 * Lighthouse flags two SEO items from Starlight's own chrome, not project content: the search button's visible keyboard hint versus its accessible name, and the Starlight footer "Learn more" link text.
 * Pagefind search is only available in production builds and preview (Starlight behavior by design).
@@ -513,5 +513,5 @@ Selected stack:
 
 The MVP is complete and verified. Next steps are outside the current plan:
 
-1. Deploy the site (configure a `site` URL in `astro.config.mjs` to enable the sitemap, then choose a hosting provider).
+1. Deploy the site to Vercel.
 2. Optionally begin the deferred future-scope items, in particular the bilingual Arabic content (`PROJECT_CONTEXT.md` Future Scope, `docs/DECISIONS.md` DEC-009).

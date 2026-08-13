@@ -141,4 +141,4 @@ The MVP is implemented and verified across all planned phases:
 
 The design system is implemented in `src/styles/custom.css` and wired into the Starlight configuration.
 
-The full plan is complete and verified (Phases 0-10, including the Phase 10 handoff checkpoint). A new agent can continue the project from the repository alone. The next step is outside the current plan: deploy the site (set a `site` URL for the sitemap) and optionally begin the deferred future-scope items such as the bilingual Arabic content.
+The full plan is complete and verified (Phases 0-10, including the Phase 10 handoff checkpoint). A new agent can continue the project from the repository alone. The next step is outside the current plan: deploy the site to Vercel and optionally begin the deferred future-scope items such as the bilingual Arabic content.
