@@ -2,19 +2,35 @@
 
 ## Current Phase
 
-Phase 10 — Handoff Checkpoint
+Arabic Localization — Phase 1: High-Level Overview Pages
 
 Status: Completed
 
-The MVP plan is complete.
+Phase 1 of the Arabic localization is complete.
 
 ## Overall Status
 
-Complete
+In Progress (Arabic Localization)
 
 ---
 
 ## Completed
+
+### Arabic Localization — Phase 1 (High-Level Overview Pages)
+
+* Confirmed sidebar translations for all 70 sidebar items in `astro.config.mjs`.
+* Localized `src/scripts/copy-controls.ts` with runtime BCP-47 language detection for prompt copy button text ("نسخ" / "تم النسخ!").
+* Rewrote `src/content/docs/ar/index.mdx` to match the English home page structure.
+* Created and translated the 8 Arabic section overview pages:
+  * `lifecycle/overview.md`
+  * `files/overview.md`
+  * `skills/overview.md`
+  * `commands/overview.md`
+  * `prompts/overview.md`
+  * `verification/overview.md`
+  * `handoff/overview.md`
+  * `reference/overview.md`
+* Ran production build (141 pages, sitemap, search index verified) and confirmed RTL layout direction, active sidebar navigation highlighting, and LTR code-block formatting inside RTL contexts.
 
 * Project folder structure created.
 * Core documentation files created.
@@ -198,13 +214,10 @@ None currently.
 
 ## Next Recommended Step
 
-The planned MVP is complete. Continue outside the current plan:
-
-1. Deploy the site to Vercel.
-2. Optionally begin the deferred future-scope items, starting with the bilingual Arabic content (all `/ar/*` pages are still fallbacks).
+1. Proceed to Arabic Localization Phase 2 (Lifecycle & Files Sections - 23 pages).
 
 ---
 
 ## Implementation Status
 
-Complete — Phases 0 through 10
+In Progress — Arabic Localization Phase 1 Complete

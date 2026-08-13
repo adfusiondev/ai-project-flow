@@ -4,6 +4,25 @@ All meaningful project changes should be recorded here.
 
 ---
 
+## 2026-08-13 — Arabic Localization Phase 1
+
+### Added
+
+- Sidebar navigation: all 70 sidebar items now carry `translations: { ar: '...' }` entries in `astro.config.mjs`.
+- `src/scripts/copy-controls.ts`: runtime language detection added; prompt copy buttons show "نسخ" / "تم النسخ!" on Arabic pages.
+- `src/content/docs/ar/index.mdx`: fully rewritten to match English home page structure (محتوى هذا الموقع, البداية السريعة, المستودع مصدر الحقيقة, etc.).
+- Created 8 Arabic section overview pages: `lifecycle/overview.md`, `files/overview.md`, `skills/overview.md`, `commands/overview.md`, `prompts/overview.md`, `verification/overview.md`, `handoff/overview.md`, `reference/overview.md`.
+
+### Verified
+
+- Build: 141 pages, no errors, sitemap generated cleanly.
+- RTL: `dir="rtl"` confirmed on all Arabic pages.
+- Sidebar labels: all 8 section groups render in Arabic.
+- Page titles and H1s: all overview pages show "نظرة عامة".
+- Code blocks: LTR isolation confirmed in RTL context.
+
+---
+
 ## 2026-08-13
 
 ### Added

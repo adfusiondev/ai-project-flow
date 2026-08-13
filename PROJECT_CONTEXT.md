@@ -124,21 +124,12 @@ The project should remain understandable and maintainable when moved between too
 
 ## Current Status
 
-The planning and preparation stages are complete.
+The planning and preparation stages are complete, and the core English MVP is implemented and verified.
 
-The MVP is implemented and verified across all planned phases:
+The project is currently in the Arabic Localization phase:
 
-- Project folder structure created.
-- Core project documentation files created.
-- Reusable project skills populated.
-- Frontend technology selected: Astro + Starlight.
-- Astro + Starlight project foundation implemented and verified.
-- Design system implemented according to `docs/DESIGN_SYSTEM.md`.
-- Core documentation content implemented across all nine sections (141 pages built, including the Arabic locale) according to `PLAN.md` and `docs/SCREEN_MAP.md`.
-- Copy and documentation interactions implemented and verified (prompt and code-block copy with feedback).
-- Localization readiness implemented and verified (English root locale plus an Arabic locale at `/ar/` with RTL support).
-- Verification completed against the documented requirements and the `docs/MVP.md` success criteria.
+- **Phase 1 (High-Level Overview Pages)**: Complete. Sidebar translations are configured, prompt copy script is localized, the Arabic home page matches the English layout, and all 8 section overview pages have been translated into professional Arabic.
+- **Verification**: Complete. The production build (141 pages, sitemap, Pagefind index) builds without error. RTL page direction renders correctly, navigation links highlight properly, and code blocks preserve LTR styling.
 
-The design system is implemented in `src/styles/custom.css` and wired into the Starlight configuration.
+The next step is Arabic Localization Phase 2, which will focus on translating the Project Lifecycle (12 pages) and Project Files (11 pages) sections.
 
-The full plan is complete and verified (Phases 0-10, including the Phase 10 handoff checkpoint). A new agent can continue the project from the repository alone. The next step is outside the current plan: deploy the site to Vercel and optionally begin the deferred future-scope items such as the bilingual Arabic content.

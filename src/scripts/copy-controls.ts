@@ -1,5 +1,14 @@
 const FEEDBACK_DURATION = 2000;
-const DEFAULT_LABEL = 'Copy';
+
+function getLabels() {
+	const isArabic = document.documentElement.lang === 'ar';
+	return {
+		default: isArabic ? 'نسخ' : 'Copy',
+		copied: isArabic ? 'تم النسخ!' : 'Copied!',
+		failed: isArabic ? 'فشل النسخ' : 'Copy failed',
+		ariaLabel: isArabic ? 'نسخ المطالبة' : 'Copy prompt',
+	};
+}
 
 function copyText(text: string): Promise<void> {
 	if (navigator.clipboard && window.isSecureContext) {
@@ -26,8 +35,9 @@ function copyText(text: string): Promise<void> {
 }
 
 function resetButton(button: HTMLButtonElement) {
-	button.textContent = DEFAULT_LABEL;
-	button.setAttribute('aria-label', 'Copy prompt');
+	const labels = getLabels();
+	button.textContent = labels.default;
+	button.setAttribute('aria-label', labels.ariaLabel);
 	button.classList.remove('is-copied');
 }
 
@@ -48,12 +58,16 @@ function enhancePromptBlocks() {
 		const button = document.createElement('button');
 		button.type = 'button';
 		button.className = 'copy-control';
-		button.textContent = DEFAULT_LABEL;
-		button.setAttribute('aria-label', 'Copy prompt');
+		
+		const labels = getLabels();
+		button.textContent = labels.default;
+		button.setAttribute('aria-label', labels.ariaLabel);
+		
 		button.addEventListener('click', () => {
+			const currentLabels = getLabels();
 			copyText(body.innerText.trim())
-				.then(() => showFeedback(button, 'Copied!'))
-				.catch(() => showFeedback(button, 'Copy failed'));
+				.then(() => showFeedback(button, currentLabels.copied))
+				.catch(() => showFeedback(button, currentLabels.failed));
 		});
 		header.appendChild(button);
 	});
