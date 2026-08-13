@@ -35,30 +35,27 @@ Use when the project is new or mostly empty.
 Default flow:
 
 ```text
-Idea
-↓
-Discovery
+Idea and Discovery
 ↓
 Project Context
 ↓
-MVP
+MVP Definition
 ↓
 Requirements
 ↓
 Architecture
 ↓
-Decisions
+Implementation Planning
 ↓
-Implementation Plan
-↓
-Agent Instructions and Skills
+Skills and Agent Instructions
 ↓
 Implementation
 ↓
-Verification
+Verification and Testing
 ↓
-Documentation Update
+Project Status Updates
 ↓
-Project Status
+Change Documentation
 ↓
-Handoff
+Handoff and Portability
+```

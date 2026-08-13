@@ -1,0 +1,33 @@
+---
+title: Handoff
+description: A prompt for preparing the project so it can continue in another IDE or AI coding agent.
+---
+
+## When to use it
+
+Use this prompt when a session ends, when the project moves to another environment, or when a checkpoint should be preserved.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>Prepare this project for continuation in another IDE or AI coding agent. The receiving environment must not need our conversation history.</p>
+    <p>Update the following files to match the actual repository state:</p>
+    <p>1. PROJECT_STATUS.md — current phase, overall status, completed work, in-progress work, pending work, known issues, blockers, and next recommended step.</p>
+    <p>2. PLAN.md — mark completed phases and make the current phase and next step explicit.</p>
+    <p>3. CHANGELOG.md — record the meaningful changes made in this session.</p>
+    <p>4. HANDOFF.md — project identity, current phase, current MVP, completed work, skills status, important decisions, design direction, how to run the project, repository structure, known issues, blockers, and next recommended step.</p>
+    <p>When you are done, verify that a receiving agent can determine what the project is, what is complete, what remains, and what the next step is without any previous conversation history.</p>
+  </div>
+</div>
+
+## What it produces
+
+Up-to-date status, plan, changelog, and handoff files that make the project continueable in another environment.
+
+## Notes
+
+The test of a good handoff is simple: a fresh agent should be able to pick up the repository and continue correctly.

@@ -64,7 +64,7 @@
 	--sl-color-accent: var(--apf-color-accent);
 	--sl-color-accent-high: var(--apf-color-accent-high);
 
-	--sl-color-text: var(--apf-color-text-secondary);
+	--sl-color-text: var(--apf-color-text);
 	--sl-color-text-accent: var(--apf-color-accent-high);
 	--sl-color-text-invert: var(--apf-color-accent-low);
 	--sl-color-bg: var(--apf-color-bg);
@@ -103,7 +103,7 @@
 	--apf-color-surface-raise: hsl(0 0% 100%);
 	--apf-color-text: hsl(220 14% 18%);
 	--apf-color-text-secondary: hsl(220 8% 36%);
-	--apf-color-text-muted: hsl(220 7% 52%);
+	--apf-color-text-muted: hsl(220 7% 44%);
 	--apf-color-hairline: hsl(220 16% 90%);
 	--apf-color-accent: hsl(239 60% 52%);
 	--apf-color-accent-high: hsl(239 58% 42%);
@@ -129,6 +129,20 @@
 .sl-markdown-content h6 {
 	line-height: var(--sl-line-height-headings);
 	letter-spacing: -0.01em;
+}
+
+/* Heading weights per docs/DESIGN_SYSTEM.md type scale */
+main h1 {
+	font-weight: 700;
+}
+
+.sl-markdown-content h2 {
+	font-weight: 650;
+}
+
+.sl-markdown-content h3,
+.sl-markdown-content h4 {
+	font-weight: 600;
 }
 
 /* Inline code */
@@ -164,6 +178,7 @@
 }
 
 .sidebar-content a {
+	color: var(--apf-color-text-secondary);
 	border-radius: var(--apf-radius-small);
 }
 
@@ -226,13 +241,19 @@
 	color: var(--apf-color-text-secondary);
 	font-size: 0.75rem;
 	font-family: var(--apf-font-sans);
-	padding: 0.3em 0.6em;
+	padding: 0.5em 0.75em;
 	cursor: pointer;
 	transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease;
 }
 
 .copy-control:hover,
 .copy-control:focus-visible {
+	color: var(--apf-color-accent);
+	background: var(--apf-color-accent-low);
+	border-color: var(--apf-color-accent);
+}
+
+.copy-control.is-copied {
 	color: var(--apf-color-accent);
 	background: var(--apf-color-accent-low);
 	border-color: var(--apf-color-accent);

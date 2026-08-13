@@ -51,7 +51,7 @@ The current MVP will use:
 
 - Astro
 - Starlight
-- Markdown content
+- Markdown and MDX content
 - No backend
 - No database
 
@@ -71,6 +71,6 @@ Content Rendering
         ↓
 Documentation Layout
         ↓
-Navigation + Copy Interactions
+Navigation + Copy Interactions + Locale Switching
         ↓
 Browser

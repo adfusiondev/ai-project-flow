@@ -142,7 +142,7 @@ Colors are defined once per theme as design tokens and applied through the share
 | Surface | `hsl(220 18% 97%)` |
 | Text primary | `hsl(220 14% 18%)` |
 | Text secondary | `hsl(220 8% 36%)` |
-| Text muted | `hsl(220 7% 52%)` |
+| Text muted | `hsl(220 7% 44%)` |
 | Hairline | `hsl(220 16% 90%)` |
 | Accent | `hsl(239 60% 52%)` |
 | Accent high | `hsl(239 58% 42%)` |
@@ -268,7 +268,14 @@ Structure:
 - Default state: quiet button with `Text secondary` color and hairline border.
 - Hover: `Accent` text with `Accent low` background.
 - Focus: visible focus ring using `Accent`.
+- Copied state: `Accent` text with `Accent low` background and accent border, shown while feedback is displayed.
+- Feedback: the control label changes to `Copied!` for about 2 seconds, then returns to the default state.
 - The control must be large enough for touch and mouse use.
+
+### Where They Appear
+
+- Commands and reusable examples: the Expressive Code code-block toolbar provides the copy control.
+- Prompt blocks: a shared script (`src/scripts/copy-controls.ts`) injects a `Copy prompt` control into every `.prompt-block` header at runtime. The script is bundled on every page via the `apf-copy-controls` integration in `astro.config.mjs`.
 
 ---
 
@@ -286,6 +293,8 @@ Structure:
 - Layout uses logical CSS properties (`margin-inline`, `padding-inline`, `border-inline`, `inset-inline`) wherever practical.
 - Code blocks and terminal content stay `direction: ltr` with `unicode-bidi: isolate` so command text remains correct in Arabic pages.
 - The sidebar and navigation flow should mirror automatically in RTL without custom mirrored styles.
+- Locale configuration lives in `astro.config.mjs` under `locales`: English is the root locale (`lang: en`, `dir: ltr`) and Arabic is an additional locale (`lang: ar`, `dir: rtl`) served at `/ar/`.
+- Only pages actually translated for a locale are served as real pages; every other URL in that locale renders the content in the fallback language with Starlight's "not yet translated" notice.
 
 ---
 

@@ -1,0 +1,36 @@
+---
+title: Implementation Planning
+description: A prompt for breaking the work into clear, verifiable implementation phases.
+---
+
+## When to use it
+
+Use this prompt after the architecture is settled, to turn the requirements into an ordered plan before writing code.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>Based on docs/REQUIREMENTS.md and docs/ARCHITECTURE.md, create or update PLAN.md with an implementation plan.</p>
+    <p>Break the work into meaningful phases, ordered so each phase can be built and verified on its own.</p>
+    <p>For every phase include:</p>
+    <p>1. Objective.</p>
+    <p>2. Scope.</p>
+    <p>3. Tasks.</p>
+    <p>4. Acceptance criteria.</p>
+    <p>5. Verification steps.</p>
+    <p>6. Status.</p>
+    <p>Mark the current phase explicitly. Do not mix future scope into the current plan. When you are done, confirm that the current phase is identifiable and the next step is explicit.</p>
+  </div>
+</div>
+
+## What it produces
+
+A `PLAN.md` in which every phase is clear, ordered, verifiable, and status-tracked.
+
+## Notes
+
+Good plans are boring: small phases, explicit acceptance criteria, and an obvious next step.

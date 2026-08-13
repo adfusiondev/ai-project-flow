@@ -1,0 +1,34 @@
+---
+title: Implementation
+description: A prompt for building one phase of the project while keeping changes focused and verified.
+---
+
+## When to use it
+
+Use this prompt when the plan is ready and a phase needs to be implemented.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>Read AGENTS.md, PROJECT_STATUS.md, PLAN.md, and the relevant files under docs/ before changing anything.</p>
+    <p>Implement the current phase described in PLAN.md. Identify the phase and its acceptance criteria, then confirm the scope before starting.</p>
+    <p>During implementation:</p>
+    <p>1. Change only what the task requires and preserve existing functionality.</p>
+    <p>2. Follow the documented architecture, design system, and shared patterns.</p>
+    <p>3. Do not introduce unnecessary dependencies or unrelated refactors.</p>
+    <p>4. Run the relevant build and runtime checks when the implementation exists.</p>
+    <p>Do not mark the phase complete until the build or runtime checks pass and the acceptance criteria have been reviewed. Report what you changed, what you verified, and what remains.</p>
+  </div>
+</div>
+
+## What it produces
+
+A completed phase with passing checks, reviewed acceptance criteria, and a clear report of what changed.
+
+## Notes
+
+This prompt works for content, UI, and code phases alike. Adjust the verification step to the phase's nature.

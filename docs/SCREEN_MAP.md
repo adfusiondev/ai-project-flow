@@ -78,3 +78,5 @@ They may include:
 The navigation structure is language-direction agnostic.
 
 In RTL contexts (Arabic), the sidebar and content flow mirror automatically through logical CSS properties.
+
+Locales are configured in `astro.config.mjs` (`locales`): English at the root (`/`) and Arabic at `/ar/`. The language selector switches between locales in both directions, and the navigation structure is identical for both. Only `/ar/` is translated so far; other Arabic URLs render the English content with a "not yet translated" notice.

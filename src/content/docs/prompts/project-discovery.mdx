@@ -1,0 +1,34 @@
+---
+title: Project Discovery
+description: A prompt for understanding and clarifying a project idea before planning begins.
+---
+
+## When to use it
+
+Use this prompt at the very start of a project, when the idea is vague or important product decisions are still unknown.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>I want to clarify a project idea before planning it. Do not begin implementation.</p>
+    <p>Ask me only the questions that materially affect the project, in the following order:</p>
+    <p>1. Purpose: what is being built, why it exists, and what outcome it should produce.</p>
+    <p>2. Primary user: who will use it and whether it is personal, internal, public, or commercial.</p>
+    <p>3. Product form: website, landing page, web app, desktop app, mobile app, API, CLI, or other.</p>
+    <p>4. Platform: browser, Windows, macOS, Linux, mobile, local-only, or cloud-hosted.</p>
+    <p>5. Core workflow: the main user flow from input to result.</p>
+    <p>When we finish, summarize the project purpose, the primary user, the product form, the platform, and the core workflow, and list any remaining unknowns. Do not invent public-user requirements if the project is personal.</p>
+  </div>
+</div>
+
+## What it produces
+
+A concise summary of the project's purpose, user, form, platform, and workflow, plus a list of remaining unknowns.
+
+## Notes
+
+The goal is understanding, not documentation. After this prompt, use the [Project Context](/prompts/project-context/) prompt to write the findings into the repository.

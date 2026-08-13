@@ -32,7 +32,7 @@ A documentation-focused website with:
 
 - Frontend: Astro
 - Documentation framework: Starlight
-- Content: Markdown
+- Content: Markdown and MDX
 - Backend: None
 - Database: None
 
@@ -59,7 +59,15 @@ The planning and project preparation stages are complete.
 
 The Astro + Starlight project foundation and the shared design system are implemented and verified.
 
-Current phase: Phase 5 — Core Documentation Content (next).
+The core documentation content, copy interactions, and localization readiness are implemented and verified. English is the default locale at `/`; an Arabic locale at `/ar/` proves RTL rendering with code and prompt blocks kept LTR.
+
+Verification is complete: the MVP satisfies the documented requirements and success criteria across build, runtime, navigation, responsive behavior, copy, typography, accessibility, RTL/LTR, links, and documentation consistency.
+
+Documentation reconciliation is complete: the workflow docs and lifecycle skill now match the implemented 12-stage lifecycle, and the status files reflect the finished phases.
+
+The handoff checkpoint is complete: the planned MVP is finished and verified, and a new agent can continue from the repository alone without previous conversation history.
+
+Status: Complete — planned MVP delivered (Phases 0-10).
 
 See:
 

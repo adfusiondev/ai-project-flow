@@ -1,0 +1,33 @@
+---
+title: MVP Planning
+description: A prompt for defining the smallest useful first version of the project.
+---
+
+## When to use it
+
+Use this prompt after the project context is documented, to define the MVP before writing requirements.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>Based on PROJECT_CONTEXT.md, define the smallest useful first version of this project.</p>
+    <p>Create or update docs/MVP.md with exactly these sections:</p>
+    <p>1. MVP Goal — the outcome the first version must achieve.</p>
+    <p>2. MVP Scope — the features that will be included.</p>
+    <p>3. Out of Scope — the features that are intentionally excluded for now.</p>
+    <p>4. MVP Success Criteria — measurable conditions for calling the MVP successful.</p>
+    <p>Keep the MVP small, useful, and testable. Do not add features only because they may be useful later. Separate future ideas clearly. When you are done, confirm that the success criteria can actually be checked.</p>
+  </div>
+</div>
+
+## What it produces
+
+A `docs/MVP.md` with a clear goal, a limited scope, explicit out-of-scope items, and checkable success criteria.
+
+## Notes
+
+Resist scope creep here. If the draft keeps growing, ask which items are truly required for the first version.

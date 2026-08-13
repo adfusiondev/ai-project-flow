@@ -1,0 +1,37 @@
+---
+title: Verification
+description: A prompt for verifying that completed work meets its documented requirements and acceptance criteria.
+---
+
+## When to use it
+
+Use this prompt after a phase is implemented, before marking the work as complete.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>Verify the work completed in this session against the acceptance criteria in PLAN.md and the requirements in docs/REQUIREMENTS.md.</p>
+    <p>Do not mark work complete before verification. Run the actual checks and report the real results.</p>
+    <p>Check where relevant:</p>
+    <p>1. Build or startup succeeds.</p>
+    <p>2. Runtime behavior works as expected.</p>
+    <p>3. Functional requirements are satisfied.</p>
+    <p>4. Responsive behavior works on the required screen sizes.</p>
+    <p>5. Accessibility basics are respected.</p>
+    <p>6. RTL and LTR behavior works when relevant.</p>
+    <p>7. Important regressions are checked.</p>
+    <p>For every check, state whether it passed, failed, or was not applicable. Fix discovered issues before closing the phase. Record important failures or limitations, then update PROJECT_STATUS.md, CHANGELOG.md, and PLAN.md to reflect the real result.</p>
+  </div>
+</div>
+
+## What it produces
+
+An honest verification report, fixed issues, and project files that reflect the real result.
+
+## Notes
+
+Replace claims like "should work" with evidence: commands run, screenshots taken, criteria reviewed.

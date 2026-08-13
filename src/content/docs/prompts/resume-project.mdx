@@ -1,0 +1,36 @@
+---
+title: Resume a Project
+description: A prompt for continuing a project from its current repository state without repeating completed work.
+---
+
+## When to use it
+
+Use this prompt when starting a new session on an existing project and you want the agent to reconstruct the checkpoint from the repository itself rather than from conversation history.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>Resume this project from its current repository state.</p>
+    <p>Read the project documentation and skills, determine the last completed checkpoint and the exact task that was interrupted, then continue from there.</p>
+    <p>Do not repeat already completed work.</p>
+    <p>Do not ask me for information that already exists in the repository.</p>
+    <p>Verify the current state before making changes, complete only the interrupted or current step, update relevant project documentation if needed, and stop at the next clear checkpoint.</p>
+    <p>Report what you resumed, what you changed, what you verified, and what should happen next.</p>
+  </div>
+</div>
+
+## What it produces
+
+- A report of the last completed checkpoint.
+- The exact task that was interrupted.
+- The completed step, without repeating finished work.
+- Updated project documentation.
+- A clear statement of what should happen next.
+
+## Notes
+
+The prompt assumes the project keeps its state in repository files such as `PROJECT_STATUS.md`, `PLAN.md`, and `HANDOFF.md`. Projects that do not use these files may need a preparatory documentation step first.

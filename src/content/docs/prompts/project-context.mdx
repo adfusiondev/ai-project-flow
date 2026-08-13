@@ -1,0 +1,39 @@
+---
+title: Project Context
+description: A prompt for writing the project's permanent context into PROJECT_CONTEXT.md.
+---
+
+## When to use it
+
+Use this prompt after discovery, to record the agreed understanding in the repository so it does not depend on conversation history.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>Create or update PROJECT_CONTEXT.md in this repository so that a person or an AI agent with no access to our conversation history can understand the project.</p>
+    <p>Include the following sections:</p>
+    <p>1. Project purpose.</p>
+    <p>2. Primary user.</p>
+    <p>3. Current product form.</p>
+    <p>4. Current MVP and its scope.</p>
+    <p>5. Future scope, clearly separated from the MVP.</p>
+    <p>6. Content structure.</p>
+    <p>7. Design reference and constraints.</p>
+    <p>8. Languages and localization direction.</p>
+    <p>9. Portability goals.</p>
+    <p>10. Core project rules.</p>
+    <p>Do not invent features. Base the content only on what we have agreed. Keep the file concise and clear.</p>
+  </div>
+</div>
+
+## What it produces
+
+A `PROJECT_CONTEXT.md` file that explains the project without requiring the original conversation.
+
+## Notes
+
+This file is the foundation for the rest of the lifecycle. If it is incomplete, later stages inherit the gaps.

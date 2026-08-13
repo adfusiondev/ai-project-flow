@@ -249,6 +249,10 @@ The project owner wants the reference to support both languages.
 
 The MVP may begin with one language first if necessary, provided the structure remains ready for bilingual support.
 
+### Implemented Scope (Phase 7)
+
+The site is configured with Starlight multilingual support: English is the root locale (`lang: en`, `dir: ltr`) and Arabic is an additional locale (`lang: ar`, `dir: rtl`) at `/ar/`. A single Arabic proof page was committed with explicit approval; all other Arabic URLs render the English content with Starlight's "not yet translated" fallback. Full Arabic content and translated sidebar labels are deferred to the bilingual content work.
+
 ---
 
 ## DEC-010 — Astro + Starlight Selected
@@ -267,7 +271,7 @@ Astro + Starlight is well suited for documentation websites and provides a simpl
 
 - Frontend: Astro
 - Documentation framework: Starlight
-- Content: Markdown
+- Content: Markdown and MDX
 - Backend: None
 - Database: None
 

@@ -1,0 +1,36 @@
+---
+title: Requirements
+description: A prompt for converting the approved MVP into clear, verifiable requirements.
+---
+
+## When to use it
+
+Use this prompt after the MVP is approved, to produce the requirements that implementation and verification will reference.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>Convert docs/MVP.md into a requirements document at docs/REQUIREMENTS.md.</p>
+    <p>Organize the requirements into the following sections, using only the ones this project needs:</p>
+    <p>1. Functional requirements.</p>
+    <p>2. Non-functional requirements.</p>
+    <p>3. Content requirements.</p>
+    <p>4. Design requirements.</p>
+    <p>5. Localization requirements.</p>
+    <p>6. Portability requirements.</p>
+    <p>7. MVP constraints.</p>
+    <p>Give every requirement a stable identifier and write it so it can be verified later. Keep the requirements aligned with the MVP and do not introduce future-scope features. When you are done, confirm each requirement matches the MVP and is specific enough to test.</p>
+  </div>
+</div>
+
+## What it produces
+
+A `docs/REQUIREMENTS.md` with identified, verifiable requirements that stay aligned with the MVP.
+
+## Notes
+
+Identifiers such as FR-01 make later verification and traceability much easier.

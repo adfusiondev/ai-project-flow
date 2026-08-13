@@ -1,0 +1,34 @@
+---
+title: Architecture
+description: A prompt for choosing the simplest technical approach that supports the approved MVP.
+---
+
+## When to use it
+
+Use this prompt after the requirements are complete, to define the technical architecture before implementation planning.
+
+## The prompt
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Prompt</span>
+  </div>
+  <div className="prompt-block__body">
+    <p>Define the simplest technical architecture that supports the requirements in docs/REQUIREMENTS.md.</p>
+    <p>Start from the requirements, not from a preferred framework. Avoid overengineering.</p>
+    <p>Create or update docs/ARCHITECTURE.md with:</p>
+    <p>1. The current application type.</p>
+    <p>2. The selected technology stack.</p>
+    <p>3. The high-level structure of the system.</p>
+    <p>4. The reasoning behind the choice.</p>
+    <p>Do not add a backend, a database, or other infrastructure unless a requirement genuinely requires it. If you make an important technical decision, record it in docs/DECISIONS.md with the decision, the reason, and the alternatives considered. Keep the architecture portable and maintainable.</p>
+  </div>
+</div>
+
+## What it produces
+
+A `docs/ARCHITECTURE.md` that is simple, documented, and sufficient for the MVP, plus decision records where needed.
+
+## Notes
+
+If a proposed framework adds complexity the MVP does not need, challenge it before recording the decision.
