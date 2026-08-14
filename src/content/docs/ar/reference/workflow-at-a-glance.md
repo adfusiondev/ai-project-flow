@@ -5,31 +5,31 @@ description: دورة حياة المشروع وسير العمل الداعم �
 
 ## دورة حياة المشروع الأساسية
 
-```text
-الفكرة والاستكشاف
-↓
-سياق المشروع
-↓
-تحديد الـ MVP
-↓
-المتطلبات
-↓
-البنية البرمجية
-↓
-التخطيط للتنفيذ
-↓
-المهارات وتوجيهات الوكلاء
-↓
-التنفيذ
-↓
-التحقق والاختبار
-↓
-تحديثات حالة المشروع
-↓
-توثيق التغييرات
-↓
-التسليم وقابلية النقل
-```
+<div class="lifecycle-flow" dir="rtl">
+<p>الفكرة والاستكشاف</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>سياق المشروع</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>تحديد الـ MVP</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>المتطلبات</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>البنية البرمجية</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التخطيط للتنفيذ</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>المهارات وتوجيهات الوكلاء</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التنفيذ</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التحقق والاختبار</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>تحديثات حالة المشروع</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>توثيق التغييرات</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التسليم وقابلية النقل</p>
+</div>
 
 ## الملفات التي ينتجها كل مرحلة
 
@@ -50,9 +50,9 @@ description: دورة حياة المشروع وسير العمل الداعم �
 
 ## تسلسل التحقق
 
-```text
-التخطيط ← التنفيذ ← التشغيل ← الفحص ← الاختبار ← الإصلاح ← التحقق
-← تحديث الوثائق ← تحديث الحالة ← تسجيل التغييرات ← نقطة التوقف
-```
+<div class="flow-sequence" dir="rtl">
+<p>التخطيط ← التنفيذ ← التشغيل ← الفحص ← الاختبار ← الإصلاح ← التحقق</p>
+<p>← تحديث الوثائق ← تحديث الحالة ← تسجيل التغييرات ← نقطة التوقف</p>
+</div>
 
 الأقسام ذات الصلة: [دورة حياة المشروع](/ar/lifecycle/overview/)، [ملفات المشروع](/ar/files/overview/)، [التحقق من الصحة](/ar/verification/overview/).

@@ -9,31 +9,31 @@ description: المراحل الرئيسية لدورة حياة مشروع ال
 
 ## تسلسل دورة الحياة
 
-```text
-الفكرة والاستكشاف
-↓
-سياق المشروع
-↓
-تحديد الحد الأدنى للمنتج (MVP)
-↓
-المتطلبات
-↓
-البنية البرمجية
-↓
-التخطيط للتنفيذ
-↓
-المهارات وتوجيهات الوكلاء
-↓
-التنفيذ
-↓
-التحقق والاختبار
-↓
-تحديثات حالة المشروع
-↓
-توثيق التغييرات
-↓
-التسليم وقابلية النقل
-```
+<div class="lifecycle-flow" dir="rtl">
+<p>الفكرة والاستكشاف</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>سياق المشروع</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>تحديد الحد الأدنى للمنتج (MVP)</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>المتطلبات</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>البنية البرمجية</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التخطيط للتنفيذ</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>المهارات وتوجيهات الوكلاء</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التنفيذ</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التحقق والاختبار</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>تحديثات حالة المشروع</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>توثيق التغييرات</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التسليم وقابلية النقل</p>
+</div>
 
 ## المراحل
 

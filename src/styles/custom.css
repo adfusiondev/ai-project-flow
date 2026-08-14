@@ -428,3 +428,41 @@ html[dir='rtl'] {
 	unicode-bidi: isolate;
 	text-align: left;
 }
+
+/* ------------------------------------------------------------
+   11. Lifecycle sequence — RTL Arabic flow (not code)
+   ------------------------------------------------------------ */
+/* Arabic lifecycle stages render as connected RTL prose, not a
+   forced-LTR monospace code block. Vertical arrows are preserved. */
+.lifecycle-flow {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: var(--apf-space-2);
+	margin-block: var(--apf-space-5);
+	font-family: var(--apf-font-arabic);
+}
+
+.lifecycle-flow p {
+	margin: 0;
+}
+
+.lifecycle-flow__arrow {
+	color: var(--apf-color-text-muted);
+	line-height: 1;
+}
+
+/* Horizontal RTL flow chain (e.g. verification sequence) — connected prose */
+.flow-sequence {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--apf-space-2);
+	margin-block: var(--apf-space-5);
+	font-family: var(--apf-font-arabic);
+}
+
+.flow-sequence p {
+	margin: 0;
+}

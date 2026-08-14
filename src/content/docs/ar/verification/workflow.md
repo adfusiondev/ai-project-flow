@@ -7,29 +7,29 @@ description: تسلسل الفحوصات الواجب تشغيلها قبل اع
 
 ## التسلسل
 
-```text
-التخطيط
-↓
-التنفيذ
-↓
-التشغيل
-↓
-الفحص
-↓
-الاختبار
-↓
-الإصلاح
-↓
-التحقق
-↓
-تحديث الوثائق
-↓
-تحديث الحالة
-↓
-تسجيل التغييرات
-↓
-نقطة التوقف
-```
+<div class="lifecycle-flow" dir="rtl">
+<p>التخطيط</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التنفيذ</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التشغيل</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>الفحص</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>الاختبار</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>الإصلاح</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>التحقق</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>تحديث الوثائق</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>تحديث الحالة</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>تسجيل التغييرات</p>
+<p class="lifecycle-flow__arrow" aria-hidden="true">↓</p>
+<p>نقطة التوقف</p>
+</div>
 
 ## الفحوصات
 
