@@ -256,7 +256,8 @@ The site is configured with Starlight multilingual support: English is the root 
 - Phase 7: a single Arabic proof page at `/ar/` was committed with explicit approval.
 - Phase 1 (Arabic Localization): the home page and all 8 section overview pages were translated, and the prompt copy script was localized.
 - Phase 2 (Arabic Localization): all 12 Project Lifecycle stage pages and all 11 Project Files pages were translated with exact structural parity, keeping file names, paths, commands, and technical identifiers LTR where appropriate.
-- Remaining sections (Skills, Commands, Prompts, Verification, Handoff, Reference) still render the English content with Starlight's "not yet translated" fallback until Phase 3.
+- Phase 3 (Arabic Localization): all 11 Skills pages, 9 Commands pages, 10 Prompts pages, 3 Verification pages, 3 Handoff pages, and 2 Reference pages were translated with exact structural parity.
+- The Arabic locale is now fully translated; no Starlight "not yet translated" fallback pages remain.
 
 ---
 

@@ -532,11 +532,31 @@ Translate the Project Lifecycle (12 stage pages) and Project Files (11 file page
 
 ## Arabic Localization — Phase 3 (Remaining Sections)
 
-Status: Pending
+Status: Completed
 
 ### Objective
 
 Translate the remaining sections (Skills, Commands, Prompts, Verification, Handoff, Reference) into professional Arabic, following the same structural-parity and RTL/LTR rules used in Phases 1 and 2.
+
+### Completed
+
+- Translated all 11 Skills pages, 9 Commands pages, 10 Prompts pages, 3 Verification pages, 3 Handoff pages, and 2 Reference pages (38 pages total) under `src/content/docs/ar/`.
+- Prompts pages are MDX and preserve the `prompt-block` structure with localized labels ("المطالبة") and the injected `نسخ` / `تم النسخ!` copy button.
+- Preserved exact structural parity with the English pages (headings, bullets, code blocks, tables, and internal links) and kept file names, paths, commands, and technical identifiers LTR while keeping Arabic prose RTL.
+
+### Verification
+
+- Production build passes (141 pages, sitemap, Pagefind index); no Arabic fallback notices remain in the Arabic locale.
+- All 38 new routes serve real Arabic content and return HTTP 200; all internal `/ar/` links and sitemap URLs resolve.
+- Browser checks: RTL/LTR, sidebar labels, pagination, language switching, copy controls, Pagefind Arabic search, and the 390px mobile drawer layout all pass with no console errors.
+
+### Acceptance Criteria
+
+- Arabic Skills, Commands, Prompts, Verification, Handoff, and Reference pages preserve structural parity with English. — Passed
+- Commands, code, file names, paths, and technical identifiers remain LTR where appropriate. — Passed
+- Arabic prose renders RTL correctly. — Passed
+- English content and deployment configuration are unchanged. — Passed
+- Production build passes and affected Arabic routes are verified. — Passed
 
 ---
 
@@ -568,7 +588,9 @@ Selected stack:
 * No backend
 * No database
 
-The English MVP is complete and verified. The bilingual Arabic content work is now the active track (see the Arabic Localization sections above):
+The English MVP is complete and verified, and the Arabic localization (Phases 1-3) is complete. The Arabic locale is fully translated across the site.
 
-1. Arabic Localization Phase 3 (remaining sections — Skills, Commands, Prompts, Verification, Handoff, Reference).
-2. Deploy the site to Vercel (deployment configuration unchanged).
+Next steps outside localization:
+
+1. Deploy the site to Vercel (deployment configuration unchanged).
+2. Optionally begin the deferred future-scope items listed in `PROJECT_CONTEXT.md` Future Scope.

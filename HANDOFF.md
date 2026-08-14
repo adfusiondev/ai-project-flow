@@ -22,15 +22,17 @@ A personal learning and reusable reference project for documenting the complete 
 
 ## Current Phase
 
-Arabic Localization — Phase 2: Lifecycle & Files Sections
+Arabic Localization — Phase 3: Remaining Sections
 
 Status: Completed
 
-The core English MVP (Phases 0-10) is complete and verified, and Arabic localization is in progress.
+The core English MVP (Phases 0-10) is complete and verified, and the Arabic localization is now complete.
 
 Phase 1 (High-Level Overview Pages) is complete: sidebar translations, the localized prompt copy script, the Arabic home page, and all 8 section overview pages.
 
-Phase 2 (Lifecycle & Files Sections) is complete: all 12 Project Lifecycle stage pages and all 11 Project Files pages are translated into professional Arabic with exact structural parity, verified via the production build and browser checks (RTL/LTR, sidebar labels, navigation, pagination, copy controls, Arabic search, and mobile layout).
+Phase 2 (Lifecycle & Files Sections) is complete: all 12 Project Lifecycle stage pages and all 11 Project Files pages are translated into professional Arabic.
+
+Phase 3 (Remaining Sections) is complete: all 11 Skills pages, 9 Commands pages, 10 Prompts pages, 3 Verification pages, 3 Handoff pages, and 2 Reference pages are translated into professional Arabic. The Arabic locale is now fully translated across the site, verified via the production build and browser checks (RTL/LTR, sidebar labels, navigation, pagination, copy controls, language switching, Arabic search, and mobile layout).
 
 Phase 6's copy and documentation interactions are implemented and verified. Command and code-block copy buttons come from the Expressive Code toolbar; prompt blocks receive a `Copy` button injected by `src/scripts/copy-controls.ts` (bundled via the `apf-copy-controls` integration in `astro.config.mjs`), with `Copied!` feedback.
 
@@ -42,7 +44,7 @@ Phase 9's documentation reconciliation is complete. `PROJECT_CONTEXT.md` reflect
 
 Phase 10's handoff checkpoint is complete. The repository alone lets a new agent determine what the project is, how to run it, what is complete, what remains, what decisions were made, and the next step, without requiring previous conversation history. Run instructions were confirmed against `package.json`, and the build (141 pages) and development server were re-verified.
 
-The planned English MVP is complete and verified; the Arabic localization continues, with Phase 3 (remaining sections) as the next step.
+The planned English MVP is complete and verified; the Arabic localization (Phases 1-3) is complete and the Arabic locale is fully translated across the site.
 
 ---
 
@@ -129,6 +131,11 @@ The MVP currently excludes:
   - Links: 0 broken internal links across all 141 built pages; every sidebar slug resolves; every content file reachable.
   - Documentation consistency: section/page counts match the repository; `skills/` matches the Skills section.
   - MVP success criteria satisfied; no major regression. Known issues documented in `PLAN.md`.
+
+- Completed Arabic Localization Phase 3 (Remaining Sections):
+  - Translated all 11 Skills pages, 9 Commands pages, 10 Prompts pages, 3 Verification pages, 3 Handoff pages, and 2 Reference pages (38 pages total) into professional Arabic under src/content/docs/ar/.
+  - Prompts pages are MDX and preserve the prompt-block structure with localized "المطالبة" labels and the نسخ / تم النسخ! copy button.
+  - Verified: production build (141 pages) passes with no Arabic fallback notices; all 38 routes serve real Arabic content; structural parity, RTL/LTR, sidebar labels, pagination, language switching, copy controls, Arabic search, and the 390px mobile drawer all verified with no console errors.
 
 - Completed Arabic Localization Phase 2 (Lifecycle & Files Sections):
   - Translated all 12 Project Lifecycle stage pages (idea-and-discovery, project-context, mvp-definition, requirements, architecture, implementation-planning, skills-and-agent-instructions, implementation, verification-and-testing, project-status-updates, change-documentation, handoff-and-portability) and all 11 Project Files pages (project-context, mvp, requirements, architecture, decisions, plan, project-status, agents, changelog, handoff, skill) into professional Arabic under src/content/docs/ar/.
@@ -241,7 +248,7 @@ Implementation:
 - `src/styles/custom.css` — the shared design system implementation (logical properties; RTL/LTR foundation in section 10).
 - `src/scripts/copy-controls.ts` — shared script that adds prompt copy buttons to every `.prompt-block`.
 - `src/content/docs/` — English documentation content (Markdown and MDX).
-- `src/content/docs/ar/` — Arabic documentation content: the home page, all 8 section overview pages, all 12 Project Lifecycle stage pages, and all 11 Project Files pages are translated; the remaining sections still use Starlight's untranslated fallback until Phase 3.
+- `src/content/docs/ar/` — Arabic documentation content: fully translated across all sections (home page, overview pages, Lifecycle, Files, Skills, Commands, Prompts, Verification, Handoff, and Reference).
 - `public/` — static assets.
 - `src/content.config.ts` — content collection definition.
 
@@ -289,10 +296,8 @@ None currently.
 
 ## Next Recommended Step
 
-Continue the Arabic localization:
-
-1. Proceed to Arabic Localization Phase 3 (remaining sections — Skills, Commands, Prompts, Verification, Handoff, Reference). The Arabic locale now ships real translated content for the home page, all 8 overview pages, all 12 lifecycle stage pages, and all 11 files pages; the remaining sections still show English fallback content with the "not yet translated" notice.
-2. Deploy the site to Vercel (unchanged deployment configuration; the site remains https://ai-project-flow.vercel.app).
+1. Deploy the site to Vercel (the Arabic locale is fully translated; deployment configuration is unchanged; the site remains https://ai-project-flow.vercel.app).
+2. Optionally begin the deferred future-scope items documented in `PROJECT_CONTEXT.md` Future Scope.
 
 ---
 

@@ -63,9 +63,9 @@ The core documentation content, copy interactions, and localization readiness ar
 
 Verification is complete: the MVP satisfies the documented requirements and success criteria across build, runtime, navigation, responsive behavior, copy, typography, accessibility, RTL/LTR, links, and documentation consistency.
 
-Arabic localization is in progress. The home page, all 8 section overview pages (Phase 1), and all 12 Project Lifecycle stage pages plus all 11 Project Files pages (Phase 2) are translated into professional Arabic with exact structural parity. The remaining sections (Skills, Commands, Prompts, Verification, Handoff, Reference) are the next localization phase.
+Arabic localization is complete: the home page, all section overview pages (Phase 1), all 12 Project Lifecycle stage pages plus all 11 Project Files pages (Phase 2), and all Skills, Commands, Prompts, Verification, Handoff, and Reference pages (Phase 3) are translated into professional Arabic with exact structural parity.
 
-Status: Complete — planned English MVP delivered (Phases 0-10); Arabic localization in progress (Phases 1-2 complete).
+Status: Complete — planned English MVP delivered (Phases 0-10); Arabic localization delivered (Phases 1-3 complete).
 
 See:
 

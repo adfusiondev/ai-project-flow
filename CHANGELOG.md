@@ -4,6 +4,30 @@ All meaningful project changes should be recorded here.
 
 ---
 
+## 2026-08-14 — Arabic Localization Phase 3
+
+### Added
+
+- Translated all 11 Skills pages into professional Arabic under `src/content/docs/ar/skills/`:
+  `architecture.md`, `handoff.md`, `implementation-planning.md`, `mvp-planning.md`, `project-discovery.md`, `project-documentation.md`, `project-lifecycle.md`, `project-status.md`, `requirements.md`, `ui-implementation.md`, `verification.md`.
+- Translated all 9 Commands pages into professional Arabic under `src/content/docs/ar/commands/`:
+  `git-add.md`, `git-commit.md`, `git-diff.md`, `git-log.md`, `git-status.md`, `npm-install.md`, `npm-run-build.md`, `npm-run-dev.md`, `npm-run-preview.md`.
+- Translated all 10 Prompts pages into professional Arabic under `src/content/docs/ar/prompts/`:
+  `architecture.mdx`, `handoff.mdx`, `implementation.mdx`, `implementation-planning.mdx`, `mvp-planning.mdx`, `project-context.mdx`, `project-discovery.mdx`, `requirements.mdx`, `resume-project.mdx`, `verification.mdx` (MDX preserves the `prompt-block` structure with the localized "المطالبة" label).
+- Translated all 3 Verification pages, all 3 Handoff pages, and both Reference pages into professional Arabic.
+- Preserved exact structural parity with the English pages (headings, bullet lists, code blocks, tables, and internal links) while keeping file names, paths, commands, and technical identifiers LTR where appropriate and Arabic prose RTL.
+
+### Verified
+
+- Production build: 141 pages, sitemap and Pagefind index generated without errors; no "not yet translated" fallback notices remain anywhere in the Arabic locale.
+- All 38 new Arabic routes serve real translated content and return HTTP 200; all internal `/ar/` links and sitemap URLs resolve.
+- RTL/LTR: `lang="ar" dir="rtl"` on all Arabic pages; sidebar renders on the right and the table of contents on the left; inline code and command blocks stay LTR.
+- Navigation: Arabic sidebar labels for all sections; active-page highlighting; pagination follows sidebar order with "السابق" / "التالي".
+- Copy controls: the prompt copy button shows "نسخ" / "تم النسخ!" and resets; the language selector switches between `/ar/...` and `/...` in both directions with no console errors.
+- Pagefind search returns Arabic results (test query "الاستكشاف" returned 11 results).
+- Mobile 390px viewport: no horizontal overflow; the drawer menu opens with all 70 Arabic sidebar items.
+
+---
 ## 2026-08-14 — Arabic Localization Phase 2
 
 ### Added
