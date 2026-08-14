@@ -37,6 +37,14 @@ It includes:
 
 The MVP does not currently require dynamic project generation, a backend, user accounts, or a database.
 
+## Saved Experiment — OpenCode-style Logo Benchmark
+
+A private visual benchmark was executed in `docs/logo-benchmark/` to evaluate how closely the OpenCode header wordmark's design language could be reconstructed for "AI PROJECT FLOW".
+
+- The benchmark reached a **partial visual approximation**, but not a sufficiently accurate reproduction.
+- The current result is intentionally saved as a **checkpoint**; this area can be resumed later if needed.
+- The benchmark is separate from the application: it is not integrated into the site, and it is **not the approved production logo**. This is consistent with the project rule that AI Project Flow must not copy OpenCode branding, logos, or proprietary identity elements — the benchmark is a study only, and its deliverables do not reproduce the OpenCode mark itself.
+
 ## Future Scope
 
 Possible future expansions may include:

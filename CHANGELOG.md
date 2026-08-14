@@ -2,6 +2,26 @@
 
 All meaningful project changes should be recorded here.
 
+## 2026-08-14 — OpenCode-style Logo Benchmark Checkpoint
+
+### Added
+
+- `docs/logo-benchmark/` — a private visual benchmark evaluating how closely the OpenCode header wordmark's design language can be reconstructed and applied to "AI PROJECT FLOW" (grid, 6-unit rectilinear strokes, open counters, two-tone ink/chip scheme, mid-word fade).
+- Deliverables: 7 SVG variants (primary light/dark, compact light/dark, mono black/white, theme-aware favicon), `preview.html`, `preview.png`, and `README.md`.
+
+### Result
+
+- The benchmark produced a **partial visual approximation** of the OpenCode wordmark style, but not a sufficiently accurate reproduction.
+- The result is intentionally **saved as a checkpoint** so this experiment can be resumed later; no further logo refinement is in progress.
+
+### Notes
+
+- The benchmark is **separate from the application**: nothing under `src/` or `public/` was changed and nothing from the benchmark is wired into the site.
+- It is **not the approved production logo** and no element of the OpenCode mark itself is reproduced as a deliverable (per `PROJECT_CONTEXT.md`).
+- This area can be resumed later if needed.
+
+---
+
 ## 2026-08-14 — IBM Plex Sans Arabic for the Arabic Locale
 
 ### Changed

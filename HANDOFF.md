@@ -151,6 +151,10 @@ The MVP currently excludes:
   - Confirmed the repository alone lets a new agent determine what the project is, how to run it, what is complete, what remains, what decisions were made, and the next step.
   - Run instructions match `package.json` scripts; build (141 pages) and development server re-verified.
   - Fixed the stale Current Phase header; updated `PLAN.md`, `PROJECT_STATUS.md`, `CHANGELOG.md`, `README.md`, and `PROJECT_CONTEXT.md` to record the completed plan.
+- Completed a saved OpenCode-style logo benchmark checkpoint:
+  - Executed a private visual benchmark under `docs/logo-benchmark/` reconstructing the OpenCode wordmark's design DNA (grid, 6-unit rectilinear strokes, open counters, two-tone ink/chip, mid-word fade) applied to "AI PROJECT FLOW".
+  - The benchmark produced a **partial visual approximation**, but not a sufficiently accurate reproduction; the result is intentionally saved as a checkpoint for later resumption.
+  - The benchmark is separate from the application: `src/` and `public/` were not modified, nothing from it is integrated into the site, and it is **not the approved production logo**.
 
 ---
 

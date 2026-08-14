@@ -76,6 +76,16 @@ See:
 - `docs/DESIGN_SYSTEM.md`
 - `docs/SCREEN_MAP.md`
 
+## Saved Experiment — OpenCode-style Logo Benchmark
+
+A private visual benchmark lives in `docs/logo-benchmark/`: it reconstructs the OpenCode wordmark's design language applied to "AI PROJECT FLOW".
+
+- Produced a **partial visual approximation**, not a sufficiently accurate reproduction.
+- Intentionally saved as a checkpoint; resumable later.
+- Separate from the application and **not the approved production logo**.
+
+See `docs/logo-benchmark/README.md`.
+
 ## Documentation
 
 Main documentation is located in:

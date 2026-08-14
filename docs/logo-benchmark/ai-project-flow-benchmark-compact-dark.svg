@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 346 42" role="img" aria-label="AI Project Flow (OpenCode-style benchmark)">
+  <title>AI Project Flow</title>
+  <g fill="#B7B1B1" transform="translate(0 0)"><rect x="0" y="6" width="6" height="30"/><rect x="14" y="6" width="6" height="30"/><rect x="0" y="6" width="20" height="6"/><rect x="6" y="18" width="12" height="6"/></g>
+  <g fill="#B7B1B1" transform="translate(24 0)"><rect x="0" y="6" width="20" height="6"/><rect x="7.0" y="6" width="6" height="30"/><rect x="0" y="30" width="20" height="6"/></g>
+  <g fill="#B7B1B1" transform="translate(56 0)"><rect x="0" y="6" width="6" height="30"/><rect x="0" y="6" width="20" height="6"/><rect x="14" y="6" width="6" height="18"/><rect x="6" y="24" width="14" height="6"/></g>
+  <g fill="#B7B1B1" transform="translate(80 0)"><rect x="0" y="6" width="6" height="30"/><rect x="0" y="6" width="20" height="6"/><rect x="14" y="6" width="6" height="30"/><rect x="6" y="24" width="8" height="6"/></g>
+  <g fill="#B7B1B1" transform="translate(104 0)"><rect x="0" y="6" width="6" height="30"/><rect x="14" y="6" width="6" height="30"/><rect x="0" y="6" width="20" height="6"/><rect x="0" y="30" width="20" height="6"/></g>
+  <g fill="#B7B1B1" transform="translate(128 0)"><rect x="14" y="6" width="6" height="30"/><rect x="6" y="30" width="14" height="6"/></g>
+  <g fill="#F1ECEC" transform="translate(152 0)"><rect x="0" y="6" width="6" height="30"/><rect x="0" y="6" width="20" height="6"/><rect x="0" y="18" width="20" height="6"/><rect x="0" y="30" width="20" height="6"/></g>
+  <g fill="#F1ECEC" transform="translate(176 0)"><rect x="0" y="6" width="6" height="30"/><rect x="0" y="6" width="20" height="6"/><rect x="0" y="30" width="20" height="6"/></g>
+  <g fill="#F1ECEC" transform="translate(200 0)"><rect x="0" y="6" width="20" height="6"/><rect x="6" y="12" width="6" height="24"/></g>
+  <g fill="#F1ECEC" transform="translate(232 0)"><rect x="0" y="6" width="6" height="30"/><rect x="0" y="6" width="20" height="6"/><rect x="0" y="18" width="20" height="6"/></g>
+  <g fill="#F1ECEC" transform="translate(256 0)"><rect x="0" y="6" width="6" height="30"/><rect x="0" y="30" width="20" height="6"/></g>
+  <g fill="#F1ECEC" transform="translate(280 0)"><rect x="0" y="6" width="6" height="30"/><rect x="14" y="6" width="6" height="30"/><rect x="0" y="6" width="20" height="6"/><rect x="0" y="30" width="20" height="6"/></g>
+  <g fill="none" stroke="#F1ECEC" transform="translate(304 0)"><path d="M3.33333 8 L10 36" stroke-width="6" stroke-linecap="butt"/><path d="M10 36 L15 8" stroke-width="6" stroke-linecap="butt"/><path d="M15 8 L20 36" stroke-width="6" stroke-linecap="butt"/><path d="M20 36 L26.6667 8" stroke-width="6" stroke-linecap="butt"/></g>
+  <g fill="#4B4646"><rect x="6" y="24" width="8" height="12"/><rect x="62" y="18" width="8" height="6"/><rect x="86" y="18" width="8" height="6"/><rect x="110" y="18" width="8" height="12"/><rect x="134" y="18" width="8" height="12"/><rect x="158" y="24" width="14" height="6"/><rect x="182" y="18" width="14" height="12"/><rect x="210.0" y="24" width="8" height="12"/><rect x="238" y="24" width="14" height="6"/><rect x="262" y="18" width="8" height="12"/><rect x="286" y="18" width="8" height="12"/><rect x="316.0" y="24" width="6" height="12"/></g>
+</svg>

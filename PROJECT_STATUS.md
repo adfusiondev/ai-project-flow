@@ -169,6 +169,17 @@ Complete — Arabic localization delivered (Phases 1-3); site ready for deployme
 
 ---
 
+## Saved Experiment — OpenCode-style Logo Benchmark
+
+A private visual benchmark was executed in `docs/logo-benchmark/` evaluating how closely the OpenCode header wordmark's design language can be reconstructed and applied to "AI PROJECT FLOW".
+
+- The benchmark produced a **partial visual approximation**, but not a sufficiently accurate reproduction.
+- The current result is intentionally **saved as a checkpoint** so this area can be resumed later; no further refinement is in progress.
+- The benchmark is **separate from the application** (`src/` and `public/` are untouched) and is **not the approved production logo**.
+- See `docs/logo-benchmark/README.md` for the full spec and deliverables.
+
+---
+
 ## In Progress
 
 None.
