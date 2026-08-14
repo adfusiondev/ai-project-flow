@@ -2,11 +2,11 @@
 
 ## Current Phase
 
-Arabic Localization — Phase 1: High-Level Overview Pages
+Arabic Localization — Phase 2: Lifecycle & Files Sections
 
 Status: Completed
 
-Phase 1 of the Arabic localization is complete.
+Phase 2 of the Arabic localization is complete.
 
 ## Overall Status
 
@@ -15,6 +15,15 @@ In Progress (Arabic Localization)
 ---
 
 ## Completed
+
+### Arabic Localization — Phase 2 (Lifecycle & Files Sections)
+
+* Translated all 12 Project Lifecycle stage pages into professional Arabic: idea-and-discovery, project-context, mvp-definition, requirements, architecture, implementation-planning, skills-and-agent-instructions, implementation, verification-and-testing, project-status-updates, change-documentation, handoff-and-portability.
+* Translated all 11 Project Files pages into professional Arabic: project-context, mvp, requirements, architecture, decisions, plan, project-status, agents, changelog, handoff, skill.
+* Preserved exact structural parity with the English pages (headings, bullet lists, code and file references, and internal links).
+* Kept file names, paths, commands, and technical identifiers (CLI, API, MVP, RTL, LTR, Git/Astro/Starlight terms) LTR where appropriate while keeping Arabic prose RTL.
+* Verified in the browser: all 23 routes serve real Arabic content (no fallback notices), `lang="ar" dir="rtl"` renders correctly with the sidebar on the right and table of contents on the left, inline code stays LTR, sidebar labels and on-page navigation are Arabic, pagination links work in lifecycle and files order, the language selector switches both ways, the prompt copy button shows "نسخ" / "تم النسخ!", Pagefind returns Arabic search results, and the 390px mobile layout has no horizontal overflow with the drawer menu working.
+* Ran the production build (141 pages, sitemap, Pagefind index) with no errors; all 23 new Arabic routes return HTTP 200; all 39 unique `/ar/` internal links in the new pages resolve.
 
 ### Arabic Localization — Phase 1 (High-Level Overview Pages)
 
@@ -214,10 +223,10 @@ None currently.
 
 ## Next Recommended Step
 
-1. Proceed to Arabic Localization Phase 2 (Lifecycle & Files Sections - 23 pages).
+1. Proceed to Arabic Localization Phase 3 (remaining sections - Skills, Commands, Prompts, Verification, Handoff, Reference).
 
 ---
 
 ## Implementation Status
 
-In Progress — Arabic Localization Phase 1 Complete
+In Progress — Arabic Localization Phase 2 Complete

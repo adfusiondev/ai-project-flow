@@ -4,6 +4,30 @@ All meaningful project changes should be recorded here.
 
 ---
 
+## 2026-08-14 — Arabic Localization Phase 2
+
+### Added
+
+- Translated all 12 Project Lifecycle stage pages into professional Arabic under `src/content/docs/ar/lifecycle/`:
+  `idea-and-discovery.md`, `project-context.md`, `mvp-definition.md`, `requirements.md`, `architecture.md`, `implementation-planning.md`, `skills-and-agent-instructions.md`, `implementation.md`, `verification-and-testing.md`, `project-status-updates.md`, `change-documentation.md`, `handoff-and-portability.md`.
+- Translated all 11 Project Files pages into professional Arabic under `src/content/docs/ar/files/`:
+  `project-context.md`, `mvp.md`, `requirements.md`, `architecture.md`, `decisions.md`, `plan.md`, `project-status.md`, `agents.md`, `changelog.md`, `handoff.md`, `skill.md`.
+- Preserved exact structural parity with the English pages (headings, bullet lists, code and file references, internal links) while keeping file names, paths, commands, and technical identifiers (CLI, API, MVP, RTL, LTR, Git/Astro/Starlight terms) LTR where appropriate and Arabic prose RTL.
+- All internal links in the new pages point to the `/ar/` locale (lifecycle, files, skills, and section cross-references).
+
+### Verified
+
+- Production build: 141 pages, sitemap and Pagefind index generated without errors; all 23 new Arabic routes serve real translated content (no "not yet translated" fallback notice).
+- All 23 new Arabic routes return HTTP 200 on the preview server.
+- RTL/LTR: `lang="ar" dir="rtl"` on all new pages; sidebar renders on the right and the table of contents on the left; inline code stays LTR inside RTL content.
+- Navigation: sidebar labels for all 23 pages are Arabic; on-page table of contents anchors resolve; pagination follows lifecycle and files order.
+- Copy controls: the prompt copy button shows "نسخ" / "تم النسخ!" in the Arabic context; code-block copy buttons present on Arabic pages.
+- Language selector switches between `/ar/...` and `/...` in both directions; English pages are unchanged.
+- Pagefind search returns Arabic results (test query "الاستكشاف").
+- Mobile 390px viewport: no horizontal overflow; the drawer menu opens with Arabic labels.
+- All 39 unique `/ar/` internal links in the new pages resolve (HTTP 200).
+
+---
 ## 2026-08-13 — Arabic Localization Phase 1
 
 ### Added

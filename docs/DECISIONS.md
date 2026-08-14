@@ -249,9 +249,14 @@ The project owner wants the reference to support both languages.
 
 The MVP may begin with one language first if necessary, provided the structure remains ready for bilingual support.
 
-### Implemented Scope (Phase 7)
+### Implemented Scope
 
-The site is configured with Starlight multilingual support: English is the root locale (`lang: en`, `dir: ltr`) and Arabic is an additional locale (`lang: ar`, `dir: rtl`) at `/ar/`. A single Arabic proof page was committed with explicit approval; all other Arabic URLs render the English content with Starlight's "not yet translated" fallback. Full Arabic content and translated sidebar labels are deferred to the bilingual content work.
+The site is configured with Starlight multilingual support: English is the root locale (`lang: en`, `dir: ltr`) and Arabic is an additional locale (`lang: ar`, `dir: rtl`) at `/ar/`. Sidebar labels are translated for all 70 navigation items.
+
+- Phase 7: a single Arabic proof page at `/ar/` was committed with explicit approval.
+- Phase 1 (Arabic Localization): the home page and all 8 section overview pages were translated, and the prompt copy script was localized.
+- Phase 2 (Arabic Localization): all 12 Project Lifecycle stage pages and all 11 Project Files pages were translated with exact structural parity, keeping file names, paths, commands, and technical identifiers LTR where appropriate.
+- Remaining sections (Skills, Commands, Prompts, Verification, Handoff, Reference) still render the English content with Starlight's "not yet translated" fallback until Phase 3.
 
 ---
 

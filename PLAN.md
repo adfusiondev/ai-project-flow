@@ -483,6 +483,63 @@ The receiving agent should not require the previous conversation history.
 
 ---
 
+## Arabic Localization — Phase 1 (High-Level Overview Pages)
+
+Status: Completed
+
+### Objective
+
+Translate the high-level overview pages into professional Arabic and configure the sidebar and copy controls.
+
+### Completed
+
+- All 70 sidebar items translated in `astro.config.mjs` (`translations: { ar: ... }`).
+- Prompt copy script (`src/scripts/copy-controls.ts`) localized with runtime BCP-47 detection ("نسخ" / "تم النسخ!").
+- Arabic home page (`src/content/docs/ar/index.mdx`) rewritten to match the English layout.
+- All 8 section overview pages translated.
+
+---
+
+## Arabic Localization — Phase 2 (Lifecycle & Files Sections)
+
+Status: Completed
+
+### Objective
+
+Translate the Project Lifecycle (12 stage pages) and Project Files (11 file pages) sections into professional Arabic.
+
+### Completed
+
+- Translated all 12 Project Lifecycle stage pages under `src/content/docs/ar/lifecycle/`.
+- Translated all 11 Project Files pages under `src/content/docs/ar/files/`.
+- Preserved exact structural parity with the English pages; kept file names, paths, commands, and technical identifiers LTR where appropriate while keeping Arabic prose RTL.
+
+### Verification
+
+- Production build passes (141 pages, sitemap, Pagefind index).
+- All 23 new Arabic routes serve real translated content with `dir="rtl"` and return HTTP 200.
+- Browser checks: RTL/LTR behavior, sidebar labels, on-page navigation, pagination, language selector, copy controls ("نسخ" / "تم النسخ!"), Arabic search results, and 390px mobile layout all pass.
+
+### Acceptance Criteria
+
+- Arabic Lifecycle and Files pages preserve structural parity with English. — Passed
+- Commands, code, file names, paths, and technical identifiers remain LTR where appropriate. — Passed
+- Arabic prose renders RTL correctly. — Passed
+- English content and deployment configuration are unchanged. — Passed
+- Production build passes and affected Arabic routes are verified. — Passed
+
+---
+
+## Arabic Localization — Phase 3 (Remaining Sections)
+
+Status: Pending
+
+### Objective
+
+Translate the remaining sections (Skills, Commands, Prompts, Verification, Handoff, Reference) into professional Arabic, following the same structural-parity and RTL/LTR rules used in Phases 1 and 2.
+
+---
+
 ## Current Plan Status
 
 Status:
@@ -511,7 +568,7 @@ Selected stack:
 * No backend
 * No database
 
-The MVP is complete and verified. Next steps are outside the current plan:
+The English MVP is complete and verified. The bilingual Arabic content work is now the active track (see the Arabic Localization sections above):
 
-1. Deploy the site to Vercel.
-2. Optionally begin the deferred future-scope items, in particular the bilingual Arabic content (`PROJECT_CONTEXT.md` Future Scope, `docs/DECISIONS.md` DEC-009).
+1. Arabic Localization Phase 3 (remaining sections — Skills, Commands, Prompts, Verification, Handoff, Reference).
+2. Deploy the site to Vercel (deployment configuration unchanged).

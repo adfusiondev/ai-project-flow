@@ -59,15 +59,13 @@ The planning and project preparation stages are complete.
 
 The Astro + Starlight project foundation and the shared design system are implemented and verified.
 
-The core documentation content, copy interactions, and localization readiness are implemented and verified. English is the default locale at `/`; an Arabic locale at `/ar/` proves RTL rendering with code and prompt blocks kept LTR.
+The core documentation content, copy interactions, and localization readiness are implemented and verified. English is the default locale at `/`; Arabic is served at `/ar/` with RTL rendering and code and prompt blocks kept LTR.
 
 Verification is complete: the MVP satisfies the documented requirements and success criteria across build, runtime, navigation, responsive behavior, copy, typography, accessibility, RTL/LTR, links, and documentation consistency.
 
-Documentation reconciliation is complete: the workflow docs and lifecycle skill now match the implemented 12-stage lifecycle, and the status files reflect the finished phases.
+Arabic localization is in progress. The home page, all 8 section overview pages (Phase 1), and all 12 Project Lifecycle stage pages plus all 11 Project Files pages (Phase 2) are translated into professional Arabic with exact structural parity. The remaining sections (Skills, Commands, Prompts, Verification, Handoff, Reference) are the next localization phase.
 
-The handoff checkpoint is complete: the planned MVP is finished and verified, and a new agent can continue from the repository alone without previous conversation history.
-
-Status: Complete — planned MVP delivered (Phases 0-10).
+Status: Complete — planned English MVP delivered (Phases 0-10); Arabic localization in progress (Phases 1-2 complete).
 
 See:
 
