@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 12 100 68" role="img" aria-label="AI Project Flow mark">
+  <title>AI Project Flow</title>
+    <g transform="translate(0 0) scale(1)">
+    <g fill="#edeff2"><rect x="18" y="40" width="16" height="16"/></g>
+    <g fill="#edeff2"><rect x="22" y="56" width="8" height="10"/></g>
+    <g fill="#edeff2"><rect x="34" y="44" width="16" height="8"/></g>
+    <g fill="#7678e5"><polygon points="50,48 62,36 74,48 62,60"/></g>
+    <g fill="#edeff2"><rect x="74" y="44" width="16" height="8"/></g>
+    <g fill="#edeff2"><rect x="58" y="26" width="8" height="10"/></g>
+  </g>
+</svg>

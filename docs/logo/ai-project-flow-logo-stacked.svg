@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" role="img" aria-label="AI Project Flow logo (stacked)">
+  <title>AI Project Flow</title>
+    <g transform="translate(56 4) scale(1)">
+    <g fill="#272c34"><rect x="18" y="40" width="16" height="16"/></g>
+    <g fill="#272c34"><rect x="22" y="56" width="8" height="10"/></g>
+    <g fill="#272c34"><rect x="34" y="44" width="16" height="8"/></g>
+    <g fill="#3b3ece"><polygon points="50,48 62,36 74,48 62,60"/></g>
+    <g fill="#272c34"><rect x="74" y="44" width="16" height="8"/></g>
+    <g fill="#272c34"><rect x="58" y="26" width="8" height="10"/></g>
+  </g>
+  <text x="110" y="122" text-anchor="middle" font-family="'IBM Plex Mono','JetBrains Mono',ui-monospace,Menlo,monospace" font-size="20" letter-spacing="4" fill="#5c626e">AI PROJECT</text>
+  <text x="110" y="170" text-anchor="middle" font-family="'IBM Plex Mono','JetBrains Mono',ui-monospace,Menlo,monospace" font-weight="700" font-size="30" letter-spacing="6" fill="#272c34">FLOW</text>
+</svg>
