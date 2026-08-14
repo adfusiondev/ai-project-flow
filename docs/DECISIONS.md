@@ -293,6 +293,27 @@ Astro + Starlight is well suited for documentation websites and provides a simpl
 
 ---
 
+## DEC-011 — IBM Plex Sans Arabic for the Arabic Locale
+
+Status: Accepted
+
+### Decision
+
+The Arabic locale uses the self-hosted IBM Plex Sans Arabic font for all prose and UI text. English pages keep the system sans-serif stack.
+
+### Reason
+
+The Arabic version should use a high-quality Arabic typeface rather than relying on whatever Arabic font the visitor's operating system provides. IBM Plex Sans Arabic was chosen for its quality, open-source license, and consistency with the clean, utilitarian feel of the design system.
+
+### Implementation Note
+
+- Font files are self-hosted in `public/fonts/` and declared with `@font-face` in `src/styles/custom.css` (weights 400, 600, 700; `font-display: swap`) — no external font service or runtime dependency is used, matching the project's portability and avoid-dependencies rules.
+- The font is applied to the Arabic locale only by overriding `--sl-font-system` under `html[dir='rtl']`, so body, headings, navigation, sidebar, table of contents, pagination, and the Pagefind search UI all inherit it. The copy controls override `font-family` directly.
+- Code and inline code keep the monospace stack and LTR direction in both locales.
+- The design scale's `h2` weight of `650` is rendered with the closest available Plex weight (`600`).
+
+---
+
 ## Current Decision Summary
 
 Accepted decisions:
@@ -307,3 +328,4 @@ Accepted decisions:
 - OpenCode documentation as visual reference.
 - Arabic and English readiness.
 - Astro + Starlight selected for the documentation MVP.
+- IBM Plex Sans Arabic for the Arabic locale.

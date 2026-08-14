@@ -106,6 +106,15 @@ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'No
 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace
 ```
 
+- **Arabic UI and body text**: IBM Plex Sans Arabic, self-hosted, applied only to the Arabic locale (`dir="rtl"`).
+
+```text
+'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+'Noto Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'
+```
+
+  The font is loaded from `public/fonts/` via `@font-face` (weights 400, 600, 700; `font-display: swap`). It replaces the system stack for Arabic pages only; English pages keep the system sans-serif stack.
+
 ### Type Scale
 
 | Role | Size | Weight |
@@ -122,7 +131,9 @@ ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Couri
 
 - Body line height: `1.7`.
 - Heading line height: `1.25`.
-- Use the system font stacks. Do not add font dependencies unless a real requirement appears.
+- Use the system font stacks for English pages. IBM Plex Sans Arabic is the only bundled font dependency, and it is used for the Arabic locale only.
+- Arabic text (body, headings, navigation, sidebar, table of contents, pagination, search UI, and copy controls) always uses IBM Plex Sans Arabic. Code and inline code keep the monospace stack in both locales.
+- The `h2` weight of `650` is rendered by IBM Plex Sans Arabic's closest available weight (`600`).
 - Headings use tight weight and clear spacing to create hierarchy without decoration.
 - Code always uses the monospace stack, including inline code.
 

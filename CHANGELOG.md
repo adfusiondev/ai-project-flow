@@ -2,6 +2,23 @@
 
 All meaningful project changes should be recorded here.
 
+## 2026-08-14 — IBM Plex Sans Arabic for the Arabic Locale
+
+### Changed
+
+- The Arabic locale now uses the self-hosted IBM Plex Sans Arabic typeface (weights 400, 600, 700) for all prose and UI text: headings, body, navigation, sidebar, table of contents, pagination, the Pagefind search UI, prompt-block bodies, and copy controls.
+- Font files are self-hosted under `public/fonts/` and declared with `@font-face` (`font-display: swap`) in `src/styles/custom.css` — no external font service or runtime dependency was introduced.
+- The font is applied only to the Arabic locale via `html[dir='rtl']`, overriding `--sl-font-system`. English pages keep the system sans-serif stack.
+
+### Verified
+
+- Production build: 141 pages, sitemap and Pagefind index generated without errors; font files copied to `dist/fonts/`.
+- Arabic pages compute `IBM Plex Sans Arabic` for body, headings, sidebar links, copy controls, prompt bodies, and the search dialog; all three weights load over the network (HTTP 200).
+- English pages are unchanged (system sans-serif stack).
+- RTL/LTR preserved: Arabic sidebar stays on the right and table of contents on the left; no horizontal overflow.
+- Code blocks and inline code keep the monospace stack and LTR direction on Arabic pages.
+- Mobile 390px viewport: no horizontal overflow; drawer navigation renders all 70 Arabic sidebar items with the new font.
+
 ---
 
 ## 2026-08-14 — Arabic Localization Phase 3
