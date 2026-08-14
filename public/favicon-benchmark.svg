@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" role="img" aria-label="AI Project Flow (OpenCode-style benchmark favicon)">
+  <title>AI Project Flow</title>
+  <style>
+    .main{fill:#656363}.chip{fill:#CFCECD}
+    @media (prefers-color-scheme:dark){.main{fill:#F1ECEC}.chip{fill:#4B4646}}
+  </style>
+  <g class="main"><rect x="6" y="3" width="6" height="30"/><rect x="18" y="3" width="6" height="30"/><rect x="6" y="3" width="24" height="6"/><rect x="6" y="27" width="24" height="6"/></g>
+  <rect class="chip" x="12" y="15" width="12" height="12"/>
+</svg>

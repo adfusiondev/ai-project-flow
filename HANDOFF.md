@@ -158,7 +158,16 @@ The MVP currently excludes:
 
 ---
 
+## Temporary Integration — Logo Benchmark
+
+- The OpenCode-style logo benchmark is **temporarily integrated** into the app for visual evaluation:
+  - Header wordmark: benchmark compact variant via Starlight `logo` config in `astro.config.mjs` (light/dark theme variants, `replacesTitle: true`).
+  - Favicon: `public/favicon-benchmark.svg` (theme-aware), configured as `favicon` in `astro.config.mjs`.
+- This is a **temporary visual benchmark integration, not an approved production identity**. It will be removed or replaced after evaluation.
+- Reverting: set `favicon` back to `'/favicon.svg'`, remove the `logo` block, and delete `public/favicon-benchmark.svg`.
+
 ## Skills Status
+
 
 Reusable project skills exist and are populated under `skills/`:
 

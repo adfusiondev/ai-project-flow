@@ -2,6 +2,23 @@
 
 All meaningful project changes should be recorded here.
 
+## 2026-08-14 — Temporarily Integrate OpenCode-style Logo Benchmark for Evaluation
+
+### Changed
+
+- The benchmark wordmark and favicon are **temporarily integrated** into the application for visual evaluation only.
+- Site header now renders the benchmark **compact wordmark** (`docs/logo-benchmark/ai-project-flow-benchmark-compact*.svg`) via the Starlight `logo` config, with the light variant in light theme and the dark variant in dark theme (`replacesTitle: true` keeps the site title accessible via `sr-only`).
+- Site favicon now points to `public/favicon-benchmark.svg` (the benchmark favicon, theme-aware via `prefers-color-scheme`).
+
+### Notes
+
+- **This is a temporary visual benchmark integration, not an approved production identity.**
+- No content, localization, or layout was modified; responsive and light/dark behavior are preserved.
+- Source files under `docs/logo-benchmark/` are unchanged.
+- Reverting means restoring `astro.config.mjs` to `favicon: '/favicon.svg'`, removing the `logo` config, and deleting `public/favicon-benchmark.svg`.
+
+---
+
 ## 2026-08-14 — OpenCode-style Logo Benchmark Checkpoint
 
 ### Added

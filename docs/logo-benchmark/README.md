@@ -3,9 +3,11 @@
 Private visual benchmark evaluating how closely the **OpenCode** header wordmark's
 design language can be reconstructed and applied to **"AI PROJECT FLOW"**.
 
-> **This is a benchmark, not the product logo.** Nothing here is used in the
-> application (`public/`, `src/` are untouched). Compare the styles side by side
-> in [`preview.html`](preview.html).
+> **This is a benchmark, not the product logo.** It is currently **temporarily
+> integrated** into the application (header wordmark + favicon) **for visual
+> evaluation only**, not as an approved production identity. The source files
+> below remain the benchmark source. Compare the styles side by side in
+> [`preview.html`](preview.html).
 
 ## Deliverables
 

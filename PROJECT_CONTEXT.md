@@ -43,7 +43,7 @@ A private visual benchmark was executed in `docs/logo-benchmark/` to evaluate ho
 
 - The benchmark reached a **partial visual approximation**, but not a sufficiently accurate reproduction.
 - The current result is intentionally saved as a **checkpoint**; this area can be resumed later if needed.
-- The benchmark is separate from the application: it is not integrated into the site, and it is **not the approved production logo**. This is consistent with the project rule that AI Project Flow must not copy OpenCode branding, logos, or proprietary identity elements — the benchmark is a study only, and its deliverables do not reproduce the OpenCode mark itself.
+- The benchmark is **temporarily integrated** into the site header (compact wordmark, light/dark variants) and favicon **for visual evaluation only**; it remains **not the approved production logo** and will be removed or replaced after evaluation. This is consistent with the project rule that AI Project Flow must not copy OpenCode branding, logos, or proprietary identity elements — the benchmark is a study only, and its deliverables do not reproduce the OpenCode mark itself.
 
 ## Future Scope
 

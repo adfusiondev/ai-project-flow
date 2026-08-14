@@ -182,7 +182,8 @@ A private visual benchmark was executed in `docs/logo-benchmark/` evaluating how
 
 ## In Progress
 
-None.
+- **Temporary evaluation:** the OpenCode-style logo benchmark is temporarily integrated into the site header (compact wordmark, light/dark variants) and favicon (`public/favicon-benchmark.svg`). This is a **visual benchmark only, not an approved production identity** — it will be kept while under evaluation and removed or replaced afterward. Revert = restore `favicon: '/favicon.svg'`, drop the `logo` block in `astro.config.mjs`, delete `public/favicon-benchmark.svg`.
+
 
 ---
 

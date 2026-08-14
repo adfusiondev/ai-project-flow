@@ -12,7 +12,13 @@ export default defineConfig({
 				root: { label: 'English', lang: 'en', dir: 'ltr' },
 				ar: { label: 'العربية', lang: 'ar', dir: 'rtl' },
 			},
-			favicon: '/favicon.svg',
+			favicon: '/favicon-benchmark.svg',
+			logo: {
+				light: './docs/logo-benchmark/ai-project-flow-benchmark-compact.svg',
+				dark: './docs/logo-benchmark/ai-project-flow-benchmark-compact-dark.svg',
+				alt: 'AI Project Flow',
+				replacesTitle: true,
+			},
 			customCss: ['/src/styles/custom.css'],
 
 			sidebar: [
