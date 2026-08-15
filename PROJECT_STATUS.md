@@ -2,15 +2,15 @@
 
 ## Current Phase
 
-Arabic Localization — Phase 3: Remaining Sections
+Deployment — Live on Vercel
 
-Status: Completed
+Status: Live
 
-Phase 3 of the Arabic localization is complete. The Arabic locale is now fully translated.
+The site is deployed and live at https://ai-project-flow.vercel.app. The English MVP (Phases 0-10) and Arabic localization (Phases 1-3) are complete; the planned next work (Recovery / Session Continuity / Model Switching / Agent Failure Handling documentation and the cross-tool transfer benchmark) has not started yet.
 
 ## Overall Status
 
-Complete — Arabic localization delivered (Phases 1-3); site ready for deployment
+Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel
 
 ---
 
@@ -167,6 +167,11 @@ Complete — Arabic localization delivered (Phases 1-3); site ready for deployme
 * Re-verified the build (141 pages); development server confirmed running.
 * Acceptance criteria met: a receiving agent does not require previous conversation history.
 
+### Deployment — Live on Vercel
+
+* The site is deployed and live on Vercel at https://ai-project-flow.vercel.app.
+* The production build, sitemap, and Pagefind index generate from the configured `site` URL; the deployment configuration is unchanged.
+
 ---
 
 ## Saved Experiment — OpenCode-style Logo Benchmark
@@ -244,11 +249,11 @@ None currently.
 
 ## Next Recommended Step
 
-1. Deploy the site to Vercel (the Arabic locale is fully translated; deployment configuration is unchanged).
-2. Optionally review any remaining future-scope items documented in `PROJECT_CONTEXT.md` Future Scope.
+1. Add Recovery / Session Continuity / Model Switching / Agent Failure Handling documentation.
+2. Run the cross-tool transfer benchmark.
 
 ---
 
 ## Implementation Status
 
-Complete — Planned English MVP Delivered and Arabic Localization Phases 1-3 Delivered (site ready for deployment)
+Complete — Planned English MVP Delivered, Arabic Localization Phases 1-3 Delivered, and site deployed live on Vercel

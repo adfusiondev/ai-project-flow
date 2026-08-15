@@ -140,5 +140,6 @@ The Arabic localization is complete:
 - **Phase 2 (Lifecycle & Files Sections)**: Complete. All 12 Project Lifecycle stage pages and all 11 Project Files pages have been translated into professional Arabic, preserving exact structural parity with the English pages and keeping commands, code, file names, paths, and technical identifiers LTR where appropriate.
 - **Phase 3 (Remaining Sections)**: Complete. All 11 Skills pages, 9 Commands pages, 10 Prompts pages, 3 Verification pages, 3 Handoff pages, and 2 Reference pages have been translated into professional Arabic.
 - **Verification**: Complete. The production build (141 pages, sitemap, Pagefind index) builds without error; every Arabic route serves real translated content with `dir="rtl"` (no fallback notices remain); and RTL/LTR behavior, sidebar labels, on-page navigation, pagination, copy controls, language switching, Arabic search results, and the mobile layout were verified in the browser.
+- **Deployment**: Complete. The site is deployed and live on Vercel at https://ai-project-flow.vercel.app.
 
-The Arabic locale now provides fully translated content across the entire site. Remaining work is outside localization, such as deploying the site to Vercel.
+The Arabic locale provides fully translated content across the entire site, and the site is deployed and live on Vercel at https://ai-project-flow.vercel.app.

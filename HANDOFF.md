@@ -22,11 +22,11 @@ A personal learning and reusable reference project for documenting the complete 
 
 ## Current Phase
 
-Arabic Localization — Phase 3: Remaining Sections
+Deployment — Live on Vercel
 
-Status: Completed
+Status: Live
 
-The core English MVP (Phases 0-10) is complete and verified, and the Arabic localization is now complete.
+The site is deployed and live at https://ai-project-flow.vercel.app. The core English MVP (Phases 0-10) is complete and verified, and the Arabic localization (Phases 1-3) is complete.
 
 Phase 1 (High-Level Overview Pages) is complete: sidebar translations, the localized prompt copy script, the Arabic home page, and all 8 section overview pages.
 
@@ -44,7 +44,9 @@ Phase 9's documentation reconciliation is complete. `PROJECT_CONTEXT.md` reflect
 
 Phase 10's handoff checkpoint is complete. The repository alone lets a new agent determine what the project is, how to run it, what is complete, what remains, what decisions were made, and the next step, without requiring previous conversation history. Run instructions were confirmed against `package.json`, and the build (141 pages) and development server were re-verified.
 
-The planned English MVP is complete and verified; the Arabic localization (Phases 1-3) is complete and the Arabic locale is fully translated across the site.
+Deployment is complete: the site is live on Vercel at https://ai-project-flow.vercel.app. The production build, sitemap, and Pagefind index generate from the configured `site` URL, and the deployment configuration was unchanged.
+
+The planned English MVP is complete and verified; the Arabic localization (Phases 1-3) is complete and the Arabic locale is fully translated across the site; the site is deployed and live on Vercel at https://ai-project-flow.vercel.app.
 
 ---
 
@@ -151,6 +153,9 @@ The MVP currently excludes:
   - Confirmed the repository alone lets a new agent determine what the project is, how to run it, what is complete, what remains, what decisions were made, and the next step.
   - Run instructions match `package.json` scripts; build (141 pages) and development server re-verified.
   - Fixed the stale Current Phase header; updated `PLAN.md`, `PROJECT_STATUS.md`, `CHANGELOG.md`, `README.md`, and `PROJECT_CONTEXT.md` to record the completed plan.
+- Completed deployment to Vercel:
+  - The site is live at https://ai-project-flow.vercel.app.
+  - The production build, sitemap, and Pagefind index generate from the configured `site` URL; the deployment configuration is unchanged.
 - Completed a saved OpenCode-style logo benchmark checkpoint:
   - Executed a private visual benchmark under `docs/logo-benchmark/` reconstructing the OpenCode wordmark's design DNA (grid, 6-unit rectilinear strokes, open counters, two-tone ink/chip, mid-word fade) applied to "AI PROJECT FLOW".
   - The benchmark produced a **partial visual approximation**, but not a sufficiently accurate reproduction; the result is intentionally saved as a checkpoint for later resumption.
@@ -297,7 +302,7 @@ Before making changes, read:
 
 None currently.
 
-Note: the build is configured with `site: 'https://ai-project-flow.vercel.app'` for production sitemap generation.
+Note: the build is configured with `site: 'https://ai-project-flow.vercel.app'`, which is the live production URL, for production sitemap generation.
 
 ---
 
@@ -309,8 +314,8 @@ None currently.
 
 ## Next Recommended Step
 
-1. Deploy the site to Vercel (the Arabic locale is fully translated; deployment configuration is unchanged; the site remains https://ai-project-flow.vercel.app).
-2. Optionally begin the deferred future-scope items documented in `PROJECT_CONTEXT.md` Future Scope.
+1. Add Recovery / Session Continuity / Model Switching / Agent Failure Handling documentation.
+2. Run the cross-tool transfer benchmark.
 
 ---
 
