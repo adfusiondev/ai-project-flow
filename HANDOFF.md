@@ -22,11 +22,13 @@ A personal learning and reusable reference project for documenting the complete 
 
 ## Current Phase
 
-Deployment — Live on Vercel
+Project Files Workflow Redesign — Phase B: Prompt Generator
 
-Status: Live
+Status: Completed
 
-The site is deployed and live at https://ai-project-flow.vercel.app. The core English MVP (Phases 0-10) is complete and verified, and the Arabic localization (Phases 1-3) is complete.
+Phase B (Prompt Generator) of the approved Project Files Workflow Redesign is complete: the bilingual tool pages `/tools/prompt-generator/` and `/ar/tools/prompt-generator/`, the full frontend-only generator form, URL-prefilled state, and reuse of the existing prompt-block copy behavior. Phase C (prototype pages — Start a New Project, `PROJECT_CONTEXT.md`, `PROJECT_STATUS.md`) is next.
+
+The site remains deployed and live at https://ai-project-flow.vercel.app. The core English MVP (Phases 0-10) is complete and verified, and the Arabic localization (Phases 1-3) is complete.
 
 Phase 1 (High-Level Overview Pages) is complete: sidebar translations, the localized prompt copy script, the Arabic home page, and all 8 section overview pages.
 
@@ -46,7 +48,7 @@ Phase 10's handoff checkpoint is complete. The repository alone lets a new agent
 
 Deployment is complete: the site is live on Vercel at https://ai-project-flow.vercel.app. The production build, sitemap, and Pagefind index generate from the configured `site` URL, and the deployment configuration was unchanged.
 
-The planned English MVP is complete and verified; the Arabic localization (Phases 1-3) is complete and the Arabic locale is fully translated across the site; the site is deployed and live on Vercel at https://ai-project-flow.vercel.app.
+The planned English MVP and the Arabic localization (Phases 1-3) are complete, and the site is deployed and live on Vercel. The Project Files Workflow Redesign is now the active improvement plan: Phases A (Foundation) and B (Prompt Generator) are complete, and Phase C (prototype pages) is next.
 
 ---
 
@@ -74,6 +76,23 @@ The MVP currently excludes:
 ---
 
 ## Completed
+
+- Completed Project Files Workflow Redesign — Phase B (Prompt Generator):
+  - `src/content/docs/tools/prompt-generator.mdx` and `src/content/docs/ar/tools/prompt-generator.mdx` — the bilingual tool pages (sidebar entry deferred to Phase D).
+  - `src/scripts/prompt-generator.ts` — full generator: bilingual form (project name, type, idea, target users, platform, languages/tech stack, constraints, project size, target file, action), Generate button, and a `.prompt-block` output with the shared rules, project overview, target file, action instruction, project size, and next-file chain. File names isolated LTR via `<code>`. All fields carry `name` attributes.
+  - URL prefill via `?file=&action=&size=` with auto-generate; invalid values fall back to defaults.
+  - `src/scripts/prompt-data.ts` — added `SIZES`, bilingual per-action instruction templates, and `getAction()`.
+  - `src/scripts/copy-controls.ts` — exported `enhancePromptBlocks()`.
+  - `src/styles/custom.css` — `.apf-form__field--full`, `.apf-form__actions`, `.apf-generator__output`.
+  - UX refinement (final pass): shortened page intros; wrap-safe Target File dropdown options on narrow screens; accent-bordered "Generated prompt" output panel; muted size hint line. 4-step workflow, controls, details disclosure, URL prefill, copy, and bilingual/RTL behavior unchanged.
+  - Verified: production build (143 pages); EN/AR, all four actions, URL prefill, copy behavior, desktop/mobile layouts, light/dark contrast, no console errors, no Prompts regression.
+
+- Completed Project Files Workflow Redesign — Phase A (Foundation):
+  - `src/scripts/prompt-data.ts` — shared bilingual (English/Arabic) data: canonical AI prompt rules block, 11-file registry with labels and categories, Small/Standard/Advanced size matrix (`CHANGELOG.md` = Recommended for Small), per-size flow order, and level/action labels.
+  - `src/scripts/prompt-generator.ts` — Prompt Generator script skeleton with bilingual `buildPrompt()` (rules + target file + action + next-file chain) and a guarded `init()`; the full form is deferred to Phase B.
+  - `astro.config.mjs` — new `apf-prompt-generator` integration injecting the generator script on every page.
+  - `src/styles/custom.css` — section 12 "Workflow blocks": primary action bar, next-file callout, generator form controls, buttons, and size-matrix alignment, with RTL/LTR and responsive rules.
+  - Verified: production build (141 pages) passes; generator script bundled into built pages; new CSS classes compile into the shared stylesheet; browser checks confirm English/Arabic rendering, light/dark theme selector, unchanged prompt-block copy controls, and no console errors; `buildPrompt()` produces the correct bilingual prompt with the next-file chain in both locales.
 
 - Core project documentation files completed.
 - Reusable project `SKILL.md` files populated.
@@ -262,9 +281,12 @@ Project path:
 
 Implementation:
 
-- `astro.config.mjs` — Starlight site configuration (including the `locales` block for English and Arabic), navigation, and the `apf-copy-controls` integration.
-- `src/styles/custom.css` — the shared design system implementation (logical properties; RTL/LTR foundation in section 10).
+- `astro.config.mjs` — Starlight site configuration (including the `locales` block for English and Arabic), navigation, and the `apf-copy-controls` and `apf-prompt-generator` integrations.
+- `src/styles/custom.css` — the shared design system implementation (logical properties; RTL/LTR foundation in section 10; workflow blocks in section 12).
 - `src/scripts/copy-controls.ts` — shared script that adds prompt copy buttons to every `.prompt-block`.
+- `src/scripts/prompt-data.ts` — shared bilingual prompt rules, file registry, the Small/Standard/Advanced size matrix, and the per-action instruction templates for the Project Files Workflow Redesign.
+- `src/scripts/prompt-generator.ts` — Prompt Generator: bilingual form, `buildPrompt()`, URL prefill, and output in the shared prompt block.
+- `src/content/docs/tools/prompt-generator.mdx` and `src/content/docs/ar/tools/prompt-generator.mdx` — the bilingual Prompt Generator tool pages.
 - `src/content/docs/` — English documentation content (Markdown and MDX).
 - `src/content/docs/ar/` — Arabic documentation content: fully translated across all sections (home page, overview pages, Lifecycle, Files, Skills, Commands, Prompts, Verification, Handoff, and Reference).
 - `public/` — static assets.
@@ -314,8 +336,13 @@ None currently.
 
 ## Next Recommended Step
 
-1. Add Recovery / Session Continuity / Model Switching / Agent Failure Handling documentation.
-2. Run the cross-tool transfer benchmark.
+Continue the approved Project Files Workflow Redesign:
+
+1. **Phase C — Prototype pages**: add the Start a New Project page and redesign the `PROJECT_CONTEXT.md` and `PROJECT_STATUS.md` pages (English and Arabic) with the compact structure and deep links to the generator.
+2. **Phase D — Navigation and documentation reconciliation**: regroup the sidebar Project Files section into the five categories, add the tools entry, and update the related docs.
+3. **Phase E — Validate and decide**: end-to-end test and rollout decision.
+
+Deferred (not started): Recovery / Session Continuity / Model Switching / Agent Failure Handling documentation and the cross-tool transfer benchmark.
 
 ---
 

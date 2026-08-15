@@ -314,6 +314,37 @@ The Arabic version should use a high-quality Arabic typeface rather than relying
 
 ---
 
+## DEC-012 — Project Files Workflow Redesign
+
+Status: Accepted
+
+### Decision
+
+The Project Files section will be redesigned from static documentation into a fast, action-first workflow that guides the project owner when starting any new software project with any AI coding agent.
+
+### Approved Scope
+
+- Workflow-first UX: "What do I do next?" must be answerable within seconds; the primary action sits at the top of each file page, above explanatory prose.
+- Three project modes: Small, Standard, Advanced/Multi-Agent. Projects are not forced to use every file; a non-core file may be skipped, and the UI briefly explains the consequence of skipping it.
+- `CHANGELOG.md` is Recommended (not required) for Small projects.
+- Project files are organized into five categories: Define the Project, Design the Solution, Execute & Track, Guide AI Agents, Transfer & Continue.
+- Reusable prompts follow shared bilingual AI prompt rules: never invent information, use known information first, ask only the minimum necessary questions, never create all files at once, work one stage at a time, preserve valid existing information, update project status when appropriate, stop at a clear checkpoint, and remain tool/IDE/model agnostic.
+- Prompt Generator: a frontend-only tool page (no backend, no new framework) using the script-injection pattern (`apf-prompt-generator` in `astro.config.mjs`), implemented with `src/scripts/prompt-generator.ts` and shared data in `src/scripts/prompt-data.ts`. High priority.
+- Bilingual English/Arabic; technical file names, commands, paths, and identifiers remain LTR.
+- Prototype scope: Start a New Project, the Prompt Generator, `PROJECT_CONTEXT.md`, and `PROJECT_STATUS.md` only. The Prompts section and the remaining Project Files pages remain unchanged until the prototype is validated.
+
+### Reason
+
+The existing file pages are explanatory ("what the file is / why it exists") and do not tell the user what to create next. The redesign converts them into a time-saving guide for starting any new project with any AI coding agent, without creating documentation overhead.
+
+### Implementation Status
+
+- Phase A (Foundation) implemented and verified: shared workflow CSS blocks, shared bilingual prompt rules and file registry in `src/scripts/prompt-data.ts`, the Prompt Generator script skeleton in `src/scripts/prompt-generator.ts`, and the `apf-prompt-generator` script-injection integration.
+- Phase B (Prompt Generator) implemented and verified: bilingual tool pages at `/tools/prompt-generator/` and `/ar/tools/prompt-generator/`, the full frontend-only form, URL-prefilled state, and reuse of the existing prompt-block copy behavior.
+- Phases C-E (prototype pages, navigation/documentation reconciliation, validation) are pending.
+
+---
+
 ## Current Decision Summary
 
 Accepted decisions:
@@ -329,3 +360,4 @@ Accepted decisions:
 - Arabic and English readiness.
 - Astro + Starlight selected for the documentation MVP.
 - IBM Plex Sans Arabic for the Arabic locale.
+- Project Files Workflow Redesign (Phases A-Foundation and B-Prompt Generator implemented, Phases C-E pending).

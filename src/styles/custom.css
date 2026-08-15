@@ -106,6 +106,7 @@
 	--apf-color-code-bg: hsl(220 14% 10%);
 	--apf-color-code-border: hsl(220 12% 16%);
 	--apf-color-focus: hsl(239 80% 78%);
+	--apf-color-accent-ink: hsl(220 12% 8%);
 
 	/* Typography */
 	--apf-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
@@ -196,6 +197,7 @@
 	--apf-color-code-bg: hsl(220 20% 97%);
 	--apf-color-code-border: hsl(220 16% 90%);
 	--apf-color-focus: hsl(239 58% 46%);
+	--apf-color-accent-ink: hsl(0 0% 100%);
 }
 
 /* ------------------------------------------------------------
@@ -465,4 +467,592 @@ html[dir='rtl'] {
 
 .flow-sequence p {
 	margin: 0;
+}
+
+/* ------------------------------------------------------------
+   12. Workflow blocks (Project Files redesign foundation)
+   ------------------------------------------------------------ */
+/* Primary action bar — the action-first block at the top of
+   workflow-oriented pages ("what do I do next?"). */
+.apf-primary-action {
+	background: var(--apf-color-surface);
+	border: 1px solid var(--apf-color-hairline);
+	border-inline-start: 3px solid var(--apf-color-accent);
+	border-radius: var(--apf-radius-medium);
+	padding: var(--apf-space-4) var(--apf-space-5);
+	margin-block-end: var(--apf-space-5);
+}
+
+.apf-primary-action__label {
+	font-family: var(--apf-font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--apf-color-text-muted);
+	margin-block-end: var(--apf-space-2);
+}
+
+.apf-primary-action__file {
+	font-family: var(--apf-font-mono);
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--apf-color-text);
+	margin: 0 0 var(--apf-space-3);
+}
+
+.apf-primary-action__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--apf-space-3);
+}
+
+/* Next recommended file — the single highlighted next step. */
+.apf-next-file {
+	background: var(--apf-color-accent-low);
+	border: 1px solid var(--apf-color-hairline);
+	border-inline-start: 3px solid var(--apf-color-accent);
+	border-radius: var(--apf-radius-medium);
+	padding: var(--apf-space-4) var(--apf-space-5);
+	margin-block: var(--apf-space-5);
+}
+
+.apf-next-file__label {
+	font-family: var(--apf-font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--apf-color-accent-high);
+	margin-block-end: var(--apf-space-2);
+}
+
+.apf-next-file__file {
+	font-family: var(--apf-font-mono);
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--apf-color-text);
+	margin: 0 0 var(--apf-space-1);
+}
+
+.apf-next-file__reason {
+	margin: 0;
+	color: var(--apf-color-text-secondary);
+}
+
+/* Prompt generator form controls. */
+.apf-form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--apf-space-4);
+	margin-block: 0;
+}
+
+.apf-form__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--apf-space-4);
+}
+
+.apf-form__field {
+	display: flex;
+	flex-direction: column;
+	gap: var(--apf-space-2);
+}
+
+.apf-form__field--full {
+	grid-column: 1 / -1;
+}
+
+.apf-form__label {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--apf-color-text-secondary);
+}
+
+.apf-form__input,
+.apf-form__select,
+.apf-form__textarea {
+	font: inherit;
+	font-size: 0.9375rem;
+	color: var(--apf-color-text);
+	background: var(--apf-color-bg);
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: var(--apf-radius-small);
+	padding: var(--apf-space-2) var(--apf-space-3);
+	width: 100%;
+}
+
+.apf-form__textarea {
+	min-height: 5rem;
+	resize: vertical;
+}
+
+.apf-form__input:focus,
+.apf-form__select:focus,
+.apf-form__textarea:focus {
+	outline: 2px solid var(--apf-color-focus);
+	outline-offset: 2px;
+	border-color: var(--apf-color-accent);
+}
+
+/* Buttons. */
+.apf-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--apf-space-2);
+	font: inherit;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--apf-color-text-secondary);
+	background: transparent;
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: var(--apf-radius-small);
+	padding: var(--apf-space-2) var(--apf-space-4);
+	cursor: pointer;
+	transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease;
+}
+
+.apf-btn:hover,
+.apf-btn:focus-visible {
+	color: var(--apf-color-accent);
+	background: var(--apf-color-accent-low);
+	border-color: var(--apf-color-accent);
+}
+
+.apf-btn--primary {
+	color: var(--apf-color-accent-high);
+	background: var(--apf-color-accent-low);
+	border-color: var(--apf-color-accent);
+}
+
+.apf-btn--primary:hover,
+.apf-btn--primary:focus-visible {
+	color: var(--apf-color-accent-high);
+	background: var(--apf-color-accent-low);
+}
+
+/* Size matrix — align table cells to the text direction. */
+.apf-matrix th,
+.apf-matrix td {
+	text-align: start;
+}
+
+/* Responsive rules for the workflow blocks. */
+@media (min-width: 40em) {
+	.apf-form__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 50em) {
+	.apf-primary-action,
+	.apf-next-file {
+		padding: var(--apf-space-3) var(--apf-space-4);
+	}
+}
+
+/* RTL/LTR — labels follow the Arabic font; file names stay mono. */
+[dir='rtl'] .apf-primary-action__label,
+[dir='rtl'] .apf-next-file__label,
+[dir='rtl'] .apf-form__label,
+[dir='rtl'] .apf-btn {
+	font-family: var(--apf-font-arabic);
+}
+
+/* ------------------------------------------------------------
+   13. Prompt generator UX (step flow + segmented controls + dropdown)
+   ------------------------------------------------------------ */
+/* Workflow flow panel — numbered steps with hairline dividers. */
+.apf-generator__flow {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: var(--apf-radius-medium);
+	background: var(--apf-color-surface);
+	overflow: hidden;
+}
+
+.apf-generator__step {
+	display: flex;
+	flex-direction: column;
+	gap: var(--apf-space-2);
+	padding: var(--apf-space-4) var(--apf-space-5);
+}
+
+.apf-generator__step + .apf-generator__step {
+	border-top: 1px solid var(--apf-color-hairline);
+}
+
+.apf-generator__step-head {
+	display: flex;
+	align-items: center;
+	gap: var(--apf-space-2);
+}
+
+.apf-generator__step-num {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 999px;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--apf-color-accent-ink);
+	background: var(--apf-color-accent);
+}
+
+.apf-generator__step-label {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--apf-color-text);
+}
+
+/* Segmented radio groups (size + action). */
+.apf-generator__seg {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--apf-space-2);
+}
+
+.apf-generator__seg-item {
+	position: relative;
+}
+
+.apf-generator__seg-input {
+	position: absolute;
+	opacity: 0;
+	width: 1px;
+	height: 1px;
+	pointer-events: none;
+}
+
+.apf-generator__seg-label {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--apf-space-2) var(--apf-space-4);
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--apf-color-text-secondary);
+	background: var(--apf-color-bg);
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: 999px;
+	cursor: pointer;
+	transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease;
+}
+
+.apf-generator__seg-input:hover + .apf-generator__seg-label {
+	color: var(--apf-color-accent);
+	border-color: var(--apf-color-accent);
+}
+
+.apf-generator__seg-input:focus-visible + .apf-generator__seg-label {
+	outline: 2px solid var(--apf-color-focus);
+	outline-offset: 2px;
+}
+
+.apf-generator__seg-input:checked + .apf-generator__seg-label {
+	color: var(--apf-color-accent-ink);
+	background: var(--apf-color-accent);
+	border-color: var(--apf-color-accent);
+}
+
+/* Target file dropdown. */
+.apf-generator__dropdown {
+	position: relative;
+}
+
+.apf-generator__dropdown-trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--apf-space-3);
+	width: 100%;
+	font: inherit;
+	font-size: 0.9375rem;
+	color: var(--apf-color-text);
+	background: var(--apf-color-bg);
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: var(--apf-radius-small);
+	padding: var(--apf-space-2) var(--apf-space-3);
+	cursor: pointer;
+	text-align: start;
+	transition: border-color 120ms ease;
+}
+
+.apf-generator__dropdown-trigger:hover {
+	border-color: var(--apf-color-accent);
+}
+
+.apf-generator__dropdown-trigger:focus-visible {
+	outline: 2px solid var(--apf-color-focus);
+	outline-offset: 2px;
+	border-color: var(--apf-color-accent);
+}
+
+.apf-generator__dropdown-value {
+	display: flex;
+	align-items: center;
+	gap: var(--apf-space-2);
+	min-width: 0;
+	overflow: hidden;
+}
+
+.apf-generator__dropdown-value-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.apf-generator__dropdown-value-sep {
+	color: var(--apf-color-text-muted);
+}
+
+.apf-generator__dropdown-value-file,
+.apf-generator__dropdown-option-file {
+	font-family: var(--apf-font-mono);
+	font-size: 0.8125rem;
+	color: var(--apf-color-text-secondary);
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+
+.apf-generator__dropdown-option-file {
+	flex: 0 0 auto;
+}
+
+.apf-generator__dropdown-option-label {
+	min-width: 0;
+}
+
+@media (max-width: 26em) {
+	.apf-generator__dropdown-option-file {
+		flex-basis: 100%;
+	}
+}
+
+.apf-generator__dropdown-value-file {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.apf-generator__dropdown-caret {
+	flex: 0 0 auto;
+	font-size: 0.75rem;
+	color: var(--apf-color-text-muted);
+	transition: transform 120ms ease;
+}
+
+.apf-generator__dropdown-trigger[aria-expanded='true'] .apf-generator__dropdown-caret {
+	transform: rotate(180deg);
+}
+
+.apf-generator__dropdown-menu {
+	position: absolute;
+	z-index: 20;
+	top: calc(100% + var(--apf-space-2));
+	inset-inline: 0;
+	max-height: 18rem;
+	overflow-y: auto;
+	background: var(--apf-color-surface-raise);
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: var(--apf-radius-medium);
+	box-shadow: 0 8px 24px hsl(220 12% 4% / 0.35);
+	padding: var(--apf-space-2);
+}
+
+.apf-generator__dropdown-group-label {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--apf-color-text-muted);
+	padding: var(--apf-space-2) var(--apf-space-3);
+}
+
+.apf-generator__dropdown-option {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: var(--apf-space-2) var(--apf-space-3);
+	width: 100%;
+	font: inherit;
+	font-size: 0.875rem;
+	color: var(--apf-color-text);
+	background: transparent;
+	border: none;
+	border-radius: var(--apf-radius-small);
+	padding: var(--apf-space-2) var(--apf-space-3);
+	cursor: pointer;
+	text-align: start;
+}
+
+.apf-generator__dropdown-option:hover,
+.apf-generator__dropdown-option:focus-visible,
+.apf-generator__dropdown-option[aria-selected='true'] {
+	outline: none;
+	background: var(--apf-color-accent-low);
+}
+
+.apf-generator__dropdown-option:focus-visible {
+	outline: 2px solid var(--apf-color-focus);
+	outline-offset: -2px;
+}
+
+/* Collapsible project details. */
+.apf-generator__details {
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: var(--apf-radius-medium);
+	background: var(--apf-color-surface);
+}
+
+.apf-generator__details-summary {
+	display: flex;
+	align-items: center;
+	gap: var(--apf-space-2);
+	padding: var(--apf-space-3) var(--apf-space-5);
+	cursor: pointer;
+	font: inherit;
+	list-style: none;
+}
+
+.apf-generator__details-summary::-webkit-details-marker {
+	display: none;
+}
+
+.apf-generator__details-title {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--apf-color-text);
+}
+
+.apf-generator__details-optional {
+	font-size: 0.8125rem;
+	color: var(--apf-color-text-muted);
+}
+
+.apf-generator__details-caret {
+	margin-inline-start: auto;
+	font-size: 0.75rem;
+	color: var(--apf-color-text-muted);
+	transition: transform 120ms ease;
+}
+
+.apf-generator__details[open] .apf-generator__details-caret {
+	transform: rotate(180deg);
+}
+
+.apf-generator__details-body {
+	padding: var(--apf-space-4) var(--apf-space-5) var(--apf-space-5);
+}
+
+.apf-generator__details-body .apf-form__grid {
+	margin-block-start: 0;
+}
+
+/* Generate actions — step 4 badge + submit. */
+.apf-generator__actions {
+	display: flex;
+	align-items: center;
+	gap: var(--apf-space-3);
+}
+
+.apf-generator__submit {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--apf-space-2);
+	flex: 1;
+	font: inherit;
+	font-size: 0.9375rem;
+	font-weight: 700;
+	color: var(--apf-color-accent-ink);
+	background: var(--apf-color-accent);
+	border: 1px solid var(--apf-color-accent);
+	border-radius: var(--apf-radius-medium);
+	padding: var(--apf-space-3) var(--apf-space-5);
+	cursor: pointer;
+	transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.apf-generator__submit:hover,
+.apf-generator__submit:focus-visible {
+	background: var(--apf-color-accent-high);
+	border-color: var(--apf-color-accent-high);
+}
+
+.apf-generator__submit:focus-visible {
+	outline: 2px solid var(--apf-color-focus);
+	outline-offset: 2px;
+}
+
+/* Output panel — activated once a prompt has been generated. */
+.apf-generator__output .prompt-block {
+	margin-block-start: 0;
+	border: none;
+	padding: 0;
+	background: transparent;
+}
+
+#prompt-generator.has-output .apf-generator__output {
+	border: 1px solid var(--apf-color-accent);
+	border-radius: var(--apf-radius-medium);
+	background: var(--apf-color-surface);
+	padding: var(--apf-space-4) var(--apf-space-5);
+	margin-block-start: var(--apf-space-5);
+}
+
+.apf-generator__output-label {
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: var(--apf-color-accent-high);
+}
+
+.apf-generator__step-control {
+	display: flex;
+	flex-direction: column;
+	gap: var(--apf-space-2);
+}
+
+.apf-generator__hint {
+	margin: 0;
+	font-size: 0.8125rem;
+	color: var(--apf-color-text-muted);
+}
+
+/* Responsive rules for the flow panel — head column at wider widths. */
+@media (min-width: 40em) {
+	.apf-generator__step {
+		flex-direction: row;
+		align-items: center;
+		gap: var(--apf-space-4);
+	}
+
+	.apf-generator__step-head {
+		flex: 0 0 13rem;
+	}
+
+	.apf-generator__step > *:last-child {
+		flex: 1;
+		min-width: 0;
+	}
+}
+
+/* RTL/LTR — Arabic font for generator controls; file names stay LTR mono. */
+[dir='rtl'] .apf-generator__step-label,
+[dir='rtl'] .apf-generator__seg-label,
+[dir='rtl'] .apf-generator__dropdown-trigger,
+[dir='rtl'] .apf-generator__dropdown-option-label,
+[dir='rtl'] .apf-generator__dropdown-group-label,
+[dir='rtl'] .apf-generator__details-summary,
+[dir='rtl'] .apf-generator__submit {
+	font-family: var(--apf-font-arabic);
 }

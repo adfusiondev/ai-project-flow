@@ -48,7 +48,7 @@ function showFeedback(button: HTMLButtonElement, label: string) {
 	window.setTimeout(() => resetButton(button), FEEDBACK_DURATION);
 }
 
-function enhancePromptBlocks() {
+export function enhancePromptBlocks() {
 	const blocks = document.querySelectorAll<HTMLElement>('.prompt-block');
 	blocks.forEach((block) => {
 		if (block.querySelector('.copy-control')) return;

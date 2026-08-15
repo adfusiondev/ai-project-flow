@@ -2,6 +2,96 @@
 
 All meaningful project changes should be recorded here.
 
+## 2026-08-15 — Project Files Workflow Redesign — Phase B: Prompt Generator UX refinement (final pass)
+
+### Changed
+
+- Shortened the bilingual generator page intros (EN + AR) so the workflow is understandable faster.
+- Target File dropdown options now wrap to a clean two-line stack (label over mono filename) on narrow screens (≤ 26em), so long technical filenames such as `docs/ARCHITECTURE.md` stay fully readable on 390px mobile without horizontal overflow.
+- The generated prompt is now unmistakable as the final output: once a prompt is generated, the result renders inside an accent-bordered output panel with a "Generated prompt" / «المطالبة المُولَّدة» header label, and the inner block drops its own chrome so the panel reads as the single copy target.
+- Added a single muted helper line under the Project size control: "Small: minimal set · Standard: recommended set · Advanced: full project" / «صغير: مجموعة الحد الأدنى · قياسي: المجموعة الموصى بها · متقدم: المشروع كامل».
+- `src/styles/custom.css` — section 13 additions: `.apf-generator__hint`, `.apf-generator__step-control`, `.apf-generator__output-label`, the generated-output panel, and wrap-safe dropdown options.
+
+### Notes
+
+- The 4-step workflow (size → target file → action → generate), segmented controls, custom file dropdown, optional project-details disclosure, URL prefill, copy behavior, bilingual support, and RTL/LTR behavior are unchanged.
+- No new features, no redesign of the form, and no changes to the Prototype Project Files pages (Phase C not started).
+
+### Verified
+
+- Production build passes: 143 pages.
+- Browser tests on the dev server:
+  - English and Arabic, light and dark themes: segmented controls, step badges, output panel, and size hint all use correct tokens and contrast.
+  - Desktop (1280px) and 390px mobile (emulated): no horizontal overflow; dropdown menu fits and all 11 options stay fully readable (options stack label-over-filename on narrow widths).
+  - All four actions and all three sizes produce the correct prompt and next-file chain.
+  - URL prefill works for valid values and falls back to defaults for invalid ones.
+  - Copy button copies the full prompt and shows localized feedback.
+  - Prompts pages copy controls still work (no regression).
+  - No console errors; only the pre-existing Starlight search-form accessibility notice remains.
+
+---
+
+
+### Added
+
+- `src/content/docs/tools/prompt-generator.mdx` and `src/content/docs/ar/tools/prompt-generator.mdx` — the bilingual Prompt Generator tool pages (URLs `/tools/prompt-generator/` and `/ar/tools/prompt-generator/`). The page hosts a `#prompt-generator` root where the script renders the full form. Sidebar entry deferred to Phase D.
+- URL-prefilled state: `?file=<file>&action=<create|review|update|recover>&size=<small|standard|advanced>` prefills the form and auto-generates the prompt; invalid values are ignored and fall back to defaults.
+- The form fields carry `name` attributes (a11y); the generated output reuses the existing `.prompt-block` markup and copy control.
+
+### Changed
+
+- `src/scripts/prompt-generator.ts` — completed the skeleton into the full generator: bilingual form (project name, type, idea, target users, platform, languages/tech stack, main constraints, project size, target file, action), Generate button, and a generated prompt block that renders the shared rules plus project details, target file, action instruction, project size, and the next-file chain. File names are wrapped in `<code>` for LTR isolation inside Arabic prose. `buildPrompt()` now includes the project overview and the action-specific instruction.
+- `src/scripts/prompt-data.ts` — added the `SIZES` registry (Small/Standard/Advanced, bilingual), per-action bilingual instruction templates (`instruction` on each `ActionInfo`), and the `getAction()` helper.
+- `src/scripts/copy-controls.ts` — exported `enhancePromptBlocks()` so the generator reuses the existing copy behavior for dynamically created prompt blocks.
+- `src/styles/custom.css` — section 12 additions: `.apf-form__field--full` (full-width grid fields), `.apf-form__actions`, and `.apf-generator__output` spacing.
+
+### Notes
+
+- Fully frontend-only: no backend, database, or persistence. State lives only in the page and URL params.
+- The Prompts section and all existing Project Files pages are unchanged.
+- `PROJECT_CONTEXT.md` and `PROJECT_STATUS.md` pages are not redesigned yet (Phase C).
+
+### Verified
+
+- Production build passes: 143 pages (two new generator pages), sitemap and Pagefind index generated without errors.
+- Browser tests on the dev server and the production preview:
+  - English and Arabic pages render correctly (`lang`/`dir` intact), form labels localized.
+  - All four actions (Create / Review / Update / Recover) produce the correct bilingual instruction for the target file.
+  - URL prefill works for valid values and falls back to defaults for invalid ones (no auto-generate).
+  - Copy button copies the full prompt text and shows the localized "Copied!" feedback.
+  - Desktop (1280px) uses a two-column form grid; mobile (390px) stacks to one column; no horizontal overflow in either.
+  - File names are isolated LTR inside RTL Arabic prose via the existing `.prompt-block__body code` rule.
+  - Prompt copy controls on the existing Prompts pages still work (no regression).
+  - No console errors; the only browser "issue" is the pre-existing Starlight search-form accessibility notice.
+
+---
+
+## 2026-08-15 — Project Files Workflow Redesign — Phase A: Foundation
+
+### Added
+
+- `src/scripts/prompt-data.ts` — the shared bilingual (English/Arabic) data foundation for the Project Files Workflow Redesign: the canonical AI prompt rules block, the 11-file registry with English and Arabic labels and categories, the Small/Standard/Advanced size matrix (with `CHANGELOG.md` as Recommended rather than required for Small projects), per-size flow order, level labels, and the `create/review/update/recover` action labels.
+- `src/scripts/prompt-generator.ts` — the Prompt Generator script skeleton: bilingual `buildPrompt()` that assembles the shared prompt rules plus the target file, action, and next-file chain from `prompt-data.ts`, and a guarded `init()` that activates on a future `#prompt-generator` element. No form is built yet.
+- `apf-prompt-generator` integration in `astro.config.mjs` — injects the generator script into every page, mirroring the existing `apf-copy-controls` pattern.
+
+### Changed
+
+- `src/styles/custom.css` — added section 12 "Workflow blocks" with the shared foundation components using existing `--apf-` tokens and logical properties: primary action bar, next-file callout, generator form controls, buttons, and the size matrix alignment, with RTL/LTR and responsive rules.
+
+### Notes
+
+- The workflow must remain flexible: users may skip a non-core file when it adds no value, and the UI (Phases B/C) will briefly explain the consequence of skipping it.
+- Prototype scope approved: Start a New Project, Prompt Generator, `PROJECT_CONTEXT.md`, and `PROJECT_STATUS.md`. The Prompts section and the remaining Project Files pages are untouched.
+
+### Verified
+
+- Production build passes: 141 pages, sitemap and Pagefind index generated without errors.
+- The generator script is bundled into built pages; the new CSS classes compile into the shared stylesheet.
+- Browser checks: English and Arabic pages render correctly (`lang`/`dir` intact), the light/dark theme selector works, prompt-block copy controls still work, and there are no console errors.
+- Functional check: `buildPrompt()` produces the correct bilingual prompt (Arabic on `/ar/` pages, English on `/` pages) including the next-file chain (`project-context` → `project-status` in the Small flow).
+
+---
+
 ## 2026-08-14 — Temporarily Integrate OpenCode-style Logo Benchmark for Evaluation
 
 ### Changed

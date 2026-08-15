@@ -143,3 +143,5 @@ The Arabic localization is complete:
 - **Deployment**: Complete. The site is deployed and live on Vercel at https://ai-project-flow.vercel.app.
 
 The Arabic locale provides fully translated content across the entire site, and the site is deployed and live on Vercel at https://ai-project-flow.vercel.app.
+
+An approved improvement phase is now active: the **Project Files Workflow Redesign** transforms the Project Files section from static documentation into a fast, action-first workflow that guides the owner when starting any new software project with any AI coding agent. It introduces a Start a New Project entry point, Small/Standard/Advanced project modes, Create/Review/Update/Recover prompts, full copyable templates, and a frontend-only Prompt Generator, and it stays bilingual (English/Arabic). Phases A (Foundation) and B (Prompt Generator — live at `/tools/prompt-generator/`) are complete; Phases C-E are pending. See `PLAN.md` for the plan and `docs/DECISIONS.md` (DEC-012) for the approved scope.
