@@ -1,0 +1,82 @@
+---
+title: CHANGELOG.md
+description: A record of meaningful changes to the project.
+---
+`CHANGELOG.md` records meaningful changes over time, so a future agent never repeats, reverses, or misunderstands past work.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">CHANGELOG.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action" href="/tools/prompt-generator/?file=changelog&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=changelog&action=review&size=standard">Review</a>
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=changelog&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=changelog&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+A dated timeline of what changed and why — the memory that survives across agents, sessions, and environments.
+
+## When to use it
+
+**Recommended** for Small projects; **required** for Standard and Advanced.
+
+- **Create** — at the start of the project, alongside the other core files.
+- **Update** — after a meaningful change, a completed phase, or an important decision.
+- **Skip** — for Small projects with no changes worth recording.
+
+## Required inputs
+
+- What changed and why.
+- The date and a short title.
+- Verification results, decisions, or known limitations, when relevant.
+
+## Reads from and feeds into
+
+- Reads from `PROJECT_STATUS.md`, `PLAN.md`, `docs/DECISIONS.md`, and git history.
+- Feeds into `PROJECT_STATUS.md` and `HANDOFF.md`.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Changelog
+
+All meaningful changes should be recorded here.
+
+## {YYYY-MM-DD} — {Change Title}
+
+### Added
+
+- [New features or files.]
+
+### Changed
+
+- [Changes to existing behavior.]
+
+### Fixed
+
+- [Bug fixes.]
+
+### Notes
+
+- [Decisions, limitations, or follow-ups.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+`## 2026-08-15 — Note editor added` · Added — create, edit, and delete notes · Verified — notes persist across reloads.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">PROJECT_STATUS.md</h3>
+  <p className="apf-next-file__reason">Reflect the latest changes in the status file, then continue the cycle. <a href="/tools/prompt-generator/?file=project-status&action=update&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Change Documentation lifecycle stage](/lifecycle/change-documentation/).

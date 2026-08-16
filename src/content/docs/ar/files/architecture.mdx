@@ -1,0 +1,90 @@
+---
+title: docs/ARCHITECTURE.md
+description: الشكل التقني للمشروع والأساس المنطقي وراء النهج المختار.
+---
+يوثّق `docs/ARCHITECTURE.md` الشكل التقني للمشروع — نوع التطبيق، والتقنية المختارة، والهيكل العام — مع الأساس المنطقي وراء ذلك.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">docs/ARCHITECTURE.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=architecture&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=architecture&action=review&size=standard">مراجعة</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=architecture&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=architecture&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+البنية البرمجية هي أكثر اختيار يكلف عكسه. توثيقها — بما في ذلك البدائل المرفوضة — يمنع الوكلاء المستقبليين من إعادة تقريرها دون السياق الأصلي.
+
+## متى تستخدمه
+
+**مطلوب** للمشاريع المتقدمة؛ **اختياري** للقياسية؛ **لا يُستخدم** للصغيرة.
+
+- **إنشاء** — بعد اكتمال المتطلبات، وقبل التخطيط للتنفيذ.
+- **تحديث** — عندما تتغير التقنية أو نوع التطبيق أو المسؤوليات التقنية.
+- **تخطٍّ** — عندما يكون النهج التقني واضحًا بالفعل أو مقيدًا بالكامل بالـ MVP.
+
+## المدخلات المطلوبة
+
+- المتطلبات المعتمدة وقيود الـ MVP.
+- نوع التطبيق والتقنية المختارة.
+- الهيكل العام والمسؤوليات.
+- البدائل المرفوضة ولماذا.
+
+## يقرأ من ويُغذّي
+
+- يقرأ من `PROJECT_CONTEXT.md` و`docs/MVP.md` و`docs/REQUIREMENTS.md` و`docs/DECISIONS.md`.
+- يغذّي `PLAN.md` و`HANDOFF.md`.
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Architecture
+
+## Purpose
+
+[What this document defines and the principles it follows.]
+
+## Architecture Principles
+
+- [Keep it simple, portable, and maintainable.]
+
+## Current Application Type
+
+[Application type and what the MVP does not require — e.g. no backend, no database.]
+
+## Selected Technology
+
+- [Framework / language / tools.]
+
+## High-Level Structure
+
+    Documentation Content
+        → Content Rendering
+        → Application Layout
+        → Browser
+
+## Rejected Alternatives
+
+- [Approaches considered and why they were not chosen.]`}</pre>
+  </div>
+</div>
+
+## مثال
+
+لتطبيق ملاحظات: تطبيق صفحة واحدة ثابت؛ لا خادم خلفي ولا قاعدة بيانات في الـ MVP؛ فصل المحتوى عن المنطق؛ إطار واجهة أمامية بسيط ببيانات Markdown.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">docs/DECISIONS.md</h3>
+  <p className="apf-next-file__reason">سجّل الاختيارات التي اتُّخذت أثناء البنية البرمجية حتى لا يُعاد تقريرها لاحقًا. <a href="/ar/tools/prompt-generator/?file=decisions&action=update&size=standard">أنشئ مطالبتها</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة البنية البرمجية](/lifecycle/architecture/).

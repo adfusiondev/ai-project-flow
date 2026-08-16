@@ -1,0 +1,79 @@
+---
+title: docs/MVP.md
+description: The definition of the smallest useful first version of the project.
+---
+`docs/MVP.md` defines the smallest useful first version: its goal, its scope, what is deliberately out of scope, and how you will know it succeeded.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">docs/MVP.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=mvp&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=mvp&action=review&size=standard">Review</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=mvp&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=mvp&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+A written agreement on the smallest version that is worth building and verifying first — so the first version stays small enough to finish, and scope creep becomes visible.
+
+## When to use it
+
+**Required** for Standard and Advanced projects; **optional** for Small.
+
+- **Create** — right after discovery and `PROJECT_CONTEXT.md`, before requirements.
+- **Update** — when the MVP goal, scope, or success criteria change.
+- **Skip** — only when the project is so small that the scope is obvious without writing it down.
+
+## Required inputs
+
+- The project purpose and primary user, from `PROJECT_CONTEXT.md`.
+- The smallest useful feature set.
+- What is explicitly out of scope.
+- Success criteria for the first version.
+
+## Reads from and feeds into
+
+- Reads from `PROJECT_CONTEXT.md` and agreed decisions.
+- Feeds into `docs/REQUIREMENTS.md` (the scope boundary) and `docs/DECISIONS.md` (scope decisions).
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — MVP
+
+## MVP Goal
+
+[The smallest useful first version, in one sentence.]
+
+## MVP Scope
+
+- [What the first version includes.]
+
+## Out of Scope
+
+- [What is deliberately excluded from the MVP.]
+
+## MVP Success Criteria
+
+- [How you will know the MVP is finished and works.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+For a personal notes app: goal — save and search notes offline; scope — create, edit, delete, and search notes; out of scope — sync, accounts, and reminders.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">docs/REQUIREMENTS.md</h3>
+  <p className="apf-next-file__reason">Turn the agreed MVP into verifiable requirements before planning how to build it. <a href="/tools/prompt-generator/?file=requirements&action=create&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [MVP Definition lifecycle stage](/lifecycle/mvp-definition/).

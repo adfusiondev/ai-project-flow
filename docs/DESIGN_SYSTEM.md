@@ -290,6 +290,51 @@ Structure:
 
 ---
 
+## Action System (Project Files Workflow)
+
+The Project Files workflow — Start a New Project, the file guide pages, and the Prompt Generator — uses one shared action system. Every actionable button or link in the workflow is an `.apf-action` control. Visual hierarchy comes only from the **Primary** and **Secondary** variants; no other action-button size exists inside the workflow.
+
+### Action Button Base
+
+One base size is used for every actionable button or link in the workflow.
+
+| Property | Value |
+| --- | --- |
+| Minimum height | `2.5rem` (40px) |
+| Typography | `0.875rem` (14px), weight `600`, line-height `1.25` |
+| Padding | `0.5rem 1rem` |
+| Radius | `0.25rem` |
+| Border | `1px` Hairline (Secondary) / Accent (Primary) |
+| Hover and focus | Accent text on `Accent low` background with an accent border; `2px` accent focus ring |
+| Layout | Inline-flex, centered content, `nowrap` labels |
+
+### Hierarchy
+
+- **Primary** (`.apf-action--primary`) — the single call to action for the current context: the "Start here" link on the Start a New Project page, the active action on a file page, and the generator's Generate button. Filled accent with accent-ink text; hover uses `Accent high`.
+- **Secondary** (`.apf-action`) — every remaining action in the same context. Quiet hairline control that gains accent styling on hover and focus.
+- Do not use compact or alternative action-button sizes inside the Project Files workflow.
+- The generator's segmented pills (`.apf-generator__seg-label`) and Target File dropdown (`.apf-generator__dropdown-trigger`) share the same base metrics — `min-height` `2.5rem`, `0.875rem`/600, `line-height` `1.25` — so every control in the workflow's action rows sits on the same 40px height as an `.apf-action` button. The Start a New Project widget reuses the same segmented control and therefore the same height.
+- Interactive workflow containers (`.apf-generator__flow` and `#project-start`) opt out of Starlight's generic markdown content styling via the `not-content` class, and their section rhythm is explicit (`> * + *` margins), so no Starlight content margins leak inside the workflow panels.
+
+### Action Groups
+
+- `.apf-action-group` — a flex row of related actions that wraps whole buttons, never splitting a label.
+- `.apf-action-group--actions` — the four-action bar used on the file pages: one row of four at `34em` and above, a `2 × 2` grid below that, and a single stacked column under `24em`. This prevents stray `3 + 1` wrapping.
+- On narrow screens (`≤34em`) actions inside the `.apf-primary-action` card stretch to full width for comfortable touch targets.
+
+### RTL Ordering
+
+- Action groups use logical layout, so rows and grids mirror automatically in RTL without custom mirrored styles.
+- In the Arabic locale, action labels use IBM Plex Sans Arabic; technical file names inside actions stay LTR monospace.
+
+### Shared Surfaces
+
+- `.apf-primary-action` — the action-first card at the top of the workflow pages: `Surface` background, `1px` hairline border, `3px` accent start border, `0.5rem` radius, and the standard `Space 4 / Space 5` padding.
+- `.apf-next-file` — the single highlighted next step: `Accent low` background with a `3px` accent start border.
+- `.apf-generator__flow` — the Prompt Generator is one continuous workflow panel (a single `Surface` card), not nested cards: the numbered steps, the collapsible Project details, and the Generate action section are separated by hairline dividers inside the same surface. The Project details and Generate sections carry the same `Space 4 / Space 5` padding as the steps. The flow opts out of Starlight's generic markdown content styling via the `not-content` class, and its 16px section rhythm is explicit (`.apf-generator__flow > * + *`) so no Starlight content margins leak into the panel.
+- The generated prompt renders as a standard `.prompt-block` — the same surface used by the file-guide templates — rather than a separate output panel. The result label (`.apf-generator__output-label` and `.prompt-block__label`) uses the mono label treatment, and an empty result container is hidden so it never adds a phantom gap.
+- Both surfaces collapse to the smaller padding scale on screens below `50em` and follow the shared token scale.
+
 ## Responsive Rules
 
 - Small screens: single column, sidebar hidden behind the menu, content full width.

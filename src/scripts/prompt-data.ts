@@ -28,6 +28,7 @@ export interface FileInfo {
 	file: string;
 	en: string;
 	ar: string;
+	purpose: { en: string; ar: string };
 	category: CategoryId;
 }
 
@@ -45,14 +46,32 @@ export const FILES: Record<FileId, FileInfo> = {
 		file: 'PROJECT_CONTEXT.md',
 		en: 'Project Context',
 		ar: 'سياق المشروع',
+		purpose: {
+			en: 'The project\u2019s foundation \u2014 context, rules, and working agreement.',
+			ar: 'أساس المشروع \u2014 السياق والقواعد واتفاقية العمل.',
+		},
 		category: 'define',
 	},
-	mvp: { id: 'mvp', file: 'docs/MVP.md', en: 'MVP', ar: 'الحد الأدنى للمنتج (MVP)', category: 'define' },
+	mvp: {
+		id: 'mvp',
+		file: 'docs/MVP.md',
+		en: 'MVP',
+		ar: 'الحد الأدنى للمنتج (MVP)',
+		purpose: {
+			en: 'Defines the minimal product and what is out of scope.',
+			ar: 'يحدّد الحد الأدنى للمنتج وما يقع خارج النطاق.',
+		},
+		category: 'define',
+	},
 	requirements: {
 		id: 'requirements',
 		file: 'docs/REQUIREMENTS.md',
 		en: 'Requirements',
 		ar: 'المتطلبات',
+		purpose: {
+			en: 'Formal functional and non-functional requirements.',
+			ar: 'المتطلبات الوظيفية وغير الوظيفية بشكل رسمي.',
+		},
 		category: 'design',
 	},
 	architecture: {
@@ -60,6 +79,10 @@ export const FILES: Record<FileId, FileInfo> = {
 		file: 'docs/ARCHITECTURE.md',
 		en: 'Architecture',
 		ar: 'البنية البرمجية',
+		purpose: {
+			en: 'Technical architecture and component decisions.',
+			ar: 'البنية البرمجية وقرارات المكونات.',
+		},
 		category: 'design',
 	},
 	decisions: {
@@ -67,22 +90,54 @@ export const FILES: Record<FileId, FileInfo> = {
 		file: 'docs/DECISIONS.md',
 		en: 'Decisions',
 		ar: 'القرارات',
+		purpose: {
+			en: 'Records accepted decisions and their rationale.',
+			ar: 'يوثّق القرارات المعتمدة وأسبابها.',
+		},
 		category: 'design',
 	},
-	plan: { id: 'plan', file: 'PLAN.md', en: 'Plan', ar: 'الخطة', category: 'execute' },
+	plan: {
+		id: 'plan',
+		file: 'PLAN.md',
+		en: 'Plan',
+		ar: 'الخطة',
+		purpose: {
+			en: 'The ordered implementation plan and its phases.',
+			ar: 'خطة التنفيذ المرتبة ومراحلها.',
+		},
+		category: 'execute',
+	},
 	agents: {
 		id: 'agents',
 		file: 'AGENTS.md',
 		en: 'Agent Instructions',
 		ar: 'توجيهات الوكلاء',
+		purpose: {
+			en: 'Instructions that shape how AI agents work on the repo.',
+			ar: 'تعليمات تشكّل طريقة عمل وكلاء الذكاء الاصطناعي في المستودع.',
+		},
 		category: 'guide',
 	},
-	skill: { id: 'skill', file: 'SKILL.md', en: 'Skill', ar: 'المهارة', category: 'guide' },
+	skill: {
+		id: 'skill',
+		file: 'SKILL.md',
+		en: 'Skill',
+		ar: 'المهارة',
+		purpose: {
+			en: 'A reusable skill that encodes a project workflow.',
+			ar: 'مهارة قابلة لإعادة الاستخدام تجسّد سير عمل المشروع.',
+		},
+		category: 'guide',
+	},
 	'project-status': {
 		id: 'project-status',
 		file: 'PROJECT_STATUS.md',
 		en: 'Project Status',
 		ar: 'حالة المشروع',
+		purpose: {
+			en: 'Current phase, progress, and next steps.',
+			ar: 'المرحلة الحالية والتقدّم والخطوات التالية.',
+		},
 		category: 'execute',
 	},
 	changelog: {
@@ -90,9 +145,23 @@ export const FILES: Record<FileId, FileInfo> = {
 		file: 'CHANGELOG.md',
 		en: 'Changelog',
 		ar: 'سجل التغييرات',
+		purpose: {
+			en: 'A timeline of changes and why they were made.',
+			ar: 'جدول زمني للتغييرات وأسبابها.',
+		},
 		category: 'execute',
 	},
-	handoff: { id: 'handoff', file: 'HANDOFF.md', en: 'Handoff', ar: 'التسليم', category: 'transfer' },
+	handoff: {
+		id: 'handoff',
+		file: 'HANDOFF.md',
+		en: 'Handoff',
+		ar: 'التسليم',
+		purpose: {
+			en: 'How to hand off and resume work across agents and tools.',
+			ar: 'كيفية التسليم واستئناف العمل بين الوكلاء والأدوات.',
+		},
+		category: 'transfer',
+	},
 };
 
 export const FILE_IDS: FileId[] = [
@@ -192,7 +261,7 @@ export const ACTIONS: ActionInfo[] = [
 	{
 		id: 'recover',
 		en: 'Recover',
-		ar: 'استرجاع',
+		ar: 'استعادة',
 		instruction: {
 			en: 'Recover {file}. Reconstruct it from the current repository state and the information in this prompt. Do not guess; ask only the minimum necessary questions.',
 			ar: 'استعد {file}. أعد بناءه من الحالة الحالية للمستودع ومن المعلومات الواردة في هذه المطالبة. لا تخمّن؛ لا تطرح إلا الحد الأدنى من الأسئلة الضرورية.',

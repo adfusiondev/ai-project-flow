@@ -1,0 +1,79 @@
+---
+title: docs/MVP.md
+description: تعريف أصغر نسخة مفيدة أولى من المشروع.
+---
+يحدّد `docs/MVP.md` أصغر إصدار مفيد: هدفه، ونطاقه، وما هو خارج النطاق عمدًا، وكيف تعرف أنه نجح.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">docs/MVP.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=mvp&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=mvp&action=review&size=standard">مراجعة</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=mvp&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=mvp&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+اتفاقية مكتوبة على أصغر إصدار يستحق البناء والتحقق أولًا — ليظل الإصدار الأول صغيرًا بما يكفي ليُكتمل، وتصبح إضافة النطاق (scope creep) واضحة.
+
+## متى تستخدمه
+
+**مطلوب** للمشاريع القياسية والمتقدمة؛ **اختياري** للمشاريع الصغيرة.
+
+- **إنشاء** — مباشرة بعد الاكتشاف وملف `PROJECT_CONTEXT.md`، وقبل المتطلبات.
+- **تحديث** — عندما يتغير هدف الـ MVP أو نطاقه أو معايير نجاحه.
+- **تخطٍّ** — فقط عندما يكون المشروع صغيرًا جدًا لدرجة أن النطاق واضح دون تدوينه.
+
+## المدخلات المطلوبة
+
+- غرض المشروع والمستخدم الأساسي، من `PROJECT_CONTEXT.md`.
+- أصغر مجموعة ميزات مفيدة.
+- ما هو خارج النطاق صراحةً.
+- معايير نجاح الإصدار الأول.
+
+## يقرأ من ويُغذّي
+
+- يقرأ من `PROJECT_CONTEXT.md` ومن القرارات المتفق عليها.
+- يغذّي `docs/REQUIREMENTS.md` (حدود النطاق) و`docs/DECISIONS.md` (قرارات النطاق).
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — MVP
+
+## MVP Goal
+
+[The smallest useful first version, in one sentence.]
+
+## MVP Scope
+
+- [What the first version includes.]
+
+## Out of Scope
+
+- [What is deliberately excluded from the MVP.]
+
+## MVP Success Criteria
+
+- [How you will know the MVP is finished and works.]`}</pre>
+  </div>
+</div>
+
+## مثال
+
+لتطبيق ملاحظات شخصي: الهدف — حفظ الملاحظات والبحث فيها دون اتصال؛ النطاق — إنشاء الملاحظات وتعديلها وحذفها والبحث فيها؛ خارج النطاق — المزامنة والحسابات والتذكيرات.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">docs/REQUIREMENTS.md</h3>
+  <p className="apf-next-file__reason">حوّل الـ MVP المتفق عليه إلى متطلبات قابلة للتحقق قبل التخطيط لكيفية بنائه. <a href="/ar/tools/prompt-generator/?file=requirements&action=create&size=standard">أنشئ مطالبتها</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة تحديد الحد الأدنى للمنتج (MVP)](/lifecycle/mvp-definition/).

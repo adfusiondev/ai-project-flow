@@ -1,0 +1,99 @@
+---
+title: PROJECT_CONTEXT.md
+description: "The project's permanent context: purpose, primary user, product form, scope, and rules."
+---
+
+`PROJECT_CONTEXT.md` is the permanent record of what the project is and the rules it follows. It makes the project self-explaining to any human or AI agent — no conversation history needed.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">PROJECT_CONTEXT.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=project-context&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=project-context&action=review&size=standard">Review</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=project-context&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=project-context&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+A single source of truth for the project's purpose, primary user, product form, current MVP, and core rules — so the repository explains itself without the original conversation.
+
+## When to use it
+
+- **Create** — at the start of a project, right after discovery.
+- **Update** — after a meaningful change in purpose, scope, MVP, product form, or rules.
+
+## Required inputs
+
+- Project purpose and the primary user.
+- Current product form and MVP scope.
+- Future scope, separated from the MVP.
+- Core project rules and constraints.
+
+## Reads from and feeds into
+
+- Reads from the discovery stage and from agreed decisions.
+- Feeds into `PLAN.md`, `PROJECT_STATUS.md`, `AGENTS.md`, and every prompt generated in the Prompt Generator.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# PROJECT_CONTEXT.md
+
+## Project Purpose
+
+[Describe what this project is and why it exists.]
+
+## Primary User
+
+[Describe who this project is for.]
+
+## Current Product Form
+
+[Describe what the product looks like today.]
+
+## Current MVP
+
+[The smallest useful first version, in a few bullets.]
+
+## Future Scope
+
+[What comes after the MVP, clearly separated.]
+
+## Languages and Portability
+
+[Languages, frameworks, and portability goals.]
+
+## Core Project Rules
+
+- [Rule 1]
+- [Rule 2]
+
+## Current Status
+
+[One short paragraph on where the project stands today.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+For a small docs project, `PROJECT_CONTEXT.md` would start with:
+
+- **Project purpose** — a bilingual reference website for an AI-assisted workflow.
+- **Primary user** — the project owner.
+- **Current MVP** — reference pages with copyable content; no backend.
+- **Core rule** — keep content reusable and free of long duplicated prompts.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">docs/MVP.md</h3>
+  <p className="apf-next-file__reason">Define the smallest useful first version before planning how to build it. <a href="/tools/prompt-generator/?file=mvp&action=create&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Project Context lifecycle stage](/lifecycle/project-context/).

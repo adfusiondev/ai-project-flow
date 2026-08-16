@@ -1,0 +1,90 @@
+---
+title: PLAN.md
+description: مراحل التنفيذ ونطاقها ومهامها ومعايير قبولها وحالتها.
+---
+يقسّم `PLAN.md` المشروع إلى مراحل، ويوثّق لكل مرحلة هدفها ونطاقها ومهامها ومعايير قبولها والتحقق منها وحالتها.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">PLAN.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=plan&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=plan&action=review&size=standard">مراجعة</a>
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=plan&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=plan&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+خارطة طريق مرتبة مرحلةً بمرحلة يمكن لأي وكيل اتباعها — فيعرف الوكيل المستقبلي دون سجل محادثة ما أُنجز وما التالي.
+
+## متى تستخدمه
+
+**مطلوب** للمشاريع القياسية والمتقدمة؛ **اختياري** للصغيرة.
+
+- **إنشاء** — بعد المتطلبات والبنية البرمجية، وقبل التنفيذ.
+- **تحديث** — بعد اكتمال مرحلة، أو عندما تتغير الخطة، أو عندما تتغير الخطوة التالية.
+- **تخطٍّ** — عندما يكون المشروع مهمة واحدة صغيرة.
+
+## المدخلات المطلوبة
+
+- هدف ونطاق كل مرحلة.
+- المهام ومعايير القبول والتحقق لكل مرحلة.
+- الحالة الحالية لكل مرحلة.
+
+## يقرأ من ويُغذّي
+
+- يقرأ من `PROJECT_CONTEXT.md` و`docs/MVP.md` و`docs/REQUIREMENTS.md` و`docs/ARCHITECTURE.md` و`docs/DECISIONS.md`.
+- يغذّي `PROJECT_STATUS.md` و`CHANGELOG.md` و`HANDOFF.md`.
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Implementation Plan
+
+## Goal
+
+[The overall goal the plan works toward.]
+
+## Phase 1 — {Phase Name}
+
+Status: {Not Started | In Progress | Completed}
+
+### Objective
+
+[What this phase achieves.]
+
+### Scope
+
+- [Tasks in this phase.]
+
+### Acceptance Criteria
+
+- [How you know the phase is done.]
+
+### Verification
+
+[How the phase will be verified.]
+
+### Status
+
+[Current phase status and the next step.]`}</pre>
+  </div>
+</div>
+
+## مثال
+
+المرحلة 1 — بناء محرر الملاحظات: المهام — إضافة الملاحظات وتعديلها وحذفها؛ القبول — بقاء الملاحظات بعد إعادة التحميل؛ الحالة — لم تبدأ.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">AGENTS.md</h3>
+  <p className="apf-next-file__reason">حدّد كيف يجب أن تعمل وكلاء الذكاء الاصطناعي على المشروع قبل بدء التنفيذ. <a href="/ar/tools/prompt-generator/?file=agents&action=create&size=standard">أنشئ مطالبتها</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة التخطيط للتنفيذ](/lifecycle/implementation-planning/).

@@ -1,0 +1,89 @@
+---
+title: docs/DECISIONS.md
+description: Important project decisions and the reasoning behind them.
+---
+`docs/DECISIONS.md` records important project decisions and the reasoning behind them, so choices are never lost, silently reversed, or re-made without context.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">docs/DECISIONS.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action" href="/tools/prompt-generator/?file=decisions&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=decisions&action=review&size=standard">Review</a>
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=decisions&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=decisions&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+A log of what was decided, why, which alternatives were considered, and the current status of each decision.
+
+## When to use it
+
+**Required** for Advanced projects; **optional** for Standard; **not used** for Small.
+
+- **Create** — as soon as the first important decision is made.
+- **Update** — every time an important decision is made, superseded, or rejected.
+- **Skip** — while there are no choices worth recording.
+
+## Required inputs
+
+- The decision and its status: Proposed, Accepted, Superseded, or Rejected.
+- The reason it was made.
+- Alternatives considered, where relevant.
+
+## Reads from and feeds into
+
+- Reads from `PROJECT_CONTEXT.md`, `docs/MVP.md`, and `docs/REQUIREMENTS.md`.
+- Feeds into `docs/ARCHITECTURE.md`, `AGENTS.md`, `CHANGELOG.md`, and `HANDOFF.md`.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Decisions
+
+## Purpose
+
+[Why decisions are recorded and what each entry includes.]
+
+## Decision Status Values
+
+- Proposed — Under consideration.
+- Accepted — Approved and currently in effect.
+- Superseded — Replaced by a newer decision.
+- Rejected — Considered but intentionally not selected.
+
+## DEC-001 — {Decision Title}
+
+Status: {Proposed | Accepted | Superseded | Rejected}
+
+### Decision
+
+[What was decided.]
+
+### Reason
+
+[Why it was made.]
+
+### Alternatives Considered
+
+- [Options rejected, if any.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+DEC-001 — offline-first notes app; status — Accepted; reason — the MVP must work without a network; rejected alternative — cloud-only storage.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">PLAN.md</h3>
+  <p className="apf-next-file__reason">Turn the accepted decisions and requirements into an implementation plan. <a href="/tools/prompt-generator/?file=plan&action=create&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Architecture lifecycle stage](/lifecycle/architecture/).

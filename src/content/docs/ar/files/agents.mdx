@@ -1,0 +1,93 @@
+---
+title: AGENTS.md
+description: قواعد العمل الافتراضية لوكلاء الذكاء الاصطناعي العاملين على المشروع.
+---
+يحدّد `AGENTS.md` قواعد العمل الافتراضية لوكلاء الترميز بالذكاء الاصطناعي العاملين على المشروع — العقد القابل للنقل الذي يعوّض سجل المحادثة.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">AGENTS.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=agents&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=agents&action=review&size=standard">مراجعة</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=agents&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=agents&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+لأن الوكلاء لا يتشاركون سجل المحادثة، يجعل هذا الملف كل وكيل يتبع نفس ترتيب القراءة وقواعد العمل وتسلسل التحقق.
+
+## متى تستخدمه
+
+**مطلوب** للمشاريع القياسية والمتقدمة؛ **اختياري** للصغيرة.
+
+- **إنشاء** — قبل بدء التنفيذ.
+- **تحديث** — عندما تتغير قواعد العمل أو ترتيب القراءة أو قاعدة التحقق.
+- **تخطٍّ** — عندما تعمل وحدك دون استخدام وكلاء ترميز بالذكاء الاصطناعي.
+
+## المدخلات المطلوبة
+
+- غرض المشروع والبيئات المدعومة.
+- ترتيب القراءة المطلوب.
+- قواعد العمل الأساسية وتسلسل التحقق.
+
+## يقرأ من ويُغذّي
+
+- يقرأ من `PROJECT_CONTEXT.md` و`PROJECT_STATUS.md` و`PLAN.md` و`HANDOFF.md`.
+- يغذّي كل جلسة وكيل وملفات `SKILL.md` القابلة لإعادة الاستخدام.
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Agent Instructions
+
+## Purpose
+
+[What this file does and why agents need it.]
+
+## Supported Environments
+
+- [IDEs and AI coding tools where the project must remain usable.]
+
+## Required Reading Order
+
+1. [File A]
+2. [File B]
+3. [File C]
+
+## Core Working Rules
+
+- [Rule 1]
+- [Rule 2]
+
+## Before Implementation
+
+- [What to check before making changes.]
+
+## During Implementation
+
+- [Rules to follow while working.]
+
+## Verification Rule
+
+[The expected sequence, e.g. Plan → Implement → Run → Verify → Document → Checkpoint.]`}</pre>
+  </div>
+</div>
+
+## مثال
+
+مجموعة قواعد قصيرة: اقرأ ملفات المشروع قبل تغيير أي شيء؛ لا تخترع معلومات؛ اعمل مرحلة واحدة في كل مرة؛ تحقق قبل الإعلان عن الاكتمال.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">PROJECT_STATUS.md</h3>
+  <p className="apf-next-file__reason">أنشئ ملف الحالة لتتبع التقدم أثناء تنفيذ العمل. <a href="/ar/tools/prompt-generator/?file=project-status&action=create&size=standard">أنشئ مطالبتها</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة المهارات وتوجيهات الوكلاء](/lifecycle/skills-and-agent-instructions/).

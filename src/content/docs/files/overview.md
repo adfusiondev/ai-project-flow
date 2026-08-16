@@ -1,32 +1,38 @@
 ---
 title: Overview
-description: The purpose of the important project files used across the AI Project Flow workflow.
+description: What the Project Files are, which files exist and why, and where to start.
 ---
 
-This section explains the purpose of the important project files that keep an AI-assisted software project understandable and portable.
+Project Files are the small set of Markdown files that keep an AI-assisted project understandable, portable, and independent of conversation history.
 
-Each file page describes:
+## Start a new project
 
-- What the file is.
-- Why it exists.
-- When it should be created.
-- When it should be updated.
-- A practical example where appropriate.
+If you are starting a project, choose a size and follow the recommended sequence:
+
+<a class="apf-action apf-action--primary" href="/files/start/">Start a New Project</a>
 
 ## The files
 
-- [PROJECT_CONTEXT.md](/files/project-context/) — the project's permanent context and rules.
-- [docs/MVP.md](/files/mvp/) — the smallest useful first version.
-- [docs/REQUIREMENTS.md](/files/requirements/) — what the project must do and how.
-- [docs/ARCHITECTURE.md](/files/architecture/) — the technical shape of the project.
-- [docs/DECISIONS.md](/files/decisions/) — important choices and their reasoning.
-- [PLAN.md](/files/plan/) — the implementation phases.
-- [PROJECT_STATUS.md](/files/project-status/) — the current project state.
-- [AGENTS.md](/files/agents/) — working rules for AI coding agents.
-- [CHANGELOG.md](/files/changelog/) — a record of meaningful changes.
-- [HANDOFF.md](/files/handoff/) — the minimum information needed to continue the project.
-- [SKILL.md](/files/skill/) — a reusable workflow for a specific task.
+Each file page explains what the file is, when to create it, when to update it, and how to generate the prompt for it.
 
-## How files relate to the lifecycle
+| File | Purpose |
+| --- | --- |
+| [PROJECT_CONTEXT.md](/files/project-context/) | The project's permanent context and rules — always the first file. |
+| [docs/MVP.md](/files/mvp/) | The smallest useful first version. |
+| [docs/REQUIREMENTS.md](/files/requirements/) | What the project must do and how. |
+| [docs/ARCHITECTURE.md](/files/architecture/) | The technical shape of the project. |
+| [docs/DECISIONS.md](/files/decisions/) | Important choices and their reasoning. |
+| [PLAN.md](/files/plan/) | The implementation phases. |
+| [PROJECT_STATUS.md](/files/project-status/) | The current project state and next step. |
+| [AGENTS.md](/files/agents/) | Working rules for AI coding agents. |
+| [CHANGELOG.md](/files/changelog/) | A record of meaningful changes. |
+| [HANDOFF.md](/files/handoff/) | The minimum information needed to continue the project. |
+| [SKILL.md](/files/skill/) | A reusable workflow for a specific task. |
 
-Each lifecycle stage produces or updates one or more of these files. See the [Project Lifecycle](/lifecycle/overview/) section for the order in which the files are created and updated.
+## How the Prompt Generator fits
+
+The [Prompt Generator](/tools/prompt-generator/) turns any file task into a reusable, copyable prompt: pick the size, target file, and action (create, review, update, or recover), and copy the result. Use it from the Start page, from each file page, or directly.
+
+## Where to start
+
+Start with [PROJECT_CONTEXT.md](/files/project-context/) — every later file depends on it.

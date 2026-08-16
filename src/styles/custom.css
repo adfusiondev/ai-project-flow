@@ -504,6 +504,7 @@ html[dir='rtl'] {
 .apf-primary-action__actions {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: center;
 	gap: var(--apf-space-3);
 }
 
@@ -596,48 +597,7 @@ html[dir='rtl'] {
 	border-color: var(--apf-color-accent);
 }
 
-/* Buttons. */
-.apf-btn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--apf-space-2);
-	font: inherit;
-	font-size: 0.875rem;
-	font-weight: 600;
-	color: var(--apf-color-text-secondary);
-	background: transparent;
-	border: 1px solid var(--apf-color-hairline);
-	border-radius: var(--apf-radius-small);
-	padding: var(--apf-space-2) var(--apf-space-4);
-	cursor: pointer;
-	transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease;
-}
-
-.apf-btn:hover,
-.apf-btn:focus-visible {
-	color: var(--apf-color-accent);
-	background: var(--apf-color-accent-low);
-	border-color: var(--apf-color-accent);
-}
-
-.apf-btn--primary {
-	color: var(--apf-color-accent-high);
-	background: var(--apf-color-accent-low);
-	border-color: var(--apf-color-accent);
-}
-
-.apf-btn--primary:hover,
-.apf-btn--primary:focus-visible {
-	color: var(--apf-color-accent-high);
-	background: var(--apf-color-accent-low);
-}
-
-/* Size matrix — align table cells to the text direction. */
-.apf-matrix th,
-.apf-matrix td {
-	text-align: start;
-}
+/* Buttons — unified in the shared action system (see section 15). */
 
 /* Responsive rules for the workflow blocks. */
 @media (min-width: 40em) {
@@ -656,8 +616,7 @@ html[dir='rtl'] {
 /* RTL/LTR — labels follow the Arabic font; file names stay mono. */
 [dir='rtl'] .apf-primary-action__label,
 [dir='rtl'] .apf-next-file__label,
-[dir='rtl'] .apf-form__label,
-[dir='rtl'] .apf-btn {
+[dir='rtl'] .apf-form__label {
 	font-family: var(--apf-font-arabic);
 }
 
@@ -672,6 +631,11 @@ html[dir='rtl'] {
 	border-radius: var(--apf-radius-medium);
 	background: var(--apf-color-surface);
 	overflow: hidden;
+}
+
+/* Flow sections spacing (explicit; Starlight generic sibling margins are excluded via .not-content). */
+.apf-generator__flow > * + * {
+	margin-block-start: var(--apf-space-4);
 }
 
 .apf-generator__step {
@@ -691,7 +655,9 @@ html[dir='rtl'] {
 	gap: var(--apf-space-2);
 }
 
-.apf-generator__step-num {
+/* Shared step/index badge — generator steps and Start widget rows. */
+.apf-generator__step-num,
+.apf-start__index {
 	flex: 0 0 auto;
 	display: inline-flex;
 	align-items: center;
@@ -735,9 +701,11 @@ html[dir='rtl'] {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	min-height: 2.5rem;
 	padding: var(--apf-space-2) var(--apf-space-4);
 	font-size: 0.875rem;
 	font-weight: 600;
+	line-height: 1.25;
 	color: var(--apf-color-text-secondary);
 	background: var(--apf-color-bg);
 	border: 1px solid var(--apf-color-hairline);
@@ -774,7 +742,10 @@ html[dir='rtl'] {
 	gap: var(--apf-space-3);
 	width: 100%;
 	font: inherit;
-	font-size: 0.9375rem;
+	min-height: 2.5rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.25;
 	color: var(--apf-color-text);
 	background: var(--apf-color-bg);
 	border: 1px solid var(--apf-color-hairline);
@@ -907,20 +878,41 @@ html[dir='rtl'] {
 }
 
 /* Collapsible project details. */
-.apf-generator__details {
-	border: 1px solid var(--apf-color-hairline);
-	border-radius: var(--apf-radius-medium);
-	background: var(--apf-color-surface);
+/* Project details — a collapsible section inside the workflow panel,
+   separated by the same hairline divider used between the steps.
+   The .apf-generator__flow prefix defeats Starlight's generic <details>
+   styling (inline-start padding + 2px left border) inside markdown content. */
+.apf-generator__flow .apf-generator__details {
+	border: 0;
+	border-top: 1px solid var(--apf-color-hairline);
+	border-inline-start: 0;
+	border-radius: 0;
+	background: transparent;
+	padding-inline-start: 0;
 }
 
 .apf-generator__details-summary {
 	display: flex;
 	align-items: center;
 	gap: var(--apf-space-2);
-	padding: var(--apf-space-3) var(--apf-space-5);
+	padding: var(--apf-space-4) var(--apf-space-5);
 	cursor: pointer;
 	font: inherit;
 	list-style: none;
+}
+
+/* Defeat Starlight's generic <summary> styling (arrow marker, -8px inline
+   margin, forced color/weight) so the generator summary lines up with the
+   workflow steps. */
+.apf-generator__flow .apf-generator__details-summary {
+	margin-inline-start: 0;
+	padding-inline-start: var(--apf-space-5);
+	color: inherit;
+	font-weight: inherit;
+}
+
+.apf-generator__flow .apf-generator__details-summary::before {
+	content: none;
 }
 
 .apf-generator__details-summary::-webkit-details-marker {
@@ -960,59 +952,35 @@ html[dir='rtl'] {
 /* Generate actions — step 4 badge + submit. */
 .apf-generator__actions {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: var(--apf-space-3);
+	padding: var(--apf-space-4) var(--apf-space-5);
+	border-top: 1px solid var(--apf-color-hairline);
 }
 
 .apf-generator__submit {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--apf-space-2);
 	flex: 1;
-	font: inherit;
-	font-size: 0.9375rem;
-	font-weight: 700;
-	color: var(--apf-color-accent-ink);
-	background: var(--apf-color-accent);
-	border: 1px solid var(--apf-color-accent);
-	border-radius: var(--apf-radius-medium);
-	padding: var(--apf-space-3) var(--apf-space-5);
-	cursor: pointer;
-	transition: background-color 120ms ease, border-color 120ms ease;
+	min-width: 0;
 }
 
-.apf-generator__submit:hover,
-.apf-generator__submit:focus-visible {
-	background: var(--apf-color-accent-high);
-	border-color: var(--apf-color-accent-high);
-}
-
-.apf-generator__submit:focus-visible {
-	outline: 2px solid var(--apf-color-focus);
-	outline-offset: 2px;
-}
-
-/* Output panel — activated once a prompt has been generated. */
+/* Output — the generated prompt renders as a standard prompt block,
+   the same surface as the file-guide templates. Only spacing is local. */
 .apf-generator__output .prompt-block {
-	margin-block-start: 0;
-	border: none;
-	padding: 0;
-	background: transparent;
+	margin-block: 0;
 }
 
-#prompt-generator.has-output .apf-generator__output {
-	border: 1px solid var(--apf-color-accent);
-	border-radius: var(--apf-radius-medium);
-	background: var(--apf-color-surface);
-	padding: var(--apf-space-4) var(--apf-space-5);
-	margin-block-start: var(--apf-space-5);
+/* An empty result container must not add a phantom flex gap. */
+.apf-generator__output:empty {
+	display: none;
 }
 
 .apf-generator__output-label {
-	font-size: 0.8125rem;
-	font-weight: 700;
-	letter-spacing: 0.04em;
+	font-family: var(--apf-font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 	color: var(--apf-color-accent-high);
 }
 
@@ -1053,6 +1021,296 @@ html[dir='rtl'] {
 [dir='rtl'] .apf-generator__dropdown-option-label,
 [dir='rtl'] .apf-generator__dropdown-group-label,
 [dir='rtl'] .apf-generator__details-summary,
-[dir='rtl'] .apf-generator__submit {
+[dir='rtl'] .apf-generator__submit,
+[dir='rtl'] .apf-generator__output-label,
+[dir='rtl'] .prompt-block__label {
 	font-family: var(--apf-font-arabic);
+}
+
+/* ------------------------------------------------------------
+   14. Start a New Project guided widget (Phase C prototype)
+   ------------------------------------------------------------ */
+/* Start widget sections spacing (explicit; Starlight generic sibling margins are excluded via .not-content). */
+#project-start > * + * {
+	margin-block-start: var(--apf-space-4);
+}
+
+.apf-start__choose {
+	margin: 0 0 var(--apf-space-3);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--apf-color-text);
+}
+
+.apf-start__hint {
+	margin: var(--apf-space-4) 0 0;
+	font-size: 0.8125rem;
+	color: var(--apf-color-text-muted);
+}
+
+.apf-start__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--apf-space-2);
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: var(--apf-radius-medium);
+	background: var(--apf-color-surface);
+	padding: var(--apf-space-2);
+}
+
+.apf-start__row {
+	display: flex;
+	align-items: center;
+	gap: var(--apf-space-4);
+	padding: var(--apf-space-3) var(--apf-space-4);
+	border-radius: var(--apf-radius-small);
+}
+
+.apf-start__row--start {
+	background: var(--apf-color-accent-low);
+	border: 1px solid var(--apf-color-accent);
+	border-inline-start: 3px solid var(--apf-color-accent);
+}
+
+.apf-start__info {
+	flex: 1;
+	min-width: 0;
+}
+
+.apf-start__head {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: var(--apf-space-2) var(--apf-space-3);
+}
+
+.apf-start__name {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--apf-color-text);
+}
+
+.apf-start__badge {
+	flex: 1 1 100%;
+	font-size: 0.6875rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--apf-color-accent-ink);
+	background: var(--apf-color-accent);
+	border-radius: 999px;
+	padding: 0.15em 0.6em;
+}
+
+.apf-start__meta {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: var(--apf-space-1);
+	margin-block-start: var(--apf-space-2);
+}
+
+.apf-start__level {
+	flex: 0 0 auto;
+	align-self: flex-start;
+	font-size: 0.75rem;
+	font-weight: 600;
+	border-radius: 999px;
+	padding: 0.1em 0.6em;
+	border: 1px solid transparent;
+}
+
+.apf-start__level--core {
+	color: var(--apf-color-accent-ink);
+	background: var(--apf-color-accent);
+}
+
+.apf-start__level--recommended {
+	color: var(--apf-color-accent-high);
+	background: var(--apf-color-accent-low);
+	border-color: var(--apf-color-accent);
+}
+
+.apf-start__level--optional {
+	color: var(--apf-color-text-secondary);
+	background: var(--apf-color-bg);
+	border-color: var(--apf-color-hairline);
+}
+
+.apf-start__level--skip {
+	color: var(--apf-color-text-muted);
+	background: transparent;
+	border-color: var(--apf-color-hairline);
+}
+
+.apf-start__purpose {
+	margin: 0;
+	font-size: 0.8125rem;
+	color: var(--apf-color-text-secondary);
+}
+
+.apf-start__gen {
+	flex: 0 0 auto;
+}
+
+/* File names inside the widget stay mono LTR, no inline-code pill. */
+.apf-start__file {
+	font-family: var(--apf-font-mono);
+	font-size: 0.8125rem;
+	color: var(--apf-color-text-secondary);
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	padding: 0;
+	direction: ltr;
+	unicode-bidi: isolate;
+	white-space: nowrap;
+}
+
+/* Copyable template inside a prompt-block body. */
+.apf-template {
+	margin: 0;
+	font-family: var(--apf-font-mono);
+	font-size: 0.875rem;
+	line-height: 1.6;
+	color: var(--apf-color-text);
+	white-space: pre-wrap;
+	direction: ltr;
+	text-align: left;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	padding: 0;
+}
+
+/* Responsive rules for the sequence widget. */
+@media (max-width: 32em) {
+	.apf-start__row {
+		flex-wrap: wrap;
+		gap: var(--apf-space-2) var(--apf-space-3);
+	}
+
+	.apf-start__gen {
+		flex-basis: 100%;
+		text-align: center;
+	}
+}
+
+/* RTL/LTR — widget labels follow the Arabic font; file names stay mono. */
+[dir='rtl'] .apf-start__choose,
+[dir='rtl'] .apf-start__hint,
+[dir='rtl'] .apf-start__name,
+[dir='rtl'] .apf-start__badge,
+[dir='rtl'] .apf-start__purpose,
+[dir='rtl'] .apf-start__level {
+	font-family: var(--apf-font-arabic);
+}
+
+/* ------------------------------------------------------------
+   15. Shared action system (Project Files workflow)
+   ------------------------------------------------------------ */
+/* Base action — secondary by default. One control for buttons and links
+   across the Prompt Generator, Start a New Project, and file pages.
+   Height is locked via min-height so every action aligns consistently. */
+.apf-action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--apf-space-2);
+	min-height: 2.5rem;
+	padding: var(--apf-space-2) var(--apf-space-4);
+	font: inherit;
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.25;
+	color: var(--apf-color-text-secondary);
+	background: transparent;
+	border: 1px solid var(--apf-color-hairline);
+	border-radius: var(--apf-radius-small);
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease;
+}
+
+.apf-action:hover,
+.apf-action:focus-visible {
+	color: var(--apf-color-accent);
+	background: var(--apf-color-accent-low);
+	border-color: var(--apf-color-accent);
+}
+
+.apf-action:focus-visible {
+	outline: 2px solid var(--apf-color-focus);
+	outline-offset: 2px;
+}
+
+/* Primary action — the main call to action, filled accent. */
+.apf-action--primary {
+	color: var(--apf-color-accent-ink);
+	background: var(--apf-color-accent);
+	border-color: var(--apf-color-accent);
+}
+
+.apf-action--primary:hover,
+.apf-action--primary:focus-visible {
+	color: var(--apf-color-accent-ink);
+	background: var(--apf-color-accent-high);
+	border-color: var(--apf-color-accent-high);
+}
+
+/* Action group — related actions share one horizontal row when space allows,
+   wrapping whole buttons (never splitting a label). */
+.apf-action-group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--apf-space-3);
+}
+
+/* Action bar variant — predictable equal-width layout, never a lone wrapped
+   button: one row of four on desktop/tablet, 2x2 below, stacked on mobile. */
+.apf-action-group--actions {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--apf-space-3);
+}
+
+.apf-action-group--actions .apf-action {
+	width: 100%;
+}
+
+@media (min-width: 34em) {
+	.apf-action-group--actions {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 24em) {
+	.apf-action-group--actions {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Mobile — full-width primary CTAs keep comfortable touch targets. */
+@media (max-width: 34em) {
+	.apf-primary-action .apf-action {
+		width: 100%;
+	}
+}
+
+/* RTL/LTR — action labels follow the Arabic font; file names stay mono LTR. */
+[dir='rtl'] .apf-action {
+	font-family: var(--apf-font-arabic);
+}
+
+/* ------------------------------------------------------------
+   16. Pagination — keep technical filenames stable (EN + AR)
+   ------------------------------------------------------------ */
+/* Starlight wraps pagination titles with overflow-wrap: anywhere, which
+   breaks filenames like PROJECT_CONTEXT.md mid-word. break-word only
+   breaks when a single token truly cannot fit, keeping technical names
+   intact and on one line at desktop/tablet widths. */
+.pagination-links a {
+	overflow-wrap: break-word;
 }

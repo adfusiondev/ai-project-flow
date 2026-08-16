@@ -1,0 +1,102 @@
+---
+title: HANDOFF.md
+description: The minimum information another IDE or AI coding agent needs to continue the project safely.
+---
+`HANDOFF.md` gives another IDE or AI coding agent the minimum information needed to continue the project safely — without access to this conversation.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">HANDOFF.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action" href="/tools/prompt-generator/?file=handoff&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=handoff&action=review&size=standard">Review</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=handoff&action=update&size=standard">Update</a>
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=handoff&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+The compact summary that makes the project transferable: current phase, what is done, how to run it, and the next step.
+
+## When to use it
+
+**Required** for Advanced projects; **optional** for Standard; **not used** for Small.
+
+- **Create** — before the first handoff to another environment.
+- **Update** — when the phase, decisions, or next step change.
+- **Recover** — when resuming in a new environment, reconstruct it from the repository state.
+- **Skip** — when the project stays in one environment.
+
+## Required inputs
+
+- Project name, type, and current phase.
+- Completed work, known issues, and the next recommended step.
+- How to run the project.
+
+## Reads from and feeds into
+
+- Reads from `PROJECT_CONTEXT.md`, `PROJECT_STATUS.md`, `PLAN.md`, `CHANGELOG.md`, and `docs/DECISIONS.md`.
+- Feeds into the receiving environment's first session and its `PROJECT_STATUS.md`.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Handoff
+
+## Purpose
+
+[The minimum information a new environment needs to continue the project.]
+
+## Project
+
+- Name: {Project Name}
+- Type: {Project Type}
+- Purpose: {One sentence.}
+
+## Current Phase
+
+[Phase and status.]
+
+## How to Run
+
+    {Install command}
+    {Run command}
+
+## Completed
+
+- [What is done.]
+
+## In Progress
+
+- [What is being worked on now.]
+
+## Known Issues
+
+- [Open issues, if any.]
+
+## Blockers
+
+- [Anything blocking progress, if any.]
+
+## Next Recommended Step
+
+- [The single next action.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+A one-page note: project — notes app; phase — MVP in progress; how to run — `npm run dev`; next step — finish the search feature.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">PROJECT_CONTEXT.md</h3>
+  <p className="apf-next-file__reason">In the receiving environment, start by reading PROJECT_CONTEXT.md to re-establish the project’s foundation. <a href="/tools/prompt-generator/?file=project-context&action=review&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Handoff lifecycle stage](/lifecycle/handoff-and-portability/).

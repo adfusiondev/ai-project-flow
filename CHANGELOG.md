@@ -2,6 +2,199 @@
 
 All meaningful project changes should be recorded here.
 
+## 2026-08-16 — Phase C2 / Project Files Reconciliation approved and committed
+
+### Completed
+
+- Phase C2 (Project Files Reconciliation) was approved and committed, closing the Phase C checkpoint. The Project Files UI/UX reconciliation, the visual refinement pass, and the button/control alignment fixes are all included.
+- EN/AR verification completed; the production build passes (145 pages).
+- The intermittent page-bottom scroll issue remains only as an observation — no speculative scroll or layout-height fix was applied.
+
+### Notes
+
+- Temporary review/report artifacts (`.report-c2.md`, `.review-*.png`) were removed from the repository.
+- Phase D (navigation and documentation reconciliation) and Phase E (validate and decide) remain pending.
+
+## 2026-08-16 — Button alignment pass (unified control heights and vertical alignment)
+
+### Fixed
+
+- **Generator control heights unified on the shared 40px base** — the segmented size/action pills (rendered at 42px) and the Target File dropdown trigger (44px, `0.9375rem`) now use the same metrics as `.apf-action`: `min-height` `2.5rem`, `0.875rem`/600, `line-height` `1.25`. They previously inherited Starlight's markdown `line-height` (`1.75`), which inflated them above the 40px Generate button.
+- **Starlight generic sibling-margin leak closed (generator)** — Starlight's `.sl-markdown-content :not(...) + :not(...)` rule was applying `--sl-content-gap-y` (16px) top margins to elements inside the generator panel (the second-and-later segmented pills, the step controls, the Target File dropdown, the size hint, and the details body). This shifted each step badge 8px off-center relative to its control and offset the segmented pills vertically. The flow now opts out with Starlight's own `not-content` class, and the intended 16px section rhythm is expressed explicitly (`.apf-generator__flow > * + *`).
+- **Start a New Project widget — same leak closed** — the Start widget's size selector reuses the generator's segmented pills, so it suffered the same 16px pill offset (the segmented row rendered 56px tall), and the sequence list rows sat 24px apart instead of the intended 8px. The widget root now carries `not-content` and the 16px section rhythm is explicit (`#project-start > * + *`); the pills sit on one aligned 40px row and the rows return to the intended `Space 2` gaps. Row-internal alignment (index badge, name, filename, Generate button) was already correct and is unchanged.
+- Verified across EN/AR × light/dark × 1280/390: every generator control and Start widget control is 40px, each step badge is centered on its control (delta 0), the segmented pills sit on one aligned row (and wrap cleanly on mobile), sequence rows use the intended 8px gaps, and there is no horizontal overflow. The Start buttons, all file-guide action bars, and the generator submit all remain on the shared 40px `.apf-action` base.
+- **No behavior changes** — routing, deep-links, the size/action/file data model, prompt building, copy behavior, scroll, and layout-height code are untouched.
+
+### Documentation
+
+- `docs/DESIGN_SYSTEM.md` — noted that the generator's segmented pills and dropdown share the Action Button base metrics, and that the flow opts out of Starlight's generic content styling via `not-content`.
+
+## 2026-08-16 — Project Files visual refinement pass (one coherent workflow)
+
+### Changed
+
+- **Prompt Generator integration** — the generator is now one continuous workflow panel instead of three stacked cards. The numbered steps, the collapsible Project details, and the Generate action section share the single `.apf-generator__flow` surface, separated by hairline dividers (`prompt-generator.ts` now appends the details and the actions to the flow, not the form). The generated prompt renders as a standard `.prompt-block` — the same surface as the file-guide templates — and the empty result container is hidden (`.apf-generator__output:empty`) so it never leaves a phantom gap. The removed `.has-output` state hook is no longer referenced.
+- **Details section Starlight overrides** — the generator's collapsible `<details>/<summary>` is scoped under `.apf-generator__flow` to defeat Starlight's generic markdown-details styling (inline-start padding, 2px left border, arrow marker, `-8px` inline margin), so the Project details summary lines up with the workflow steps.
+- **Vertical rhythm** — the Start widget hint gap normalized from `Space 3` (12px) to `Space 4` (16px), matching the shared rhythm elsewhere in the workflow.
+- **Consolidation** — the identical step/index badge styles (`.apf-generator__step-num` and `.apf-start__index`) were merged into one grouped rule and the duplicate removed. The output label (`.apf-generator__output-label`) and `.prompt-block__label` now use the shared mono label treatment and are included in the Arabic font override.
+- **No behavior changes** — routing, deep-links, the size/action/file data model, prompt building, and the copy-control behavior are untouched. No scroll or layout-height code was changed.
+
+### Documentation
+
+- `docs/DESIGN_SYSTEM.md` — documented the generator as a single workflow surface and the output as a standard prompt-block in the Shared Surfaces section.
+
+### Notes
+
+- No scroll behavior was changed in this pass; the intermittent page-bottom observation from the reconciliation pass remains recorded but un-reproduced.
+
+## 2026-08-16 — Project Files UI/UX reconciliation (shared action system)
+
+### Changed
+
+- **Shared action system** — standardized every actionable button/link across Start a New Project, all 11 Project File guide pages, and the Prompt Generator on the single `.apf-action` base (`min-height` `2.5rem`/40px, `0.875rem`/600 typography, `0.5rem 1rem` padding, `0.25rem` radius, shared hover/focus). Hierarchy comes only from `.apf-action--primary` (filled accent) vs. the default secondary control. Removed `apf-action--compact` from the Start widget so no workflow action uses a different size.
+- **Overview CTAs** — the "Start a New Project" call-to-action on the Project Files overview (EN + AR) now uses the shared primary action instead of a plain text link.
+- **Arabic terminology** — unified the Recover action label to `استعادة` everywhere: the shared action data (`prompt-data.ts`), the Prompt Generator segmented control and generated prompt UI (which render from that data), and the Arabic generator page description. File pages already used `استعادة`.
+- **CSS cleanup** — removed the orphaned `.apf-matrix th/td` rule and its Size-matrix comment (no markup references them), and removed the now-unused `.apf-action--compact` rule.
+
+### Documentation
+
+- `docs/DESIGN_SYSTEM.md` — added the canonical **Action System (Project Files Workflow)** section: the single 40px action-button base, Primary/Secondary hierarchy, responsive action-group behavior (4-across / 2×2 / stacked), RTL ordering, and the shared `.apf-primary-action` / `.apf-next-file` surface rules.
+
+### Notes
+
+- The intermittent page-bottom scroll observation is recorded for future reproduction (not reproduced in this pass; no scroll/layout code changed).
+
+## 2026-08-15 — Project Files pages full rollout to compact action-first structure
+
+### Changed
+
+- Converted the remaining nine Project Files guide pages to the compact action-first structure validated on PROJECT_CONTEXT.md and PROJECT_STATUS.md. Each page (EN + AR) now has:
+  - A one-line purpose under the page title.
+  - A top action area (`What to do next` / `ما الخطوة التالية`) with Create / Review / Update / Recover buttons; the recommended action is filled (`apf-action--primary`).
+  - Compact sections: Purpose, When to use it, Required inputs, Reads from and feeds into, a full copyable Markdown template (`.prompt-block` + `.apf-template` with Copy button), a short generic Example, a Next recommended file block, and a Related lifecycle-stage link.
+- Primary action per file (rationale: first-creation vs. evolving-record vs. resume):
+  - `docs/MVP.md`, `docs/REQUIREMENTS.md`, `docs/ARCHITECTURE.md`, `AGENTS.md`, `SKILL.md` → **Create**.
+  - `docs/DECISIONS.md`, `PLAN.md`, `CHANGELOG.md` → **Update** (continuously evolving records).
+  - `HANDOFF.md` → **Recover** (reconstruct when resuming in a new environment).
+- Renamed the nine `.md` guide pages to `.mdx` (EN and AR) so the action-first layout can use JSX components; routes are slug-based and unchanged.
+- Next-file guidance per page: mvp→requirements, requirements→plan, architecture→decisions, decisions→plan, plan→agents, agents→project-status, skill→project-status, changelog→project-status (cycle), handoff→project-context (receiving environment).
+- All action and next-file links deep-link to the Prompt Generator with `?file=...&action=...&size=standard` (EN `/tools/...`, AR `/ar/tools/...`).
+
+### Notes
+
+- Templates inside `<pre className="apf-template">{`...`}</pre>` cannot contain backticks or `${`, so templates use 4-space indented code blocks and `{Placeholder}` text instead of fenced blocks.
+- Templates are Markdown (shared verbatim across EN and AR); only the surrounding prose is translated.
+- Remaining known inconsistency (pre-existing, not changed): the generator page labels the Recover action `استرجاع` while the file pages use `استعادة`. `prompt-data.ts` ACTIONS was intentionally left untouched.
+- Checkpoint passed — the Phase C2 reconciliation was approved and committed on 2026-08-16.
+
+### Verified
+
+- Production build passes: 145 pages.
+- Browser checks (dev server) for all 18 pages (9 EN + 9 AR) at 1280px desktop, low-height desktop (1280x700), and 390px mobile:
+  - All four action buttons present; correct deep-link prefill confirmed on the generator (file/action/size + auto-generate) for EN and AR.
+  - Template Copy button copies the exact template text (match confirmed; shows "Copied!").
+  - Next-file guidance and Related lifecycle link present and correct per page; sidebar slugs unchanged.
+  - RTL parity: AR pages render Arabic prose RTL, technical filenames and button labels LTR-consistent; matches validated PROJECT_CONTEXT.md / PROJECT_STATUS.md computed styles (identical colors, borders, padding).
+  - No horizontal overflow and true page bottom reachable on every page at every tested viewport.
+  - No console errors; light and dark themes render correctly.
+## 2026-08-15 — Start a New Project page refinement (row structure, no duplication)
+
+### Changed
+
+- `src/scripts/start-project.ts` — removed the separate `.apf-primary-action` "Start here" card that duplicated PROJECT_CONTEXT.md as both the primary action and the first list row. The first step is now the first row of the sequence, emphasized as a hero row:
+  - Row 1 keeps the "Start here" badge (now on its own line), file name + technical filename together, and a filled `.apf-action--primary` "Generate the prompt" CTA.
+  - Every row shares one structure: sequence number, level badge, file name + short purpose, and a Generate action.
+- `src/scripts/prompt-data.ts` — added a short `purpose: { en, ar }` to every `FileInfo` (additive; generator page unaffected). Row meta now shows the level badge with the file's one-line purpose beneath it instead of the previous size-only note.
+- `src/styles/custom.css`:
+  - `.apf-start__meta` stacks level badge above purpose so rows align consistently regardless of badge/text length; `.apf-start__level` keeps `align-self: flex-start`.
+  - `.apf-start__badge` is `flex: 1 1 100%` so the "Start here" label sits on its own line and the file name stays paired with its technical filename.
+  - Removed the now-unused `.apf-start__primary` rules; `.apf-primary-action` styles remain for the file pages.
+  - New section 16 — pagination override: `.pagination-links a { overflow-wrap: break-word }`. Starlight's default `overflow-wrap: anywhere` broke technical filenames mid-word (e.g. `PROJECT_CONTEXT.` / `md`, `docs/MVP.` / `md`) on the next/prev links; `break-word` only breaks when a token truly cannot fit, keeping filenames on one line at desktop/tablet widths.
+
+### Notes
+
+- No functionality changed: Small/Standard/Advanced switching, file sequences, level badges, and generator deep-links (`?file=...&action=...&size=...`) are preserved.
+- Scroll behavior unchanged (user confirmed the reported scroll issue is not reproducible).
+- Checkpoint passed — the Phase C2 reconciliation was approved and committed on 2026-08-16.
+
+### Verified
+
+- Production build passes: 145 pages.
+- Browser checks (dev server) for EN + AR / light + dark / 1280px desktop / 900px low-width desktop (sidebar visible) / 390px mobile:
+  - Row structure and action alignment consistent in both directions: sequence number, level + purpose stacked, Generate action right-aligned (LTR) / left-aligned (RTL); right/left edges of actions align within 1px across rows.
+  - Technical filenames stay LTR mono, `nowrap`, `unicode-bidi: isolate`; never break mid-word at any tested width.
+  - Pagination next/prev titles render on a single line (e.g. `PROJECT_CONTEXT.md`, `docs/MVP.md`) in EN and AR.
+  - Hero row: badge on its own line, name + filename paired, filled primary CTA; other rows use compact actions.
+  - No horizontal overflow at any tested width; no console errors.
+
+## 2026-08-15 — Shared action/button system refinement (Phase B + C unification)
+
+### Changed
+
+- Introduced a single shared action system in `src/styles/custom.css` (section 15) replacing the three separate button styles that previously drifted apart:
+  - `.apf-action` — base action (secondary), 0.875rem/600 weight, `space-2 space-4` padding, `--apf-radius-small`, locked `min-height: 2.5rem`, `white-space: nowrap`.
+  - `.apf-action--primary` — filled accent (`--apf-color-accent` bg + `--apf-color-accent-ink` text), the one recognizable main action everywhere.
+  - `.apf-action--compact` — 0.8125rem, `2.25rem` min-height, for dense per-row actions.
+  - `.apf-action-group` — flex row, uniform `space-3` gap, wraps whole buttons (never splits a label).
+  - `.apf-action-group--actions` — predictable equal-width bar: one row of four on desktop/tablet (>= 34em), 2x2 below, stacked below 24em; never a lone wrapped button.
+- Migrated every action to the shared classes:
+  - `project-context.mdx` / `project-status.mdx` (EN + AR) — the Create / Review / Update / Recover action bar now uses `apf-action-group apf-action-group--actions` with `apf-action` / `apf-action--primary`.
+  - `src/scripts/start-project.ts` — "Generate the prompt" CTA is `apf-action apf-action--primary`; each row's "Generate prompt" link is `apf-action apf-action--compact apf-start__gen`.
+  - `src/scripts/prompt-generator.ts` — the Generate submit is `apf-action apf-action--primary apf-generator__submit` (keeps `flex: 1` full-width).
+- Removed the old `.apf-btn` / `.apf-btn--primary` styles and the per-component size/padding/font duplication from `.apf-generator__submit` and `.apf-start__gen` (now layout-only). RTL Arabic font applied via a single `[dir='rtl'] .apf-action` rule; technical filenames remain LTR mono.
+
+### Notes
+
+- No functionality changed: generator URL prefills, segmented controls, copy behavior, file sequences, and workflow logic are unchanged.
+- Mobile behavior is intentionally different: on narrow widths the 4-action bar goes 2x2 then stacked, and primary CTAs stretch full width for comfortable touch targets.
+- Checkpoint passed — the Phase C2 reconciliation was approved and committed on 2026-08-16.
+
+### Verified
+
+- Production build passes: 145 pages.
+- Browser checks on the dev server across every affected page (Prompt Generator, Start, PROJECT_CONTEXT.md, PROJECT_STATUS.md, EN + AR):
+
+| Page | 1280px | 900px | 700px | 500px | 390px | 320px |
+| --- | --- | --- | --- | --- | --- | --- |
+| action bar (4) | 1 row | 1 row | 1 row | 2x2 | 2x2 | stacked |
+| Start rows | aligned | aligned | aligned | aligned | stacked | stacked |
+| Generator submit | full-width | full-width | full-width | full-width | full-width | full-width |
+
+- Buttons uniform per context: height 40px (primary/secondary) and 36px (compact), font 14px/600 (13px compact), radius 4px, gap 12px; primary filled accent in both light and dark themes; Arabic uses the IBM Plex Sans Arabic font with correct RTL ordering and LTR mono filenames; no horizontal overflow at any width; no console errors beyond the pre-existing Starlight form notice; copy behavior and generator prefill re-verified.
+
+## 2026-08-15 — Project Files Workflow Redesign — Phase C: Prototype Project Files pages
+
+### Added
+
+- `src/content/docs/files/start.md` and `src/content/docs/ar/files/start.md` — new "Start a New Project" / «ابدأ مشروعًا جديدًا» pages (URLs `/files/start/` and `/ar/files/start/`), added to the Project Files sidebar right after Overview.
+- `src/scripts/start-project.ts` — the Start widget: a segmented Small/Standard/Advanced size selector, a hint line showing the file count per size, a "Start here" primary action bar for the first file, and the recommended file sequence for the selected size. Each row shows the file name, mono filename, a level badge (Required / Recommended / Optional / Skip) with a short skip-consequence note, and a "Generate prompt" link that opens the Prompt Generator pre-filled (`?file=<file>&action=create&size=<size>`). The first file of the flow is highlighted and marked with a "Start here" badge.
+- Registered the `apf-start-project` Astro integration (page-wide script injection, same pattern as `apf-prompt-generator`).
+
+### Changed
+
+- `src/content/docs/files/overview.md` and `src/content/docs/ar/files/overview.md` — rewritten as a concise workflow guide: a one-paragraph "what Project Files are", a primary "Start a New Project" link, a compact file/purpose table, a short "how the Prompt Generator fits" section, and a "where to start" pointer to `PROJECT_CONTEXT.md`.
+- `src/content/docs/files/project-context.md` → `.mdx` and `src/content/docs/ar/files/project-context.md` → `.mdx` — compact redesign: a "What to do next" primary action bar with Create / Review / Update / Recover buttons pre-filled into the Prompt Generator, a Purpose one-liner, When to use it, Required inputs, Reads from / feeds into, a copyable Markdown template in a `.prompt-block`, a very short generic example, a "Next recommended file" callout (`docs/MVP.md`), and the lifecycle link.
+- `src/content/docs/files/project-status.md` → `.mdx` and `src/content/docs/ar/files/project-status.md` → `.mdx` — same compact structure adapted to tracking (template mirrors the repo status doc structure), with the next-file callout pointing to `CHANGELOG.md`.
+- `astro.config.mjs` — added the `files/start` sidebar entry with Arabic translation and the `apf-start-project` integration.
+- `src/styles/custom.css` — section 14: `.apf-start__*` widget styles (choose label, hint, list, rows, index badges, level badges with `--core`/`--recommended`/`--optional`/`--skip` modifiers, start-here highlight, generate buttons, file-name isolation), the `.apf-template` copyable-template style, and mobile/desktop responsive rules.
+
+### Notes
+
+- Scope limited to the four prototype pages plus the Start page: Overview, Start a New Project, PROJECT_CONTEXT.md, and PROJECT_STATUS.md (EN + AR). The remaining Project Files pages, the Prompts section, and the sidebar grouping are unchanged.
+- Files with JSX (the two redesigned pages) moved from `.md` to `.mdx` so expressions compile; the stale `node_modules/.astro` content store was cleared so renamed pages re-render.
+- Phase C ends at the checkpoint; the Phase C2 reconciliation was approved and committed on 2026-08-16.
+
+### Verified
+
+- Production build passes: 145 pages (two new Start pages).
+- Browser tests on the dev server:
+  - English and Arabic: Start widget renders the correct sequence for Small (3), Standard (7), and Advanced (11) with correct badges and skip notes; the primary action bar updates with the selected size; all row and CTA links open the Prompt Generator pre-filled with the right file/action/size.
+  - PROJECT_CONTEXT.md and PROJECT_STATUS.md pages (EN + AR): four action buttons pre-fill the generator, the copyable template renders and copies the full Markdown via the copy control, and the next-file callout links to the generator pre-filled for `docs/MVP.md` / `CHANGELOG.md`.
+  - Desktop (1280px) and 390px mobile (emulated): no horizontal overflow on any new page; RTL/LTR and Arabic fonts applied correctly.
+  - Prompts pages copy controls still work (no regression).
+  - No console errors; only the pre-existing Starlight search-form accessibility notice remains.
+
+---
 ## 2026-08-15 — Project Files Workflow Redesign — Phase B: Prompt Generator UX refinement (final pass)
 
 ### Changed

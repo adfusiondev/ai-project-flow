@@ -1,0 +1,89 @@
+---
+title: PROJECT_STATUS.md
+description: "الحالة الراهنة للمشروع: المرحلة، والعمل المكتمل، والعمل المعلق، والمشكلات المعروفة، والخطوة التالية."
+---
+
+يسجّل `PROJECT_STATUS.md` موقع المشروع الآن: المرحلة الحالية، وما تم إنجازه، وما هو جارٍ، وما هو معلّق، والخطوة الموصى بها التالية.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">PROJECT_STATUS.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=project-status&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=project-status&action=review&size=standard">مراجعة</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=project-status&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=project-status&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+إجابة سريعة عن سؤال «أين المشروع؟» — بحيث يتمكن أي وكيل أو إنسان من استكمال المشروع دون الحاجة إلى سجل المحادثة.
+
+## متى تستخدمه
+
+- **إنشاء** — بمجرد وجود عمل ذي معنى يمكن الإبلاغ عنه.
+- **تحديث** — بعد اكتمال مرحلة ما، أو بعد تغييرات ذات معنى، أو عندما تتغير الخطوة الموصى بها التالية.
+
+## المدخلات المطلوبة
+
+- المرحلة الحالية والحالة العامة.
+- العمل المكتمل والجاري والمعلّق.
+- المشكلات المعروفة والمعوّقات.
+- الخطوة الموصى بها التالية (خطوة واحدة).
+
+## يقرأ من ويُغذّي
+
+- يقرأ من `PROJECT_CONTEXT.md` و `PLAN.md` و `CHANGELOG.md` و `HANDOFF.md` ومن تاريخ git الأخير.
+- يُغذّي مطالبة الاستئناف في الجلسة التالية و `HANDOFF.md`.
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# PROJECT_STATUS.md
+
+## Current Phase
+
+[The phase or feature currently being worked on.]
+
+## Overall Status
+
+[One short paragraph on where the project stands.]
+
+## Completed
+
+- [What is done.]
+
+## In Progress
+
+- [What is being worked on now.]
+
+## Pending
+
+- [What has not started yet.]
+
+## Known Issues
+
+- [Open issues, if any.]
+
+## Blockers
+
+- [Anything blocking progress, if any.]
+
+## Next Recommended Step
+
+- [The single next action to take.]`}</pre>
+  </div>
+</div>
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">CHANGELOG.md</h3>
+  <p className="apf-next-file__reason">سجّل ما تغيّر في نقطة التفتيش هذه، ثم استمر في الدورة. <a href="/ar/tools/prompt-generator/?file=changelog&action=create&size=standard">أنشئ مطالبتَه</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة تحديثات حالة المشروع](/ar/lifecycle/project-status-updates/).

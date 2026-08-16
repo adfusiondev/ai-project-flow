@@ -1,0 +1,90 @@
+---
+title: docs/ARCHITECTURE.md
+description: The technical shape of the project and the reasoning behind the chosen approach.
+---
+`docs/ARCHITECTURE.md` records the technical shape of the project — application type, selected technology, and high-level structure — with the reasoning behind it.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">docs/ARCHITECTURE.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=architecture&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=architecture&action=review&size=standard">Review</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=architecture&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=architecture&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+Architecture is the most expensive choice to reverse. Recording it — including the rejected alternatives — stops future agents from re-deciding it without the original context.
+
+## When to use it
+
+**Required** for Advanced projects; **optional** for Standard; **not used** for Small.
+
+- **Create** — after the requirements are complete, before implementation planning.
+- **Update** — when the technology, application type, or technical responsibilities change.
+- **Skip** — when the technical approach is already obvious or fully constrained by the MVP.
+
+## Required inputs
+
+- The approved requirements and MVP constraints.
+- The chosen application type and technology.
+- The high-level structure and responsibilities.
+- Rejected alternatives and why.
+
+## Reads from and feeds into
+
+- Reads from `PROJECT_CONTEXT.md`, `docs/MVP.md`, `docs/REQUIREMENTS.md`, and `docs/DECISIONS.md`.
+- Feeds into `PLAN.md` and `HANDOFF.md`.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Architecture
+
+## Purpose
+
+[What this document defines and the principles it follows.]
+
+## Architecture Principles
+
+- [Keep it simple, portable, and maintainable.]
+
+## Current Application Type
+
+[Application type and what the MVP does not require — e.g. no backend, no database.]
+
+## Selected Technology
+
+- [Framework / language / tools.]
+
+## High-Level Structure
+
+    Documentation Content
+        → Content Rendering
+        → Application Layout
+        → Browser
+
+## Rejected Alternatives
+
+- [Approaches considered and why they were not chosen.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+For a notes app: a static single-page app; no backend and no database in the MVP; content separated from logic; a simple frontend framework with Markdown data.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">docs/DECISIONS.md</h3>
+  <p className="apf-next-file__reason">Record the choices made during architecture so they are not re-decided later. <a href="/tools/prompt-generator/?file=decisions&action=update&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Architecture lifecycle stage](/lifecycle/architecture/).

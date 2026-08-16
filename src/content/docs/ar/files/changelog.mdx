@@ -1,0 +1,82 @@
+---
+title: CHANGELOG.md
+description: سجل التغييرات ذات المعنى في المشروع.
+---
+يسجّل `CHANGELOG.md` التغييرات المهمة مع مرور الوقت، فلا يكرر وكيل مستقبلي العمل السابق أو يعكسه أو يسيء فهمه.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">CHANGELOG.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=changelog&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=changelog&action=review&size=standard">مراجعة</a>
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=changelog&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=changelog&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+خط زمني بتاريخ لما تغير ولماذا — الذاكرة التي تبقى عبر الوكلاء والجلسات والبيئات.
+
+## متى تستخدمه
+
+**موصى به** للمشاريع الصغيرة؛ **مطلوب** للقياسية والمتقدمة.
+
+- **إنشاء** — في بداية المشروع، إلى جانب الملفات الأساسية الأخرى.
+- **تحديث** — بعد تغيير مهم أو اكتمال مرحلة أو اتخاذ قرار مهم.
+- **تخطٍّ** — للمشاريع الصغيرة التي لا تغييرات تستحق التوثيق فيها.
+
+## المدخلات المطلوبة
+
+- ما تغير ولماذا.
+- التاريخ وعنوان قصير.
+- نتائج التحقق أو القرارات أو القيود المعروفة، عند الاقتضاء.
+
+## يقرأ من ويُغذّي
+
+- يقرأ من `PROJECT_STATUS.md` و`PLAN.md` و`docs/DECISIONS.md` وسجل git.
+- يغذّي `PROJECT_STATUS.md` و`HANDOFF.md`.
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Changelog
+
+All meaningful changes should be recorded here.
+
+## {YYYY-MM-DD} — {Change Title}
+
+### Added
+
+- [New features or files.]
+
+### Changed
+
+- [Changes to existing behavior.]
+
+### Fixed
+
+- [Bug fixes.]
+
+### Notes
+
+- [Decisions, limitations, or follow-ups.]`}</pre>
+  </div>
+</div>
+
+## مثال
+
+`## 2026-08-15 — تمت إضافة محرر الملاحظات` · أُضيف — إنشاء الملاحظات وتعديلها وحذفها · تحقق — بقاء الملاحظات عبر إعادة التحميل.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">PROJECT_STATUS.md</h3>
+  <p className="apf-next-file__reason">اعكس أحدث التغييرات في ملف الحالة، ثم واصل الدورة. <a href="/ar/tools/prompt-generator/?file=project-status&action=update&size=standard">أنشئ مطالبتها</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة توثيق التغييرات](/lifecycle/change-documentation/).

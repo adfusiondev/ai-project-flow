@@ -619,11 +619,30 @@ UX refinement (final pass):
 
 ### Phase C — Prototype Pages
 
-Status: Pending
+Status: Completed
 
-- Rewrite `files/overview.md` as the workflow guide.
-- Redesign `PROJECT_CONTEXT.md` and `PROJECT_STATUS.md` pages (English and Arabic) with the compact structure: purpose, when to use, required inputs, reads from/feeds into, create with AI, review, update, recover, full template, short example, next recommended file, deeper explanation link.
-- Add the "Start a New Project" page with the size matrix and skip-consequence notes.
+Implemented:
+
+- `files/overview.md` + `ar/` mirror rewritten as the workflow guide: one-paragraph "what Project Files are", a primary "Start a New Project" link, a compact file/purpose table, a short "how the Prompt Generator fits" section, and a "where to start" pointer to `PROJECT_CONTEXT.md`.
+- New "Start a New Project" pages (`/files/start/`, `/ar/files/start/`), added to the Project Files sidebar after Overview. `src/scripts/start-project.ts` renders the widget: Small/Standard/Advanced size selector, per-size file count hint, a "Start here" primary action bar for the first file, and the recommended sequence with level badges (Required / Recommended / Optional / Skip), skip-consequence notes, and per-row "Generate prompt" links pre-filled into the Prompt Generator (`?file=…&action=create&size=…`). New `apf-start-project` Astro integration injects the script page-wide.
+- `PROJECT_CONTEXT.md` and `PROJECT_STATUS.md` pages redesigned (EN + AR, moved from `.md` to `.mdx` so the JSX compiles): compact structure with a "What to do next" primary action bar (Create / Review / Update / Recover deep links), Purpose, When to use it, Required inputs, Reads from / feeds into, a copyable Markdown template in a `.prompt-block`, a short generic example, a "Next recommended file" callout (`docs/MVP.md` → `/files/mvp/`; `CHANGELOG.md` → `/files/changelog/`), and the lifecycle link.
+- `src/styles/custom.css` — section 14 for the Start widget and the `.apf-template` copyable template.
+
+Verified:
+
+- Production build passes (145 pages); a stale `node_modules/.astro` content store was cleared so the renamed pages re-render.
+- Browser tests: English/Arabic Start widget sequences (Small 3 / Standard 7 / Advanced 11) with correct badges and skip notes; the primary action bar updates with the selected size; all deep links pre-fill the generator correctly; file-page templates render and copy the full Markdown; desktop (1280px) and 390px mobile without overflow; Prompts copy controls unchanged; no console errors.
+- Checkpoint passed: Phase C2 (Project Files Reconciliation) was approved and committed on 2026-08-16.
+
+### Phase C2 — Project Files Reconciliation
+
+Status: Completed (approved and committed)
+
+- UI/UX reconciliation: all workflow actions standardized on the shared `.apf-action` base (40px, Primary/Secondary only, compact removed); Arabic Recover unified to `استعادة` in shared data and generator UI; orphaned `.apf-matrix` CSS removed; the canonical Action System added to `docs/DESIGN_SYSTEM.md`.
+- Visual refinement pass: the Prompt Generator became one continuous workflow surface (steps, collapsible Project details, and Generate action share one panel with hairline dividers), the output renders as a standard `.prompt-block`, Starlight's generic `<details>/<summary>` styling no longer applies to the generator, the Start hint gap was normalized to the shared 16px rhythm, and the duplicated step/index badge rules were merged.
+- Button/control alignment fixes: generator segmented pills and the Target File dropdown were unified on the shared 40px height (they had inherited Starlight's markdown line-height and rendered at 42px/44px); a Starlight sibling-margin leak inside the generator panel and the Start widget was closed by opting both containers out with the `not-content` class and making the section rhythm explicit — step badges now sit centered on their controls and the segmented pills form one aligned row.
+- Verified: EN/AR × light/dark × 1280/390 (all controls 40px, badges centered, aligned segmented rows, intended row gaps, no horizontal overflow); production build passes (145 pages). The intermittent page-bottom scroll issue remains only as an observation — no speculative scroll or layout-height fix was applied.
+- Temporary review/report artifacts were removed; the approved implementation is committed.
 
 ### Phase D — Navigation and Documentation Reconciliation
 
@@ -672,9 +691,9 @@ Selected stack:
 
 The English MVP is complete and verified, and the Arabic localization (Phases 1-3) is complete. The Arabic locale is fully translated across the site.
 
-The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. A new improvement plan is now active: the **Project Files Workflow Redesign** (see the section above). Phases A (Foundation) and B (Prompt Generator) are complete; Phases C-E are pending.
+The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. A new improvement plan is now active: the **Project Files Workflow Redesign** (see the section above). Phases A (Foundation), B (Prompt Generator), C (Prototype Pages), and C2 (Project Files Reconciliation) are complete and committed; Phases D-E are pending.
 
 Next steps:
 
-1. Continue the Project Files Workflow Redesign: Phase C (prototype pages — Start a New Project, `PROJECT_CONTEXT.md`, `PROJECT_STATUS.md`), then Phase D (navigation and documentation reconciliation), and Phase E (validate and decide).
+1. Continue the Project Files Workflow Redesign: Phase C/C2 is complete and committed; proceed to Phase D (navigation and documentation reconciliation) and Phase E (validate and decide).
 2. Deferred future-scope items are listed in `PROJECT_CONTEXT.md` Future Scope.

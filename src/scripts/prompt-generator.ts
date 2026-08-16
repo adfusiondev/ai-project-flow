@@ -371,7 +371,7 @@ function buildForm(): GeneratorState {
 	const isArabic = document.documentElement.lang === 'ar';
 	const form = el('form', { className: 'apf-form' });
 
-	const flow = el('div', { className: 'apf-generator__flow' });
+	const flow = el('div', { className: 'apf-generator__flow not-content' });
 	const sizeControl = el('div', { className: 'apf-generator__step-control' });
 	const sizeGroup = makeSegmented(
 		'size',
@@ -418,13 +418,13 @@ function buildForm(): GeneratorState {
 	grid.appendChild(makeField(labels.projectIdea, inputs.projectIdea, true));
 	detailsBody.appendChild(grid);
 	details.appendChild(detailsBody);
-	form.appendChild(details);
+	flow.appendChild(details);
 
-	const actions = el('div', { className: 'apf-generator__actions' });
+	const actions = el('div', { className: 'apf-generator__actions apf-action-group' });
 	actions.appendChild(el('span', { className: 'apf-generator__step-num' }, '4'));
-	const submit = el('button', { type: 'submit', className: 'apf-generator__submit' }, labels.generate);
+	const submit = el('button', { type: 'submit', className: 'apf-action apf-action--primary apf-generator__submit' }, labels.generate);
 	actions.appendChild(submit);
-	form.appendChild(actions);
+	flow.appendChild(actions);
 
 	form.appendChild(el('div', { className: 'apf-generator__output' }));
 
@@ -459,7 +459,6 @@ function generate(state: GeneratorState): void {
 	const text = buildPrompt(collectInput(state));
 	const labels = getLabels();
 	state.output.replaceChildren();
-	state.form.closest(`#${GENERATOR_ID}`)?.classList.add('has-output');
 
 	const block = el('div', { className: 'prompt-block' });
 	const header = el('div', { className: 'prompt-block__header' });

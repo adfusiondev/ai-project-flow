@@ -1,0 +1,89 @@
+---
+title: docs/DECISIONS.md
+description: القرارات المهمة للمشروع والأساس المنطقي وراء كل منها.
+---
+يوثّق `docs/DECISIONS.md` القرارات المهمة للمشروع والأساس المنطقي وراءها، فلا تُفقد الاختيارات أو تُعكس بصمت أو يُعاد اتخاذها دون سياق.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">docs/DECISIONS.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=decisions&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=decisions&action=review&size=standard">مراجعة</a>
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=decisions&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=decisions&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+سجل لما قُرر، ولماذا، وما البدائل التي نُظر فيها، والحالة الحالية لكل قرار.
+
+## متى تستخدمه
+
+**مطلوب** للمشاريع المتقدمة؛ **اختياري** للقياسية؛ **لا يُستخدم** للصغيرة.
+
+- **إنشاء** — فور اتخاذ أول قرار مهم.
+- **تحديث** — في كل مرة يُتخذ قرار مهم أو يُستبدل أو يُرفض.
+- **تخطٍّ** — ما دامت لا توجد اختيارات تستحق التوثيق.
+
+## المدخلات المطلوبة
+
+- القرار وحالته: Proposed أو Accepted أو Superseded أو Rejected.
+- السبب وراء اتخاذه.
+- البدائل التي نُظر فيها، عند الاقتضاء.
+
+## يقرأ من ويُغذّي
+
+- يقرأ من `PROJECT_CONTEXT.md` و`docs/MVP.md` و`docs/REQUIREMENTS.md`.
+- يغذّي `docs/ARCHITECTURE.md` و`AGENTS.md` و`CHANGELOG.md` و`HANDOFF.md`.
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Decisions
+
+## Purpose
+
+[Why decisions are recorded and what each entry includes.]
+
+## Decision Status Values
+
+- Proposed — Under consideration.
+- Accepted — Approved and currently in effect.
+- Superseded — Replaced by a newer decision.
+- Rejected — Considered but intentionally not selected.
+
+## DEC-001 — {Decision Title}
+
+Status: {Proposed | Accepted | Superseded | Rejected}
+
+### Decision
+
+[What was decided.]
+
+### Reason
+
+[Why it was made.]
+
+### Alternatives Considered
+
+- [Options rejected, if any.]`}</pre>
+  </div>
+</div>
+
+## مثال
+
+DEC-001 — تطبيق ملاحظات يعمل دون اتصال؛ الحالة — Accepted؛ السبب — يجب أن يعمل الـ MVP دون شبكة؛ البديل المرفوض — تخزين سحابي فقط.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">PLAN.md</h3>
+  <p className="apf-next-file__reason">حوّل القرارات والمتطلبات المقبولة إلى خطة تنفيذ. <a href="/ar/tools/prompt-generator/?file=plan&action=create&size=standard">أنشئ مطالبتها</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة البنية البرمجية](/lifecycle/architecture/).

@@ -1,0 +1,90 @@
+---
+title: PLAN.md
+description: The implementation phases, their scope, tasks, acceptance criteria, and status.
+---
+`PLAN.md` breaks the project into phases and records each phase's objective, scope, tasks, acceptance criteria, verification, and status.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">PLAN.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action" href="/tools/prompt-generator/?file=plan&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=plan&action=review&size=standard">Review</a>
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=plan&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=plan&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+An ordered, phase-by-phase roadmap any agent can follow — so a future agent without conversation history knows what is done and what comes next.
+
+## When to use it
+
+**Required** for Standard and Advanced projects; **optional** for Small.
+
+- **Create** — after requirements and architecture, before implementation.
+- **Update** — after a phase completes, when the plan changes, or when the next step changes.
+- **Skip** — when the project is a single small task.
+
+## Required inputs
+
+- The goal and scope of each phase.
+- Tasks, acceptance criteria, and verification for each phase.
+- The current status of each phase.
+
+## Reads from and feeds into
+
+- Reads from `PROJECT_CONTEXT.md`, `docs/MVP.md`, `docs/REQUIREMENTS.md`, `docs/ARCHITECTURE.md`, and `docs/DECISIONS.md`.
+- Feeds into `PROJECT_STATUS.md`, `CHANGELOG.md`, and `HANDOFF.md`.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Implementation Plan
+
+## Goal
+
+[The overall goal the plan works toward.]
+
+## Phase 1 — {Phase Name}
+
+Status: {Not Started | In Progress | Completed}
+
+### Objective
+
+[What this phase achieves.]
+
+### Scope
+
+- [Tasks in this phase.]
+
+### Acceptance Criteria
+
+- [How you know the phase is done.]
+
+### Verification
+
+[How the phase will be verified.]
+
+### Status
+
+[Current phase status and the next step.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+Phase 1 — build the note editor: tasks — add, edit, and delete notes; acceptance — notes persist after reload; status — not started.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">AGENTS.md</h3>
+  <p className="apf-next-file__reason">Define how AI coding agents should work on the project before implementation begins. <a href="/tools/prompt-generator/?file=agents&action=create&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Implementation Planning lifecycle stage](/lifecycle/implementation-planning/).

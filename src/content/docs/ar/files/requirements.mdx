@@ -1,0 +1,101 @@
+---
+title: docs/REQUIREMENTS.md
+description: المتطلبات الوظيفية وغير الوظيفية ومتطلبات المحتوى والتصميم والتوطين وقابلية النقل للـ MVP.
+---
+يحوّل `docs/REQUIREMENTS.md` الـ MVP المعتمد إلى متطلبات واضحة قابلة للتحقق، تشير إليها مرجعية التنفيذ والتحقق معًا.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">docs/REQUIREMENTS.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=requirements&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=requirements&action=review&size=standard">مراجعة</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=requirements&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=requirements&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+المرجع الوحيد لما يجب أن يفعله المشروع وبأي جودة — ليُفحص العمل المُنجز مقابله، ولا ينمو الـ MVP بصمت.
+
+## متى تستخدمه
+
+**مطلوب** للمشاريع القياسية والمتقدمة؛ **لا يُستخدم** للمشاريع الصغيرة.
+
+- **إنشاء** — بعد تعريف الـ MVP واعتماده.
+- **تحديث** — عندما يتغير الـ MVP أو تُوضَّح متطلبات أو تتغير القيود.
+- **تخطٍّ** — للمشاريع الصغيرة حيث يحدد الـ MVP النطاق بالفعل.
+
+## المدخلات المطلوبة
+
+- نطاق الـ MVP المعتمد وقائمة خارج النطاق.
+- المتطلبات الوظيفية: ما يجب أن يفعله المشروع.
+- المتطلبات غير الوظيفية: الأداء، إمكانية الوصول، قابلية النقل، والمزيد.
+- متطلبات المحتوى والترجمة عندما يكون المشروع ثنائي اللغة.
+
+## يقرأ من ويُغذّي
+
+- يقرأ من `PROJECT_CONTEXT.md` و`docs/MVP.md`.
+- يغذّي `docs/ARCHITECTURE.md` و`docs/DECISIONS.md` و`PLAN.md`.
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Requirements
+
+## Purpose
+
+[What this document defines and what it must stay aligned with.]
+
+## Functional Requirements
+
+### FR-01 — {Requirement Title}
+
+[Verifiable behavior: what the project must do.]
+
+### FR-02 — {Requirement Title}
+
+[Verifiable behavior.]
+
+## Non-Functional Requirements
+
+- [Simplicity, performance, accessibility, portability, etc.]
+
+## Content Requirements
+
+- [What the content must deliver.]
+
+## Design Requirements
+
+- [Layout and visual direction constraints.]
+
+## Localization Requirements
+
+- [Languages, text direction, content separation.]
+
+## Portability Requirements
+
+- [Tool, IDE, and AI-agent independence.]
+
+## MVP Constraints
+
+- [What the MVP must not require.]`}</pre>
+  </div>
+</div>
+
+## مثال
+
+لتطبيق ملاحظات: FR-01 — إنشاء الملاحظات وتعديلها وحذفها؛ FR-02 — البحث في الملاحظات حسب العنوان؛ NFR-01 — يعمل دون اتصال وبسرعة؛ قيد — لا حسابات في الـ MVP.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">PLAN.md</h3>
+  <p className="apf-next-file__reason">قسّم المتطلبات المعتمدة إلى مراحل تنفيذ مرتبة. <a href="/ar/tools/prompt-generator/?file=plan&action=create&size=standard">أنشئ مطالبتها</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة المتطلبات](/lifecycle/requirements/).

@@ -2,19 +2,61 @@
 
 ## Current Phase
 
-Project Files Workflow Redesign — Phase B: Prompt Generator
+Project Files Workflow Redesign — Phase C2: Project Files Reconciliation
 
-Status: Completed
+Status: Completed — approved and committed
 
-Phase B (Prompt Generator) of the approved Project Files Workflow Redesign is complete: the bilingual tool pages (`/tools/prompt-generator/` and `/ar/tools/prompt-generator/`), the full frontend-only generator form, URL-prefilled state, and reuse of the existing prompt-block copy behavior. Phase C (prototype pages — Start a New Project, `PROJECT_CONTEXT.md`, `PROJECT_STATUS.md`) is next. The site remains live on Vercel at https://ai-project-flow.vercel.app.
+Phase C2 (Project Files Reconciliation) of the approved Project Files Workflow Redesign is complete and committed: the Project Files UI/UX reconciliation standardized every workflow action on the shared 40px `.apf-action` system, the visual refinement pass made the Prompt Generator one continuous workflow surface, and the button/control alignment fixes unified every generator and Start widget control on the shared 40px height and closed a Starlight sibling-margin leak inside both panels. EN/AR verification is complete and the production build passes (145 pages). The intermittent page-bottom scroll issue remains only as an observation — no speculative scroll or layout-height fix was applied. Phases D-E are pending. The site remains live on Vercel at https://ai-project-flow.vercel.app.
 
 ## Overall Status
 
-Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. In progress — Project Files Workflow Redesign (Phases A-Foundation and B-Prompt Generator complete, Phases C-E pending).
+Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. In progress — Project Files Workflow Redesign (Phases A-Foundation, B-Prompt Generator, C-Prototype Pages, and C2-Reconciliation implemented and committed; Phases D-E pending).
 
 ---
 
 ## Completed
+
+### Project Files Workflow Redesign — Phase C (Prototype Pages)
+
+* Implemented the four prototype pages (EN + AR); the Phase C checkpoint was approved and the work committed as Phase C2 (2026-08-16):
+  * `files/overview.md` + `ar/` mirror — rewritten as a workflow guide: one-paragraph "what Project Files are", a primary "Start a New Project" link, a compact file/purpose table, a short "how the Prompt Generator fits" section, and a "where to start" pointer to `PROJECT_CONTEXT.md`.
+  * New `/files/start/` and `/ar/files/start/` pages — "Start a New Project": `src/scripts/start-project.ts` renders a Small/Standard/Advanced size selector, a per-size file count hint, a "Start here" primary action bar for the first file, and the recommended sequence with level badges and skip-consequence notes; each row deep-links into the Prompt Generator pre-filled (`?file=…&action=create&size=…`). Added the `files/start` sidebar entry and the `apf-start-project` Astro integration.
+  * `files/project-context.mdx` + `ar/` mirror (renamed `.md` → `.mdx`) — compact redesign: "What to do next" primary action bar (Create / Review / Update / Recover), Purpose, When to use it, Required inputs, Reads from / feeds into, a copyable Markdown template in a `.prompt-block`, a short generic example, a "Next recommended file" callout (`docs/MVP.md`), and the lifecycle link.
+  * `files/project-status.mdx` + `ar/` mirror — same compact structure adapted to tracking, with the template mirroring the repo status doc structure and the next-file callout pointing to `CHANGELOG.md`.
+  * `src/styles/custom.css` — section 14 for the Start widget and the `.apf-template` copyable template.
+* Verified: production build passes (145 pages); English/Arabic rendering with correct RTL/LTR and fonts, Start widget sequences for all three sizes with correct badges and skip notes, primary action bar updates on size change, all deep links pre-fill the generator, file-page templates copy the full Markdown, desktop (1280px) and 390px mobile without overflow, Prompts copy controls unchanged (no regression), and no console errors (only the pre-existing Starlight search-form notice).
+
+
+### Project Files Workflow Redesign — Phase C (UI/UX Reconciliation)
+
+* Standardized all actionable buttons/links across Start a New Project, the 11 Project File guide pages, and the Prompt Generator on the shared `.apf-action` base (40px `min-height`, shared typography/padding/radius, shared hover/focus). Hierarchy comes only from Primary vs. Secondary; removed `apf-action--compact` from the Start widget.
+* Converted the Project Files overview "Start a New Project" CTA (EN + AR) to the shared primary action.
+* Unified the Arabic Recover label to `استعادة` across the shared action data, the Prompt Generator UI (labels render from the data), and the Arabic generator page description.
+* Removed the orphaned `.apf-matrix th/td` rule and the unused `.apf-action--compact` rule from `src/styles/custom.css`.
+* `docs/DESIGN_SYSTEM.md` now documents the canonical Action System for the Project Files workflow (single 40px base, Primary/Secondary hierarchy, responsive action-group behavior, RTL ordering, shared surfaces).
+* Verified: production build passes; EN/AR × light/dark × required viewports re-tested across Start, all 11 file guides, and the Prompt Generator (button metrics, hierarchy, no 3+1 wrapping, RTL ordering, LTR filenames, no horizontal overflow, reachable page bottoms, deep links, copy behavior).
+* Checkpoint passed — approved and committed as Phase C2 (2026-08-16).
+
+
+### Project Files Workflow Redesign — Phase C (Visual Refinement Pass)
+
+* The Prompt Generator is now one continuous workflow surface: the numbered steps, the collapsible Project details, and the Generate action section share the single `.apf-generator__flow` card separated by hairline dividers (details and actions were moved from the form into the flow). The generated prompt renders as a standard `.prompt-block` — the same surface as the file-guide templates — and an empty result container is hidden so it never adds a phantom gap.
+* Added `.apf-generator__flow`-scoped overrides so Starlight's generic `<details>/<summary>` styling (inline-start padding, 2px left border, arrow marker, `-8px` inline margin) no longer applies to the generator's collapsible Project details.
+* Normalized the Start widget hint gap to the shared 16px rhythm and merged the identical step/index badge rules (`.apf-generator__step-num` + `.apf-start__index`) into one grouped rule. Output and prompt-block labels share the mono label treatment and the Arabic font override.
+* No routing, data-model, deep-link, prompt-building, copy, scroll, or layout-height behavior changed.
+* Verified: production build passes (145 pages); generator integrated look (one panel, aligned Project details summary, standard prompt-block output with working copy), EN/AR parity, light/dark, 1280/390 viewports without overflow, deep links, and RTL ordering all confirmed in the browser.
+* Checkpoint passed — approved and committed as Phase C2 (2026-08-16).
+
+
+### Project Files Workflow Redesign — Phase C (Button Alignment Pass)
+
+* Unified every generator control on the shared 40px action height: the segmented size/action pills (42px) and the Target File dropdown trigger (44px, `0.9375rem`) previously inherited Starlight's `1.75` markdown line-height; all three controls now share `min-height: 2.5rem`, `0.875rem`/600, `line-height: 1.25` with the 40px Generate button.
+* Closed a Starlight leak inside the generator panel: Starlight's generic `.sl-markdown-content` sibling-margin rule was applying 16px top margins to the seg pills, step controls, dropdown, size hint, and details body, pushing each step badge 8px off-center and offsetting segmented pills vertically. The flow now carries Starlight's `not-content` opt-out, and the intended 16px flow-section rhythm is explicit (`.apf-generator__flow > * + *`).
+* Extended the same fix to the Start a New Project widget, which reuses the generator's segmented size selector: the segmented row rendered 56px tall (pills offset 16px) and the sequence rows sat 24px apart instead of the intended 8px. The widget root now carries `not-content` and the 16px section rhythm is explicit (`#project-start > * + *`); pills sit on one aligned 40px row and rows return to the intended `Space 2` gaps.
+* Verified: production build passes (145 pages); EN/AR × light/dark × 1280/390 — all generator and Start widget controls 40px, step badges centered on their controls (delta 0), one aligned segmented row with clean wrapping on mobile, sequence rows at the intended 8px gaps, and no horizontal overflow; file-guide action bars and the generator submit remain on the shared 40px `.apf-action` base; prompt-block output styling unchanged.
+* No routing, data-model, deep-link, prompt-building, copy, scroll, or layout-height behavior changed.
+* Checkpoint passed — approved and committed as Phase C2 (2026-08-16).
+
 
 ### Project Files Workflow Redesign — Phase B (Prompt Generator)
 
@@ -246,7 +288,7 @@ The MVP is a documentation-focused website containing:
 
 ## Known Issues
 
-None currently.
+* Intermittent observation (not reproduced): on rare occasions the page bottom of a workflow page was not immediately reachable without a scroll. Recorded for future reproduction only; no scroll/layout workarounds were added, and no scroll/layout behavior was changed.
 
 ---
 

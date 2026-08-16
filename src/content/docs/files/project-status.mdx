@@ -1,0 +1,89 @@
+---
+title: PROJECT_STATUS.md
+description: "The current project state: phase, completed work, pending work, known issues, and next step."
+---
+
+`PROJECT_STATUS.md` records where the project is right now: the current phase, what is done, what is in progress, what is pending, and the next recommended step.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">PROJECT_STATUS.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=project-status&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=project-status&action=review&size=standard">Review</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=project-status&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=project-status&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+A quick answer to "where is the project?" — so any agent or human can pick up the project without needing the conversation history.
+
+## When to use it
+
+- **Create** — as soon as there is meaningful work to report.
+- **Update** — after a phase is completed, after meaningful changes, or when the next recommended step changes.
+
+## Required inputs
+
+- Current phase and overall status.
+- Completed, in-progress, and pending work.
+- Known issues and blockers.
+- The single next recommended step.
+
+## Reads from and feeds into
+
+- Reads from `PROJECT_CONTEXT.md`, `PLAN.md`, `CHANGELOG.md`, `HANDOFF.md`, and recent git history.
+- Feeds into the next session's resume prompt and into `HANDOFF.md`.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# PROJECT_STATUS.md
+
+## Current Phase
+
+[The phase or feature currently being worked on.]
+
+## Overall Status
+
+[One short paragraph on where the project stands.]
+
+## Completed
+
+- [What is done.]
+
+## In Progress
+
+- [What is being worked on now.]
+
+## Pending
+
+- [What has not started yet.]
+
+## Known Issues
+
+- [Open issues, if any.]
+
+## Blockers
+
+- [Anything blocking progress, if any.]
+
+## Next Recommended Step
+
+- [The single next action to take.]`}</pre>
+  </div>
+</div>
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">CHANGELOG.md</h3>
+  <p className="apf-next-file__reason">Record what changed in this checkpoint, then continue the cycle. <a href="/tools/prompt-generator/?file=changelog&action=create&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Project Status Updates lifecycle stage](/lifecycle/project-status-updates/).

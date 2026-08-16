@@ -1,0 +1,93 @@
+---
+title: AGENTS.md
+description: The default working rules for AI coding agents operating on the project.
+---
+`AGENTS.md` defines the default working rules for AI coding agents operating on the project — the portable contract that replaces conversation history.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">AGENTS.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=agents&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=agents&action=review&size=standard">Review</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=agents&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=agents&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+Because agents do not share conversation history, this file makes every agent follow the same reading order, working rules, and verification sequence.
+
+## When to use it
+
+**Required** for Standard and Advanced projects; **optional** for Small.
+
+- **Create** — before implementation begins.
+- **Update** — when working rules, the reading order, or the verification rule change.
+- **Skip** — when you work alone and use no AI coding agents.
+
+## Required inputs
+
+- The project purpose and supported environments.
+- The required reading order.
+- Core working rules and the verification sequence.
+
+## Reads from and feeds into
+
+- Reads from `PROJECT_CONTEXT.md`, `PROJECT_STATUS.md`, `PLAN.md`, and `HANDOFF.md`.
+- Feeds into every agent session and the reusable `SKILL.md` files.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Agent Instructions
+
+## Purpose
+
+[What this file does and why agents need it.]
+
+## Supported Environments
+
+- [IDEs and AI coding tools where the project must remain usable.]
+
+## Required Reading Order
+
+1. [File A]
+2. [File B]
+3. [File C]
+
+## Core Working Rules
+
+- [Rule 1]
+- [Rule 2]
+
+## Before Implementation
+
+- [What to check before making changes.]
+
+## During Implementation
+
+- [Rules to follow while working.]
+
+## Verification Rule
+
+[The expected sequence, e.g. Plan → Implement → Run → Verify → Document → Checkpoint.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+A short rule set: read the project files before changing anything; never invent information; work one stage at a time; verify before reporting completion.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">PROJECT_STATUS.md</h3>
+  <p className="apf-next-file__reason">Set up the status file so progress can be tracked while the work is implemented. <a href="/tools/prompt-generator/?file=project-status&action=create&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Skills and Agent Instructions lifecycle stage](/lifecycle/skills-and-agent-instructions/).

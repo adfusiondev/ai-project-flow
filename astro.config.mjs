@@ -47,6 +47,7 @@ export default defineConfig({
 					translations: { ar: 'ملفات المشروع' },
 					items: [
 						{ label: 'Overview', slug: 'files/overview', translations: { ar: 'نظرة عامة' } },
+						{ label: 'Start a New Project', slug: 'files/start', translations: { ar: 'ابدأ مشروعًا جديدًا' } },
 						{ label: 'PROJECT_CONTEXT.md', slug: 'files/project-context', translations: { ar: 'PROJECT_CONTEXT.md' } },
 						{ label: 'docs/MVP.md', slug: 'files/mvp', translations: { ar: 'docs/MVP.md' } },
 						{ label: 'docs/REQUIREMENTS.md', slug: 'files/requirements', translations: { ar: 'docs/REQUIREMENTS.md' } },
@@ -155,6 +156,14 @@ export default defineConfig({
 			hooks: {
 				'astro:config:setup': ({ injectScript }) => {
 					injectScript('page', 'import "/src/scripts/prompt-generator.ts";');
+				},
+			},
+		},
+		{
+			name: 'apf-start-project',
+			hooks: {
+				'astro:config:setup': ({ injectScript }) => {
+					injectScript('page', 'import "/src/scripts/start-project.ts";');
 				},
 			},
 		},

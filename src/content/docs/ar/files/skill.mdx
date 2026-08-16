@@ -1,0 +1,84 @@
+---
+title: SKILL.md
+description: سير عمل قابل لإعادة الاستخدام لمهمة محددة في المشروع.
+---
+يحدّد ملف `SKILL.md` (واحد لكل مجلد تحت `skills/`) سير عمل قابلًا لإعادة الاستخدام لمهمة مشروع محددة، مما يجعله قابلًا للنقل عبر الوكلاء والبيئات.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">SKILL.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=skill&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=skill&action=review&size=standard">مراجعة</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=skill&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=skill&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+تحوّل المهارات المهام المتكررة — الاكتشاف، تخطيط الـ MVP، التحقق، التسليم — إلى سير عمل متسق ومتخصص يمكن لأي وكيل اتباعه.
+
+## متى تستخدمه
+
+**مطلوب** للمشاريع المتقدمة؛ **اختياري** للقياسية؛ **لا يُستخدم** للصغيرة.
+
+- **إنشاء** — عندما تتكرر مهمة عبر المشاريع، أو يجب أن يتبع الوكيل سير عمل محددًا.
+- **تحديث** — عندما يتغير سير العمل أو مدخلاته ومخرجاته.
+- **تخطٍّ** — عندما يكون سير العمل خاصًا بمشروع واحد ومن غير المرجح إعادة استخدامه.
+
+## المدخلات المطلوبة
+
+- غرض المهمة ومتى تُستخدم.
+- خطوات سير العمل والقواعد.
+- ملفات المخرجات المتوقعة وبوابة الجودة.
+
+## يقرأ من ويُغذّي
+
+- يقرأ من `AGENTS.md` (قواعد العمل) و`PROJECT_CONTEXT.md`.
+- يغذّي العمل الذي يؤديه الوكلاء وتوثيق قسم المهارات.
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Skill Name}
+
+## Purpose
+
+[What this skill is for and when to use it.]
+
+## When to Use
+
+- [Trigger conditions.]
+
+## Workflow
+
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+## Expected Outputs
+
+- [Files or artifacts produced.]
+
+## Quality Gate
+
+- [How to verify the work is complete.]`}</pre>
+  </div>
+</div>
+
+## مثال
+
+مهارة "ابحث قبل الإضافة": متى تُستخدم — قبل إنشاء ملاحظة مكررة؛ سير العمل — نفذ البحث، راجع النتائج، أعد أفضل النتائج؛ بوابة الجودة — لا تُنشأ ملاحظات مكررة.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">PROJECT_STATUS.md</h3>
+  <p className="apf-next-file__reason">تتبع حالة المشروع أثناء توجيه المهارات للعمل. <a href="/ar/tools/prompt-generator/?file=project-status&action=create&size=standard">أنشئ مطالبتها</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة المهارات وتوجيهات الوكلاء](/lifecycle/skills-and-agent-instructions/).

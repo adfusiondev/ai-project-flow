@@ -1,0 +1,101 @@
+---
+title: docs/REQUIREMENTS.md
+description: The functional, non-functional, content, design, localization, and portability requirements for the MVP.
+---
+`docs/REQUIREMENTS.md` converts the approved MVP into clear, verifiable requirements that implementation and verification both reference.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">docs/REQUIREMENTS.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=requirements&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=requirements&action=review&size=standard">Review</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=requirements&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=requirements&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+The single reference for what the project must do and how well — so finished work can be checked against it, and the MVP cannot grow silently.
+
+## When to use it
+
+**Required** for Standard and Advanced projects; **not used** for Small.
+
+- **Create** — after the MVP is defined and approved.
+- **Update** — when the MVP changes, a requirement is clarified, or constraints change.
+- **Skip** — for Small projects where the MVP already defines the scope.
+
+## Required inputs
+
+- The approved MVP scope and its out-of-scope list.
+- Functional requirements: what the project must do.
+- Non-functional requirements: performance, accessibility, portability, and more.
+- Content and localization requirements when the project is bilingual.
+
+## Reads from and feeds into
+
+- Reads from `PROJECT_CONTEXT.md` and `docs/MVP.md`.
+- Feeds into `docs/ARCHITECTURE.md`, `docs/DECISIONS.md`, and `PLAN.md`.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Project Name} — Requirements
+
+## Purpose
+
+[What this document defines and what it must stay aligned with.]
+
+## Functional Requirements
+
+### FR-01 — {Requirement Title}
+
+[Verifiable behavior: what the project must do.]
+
+### FR-02 — {Requirement Title}
+
+[Verifiable behavior.]
+
+## Non-Functional Requirements
+
+- [Simplicity, performance, accessibility, portability, etc.]
+
+## Content Requirements
+
+- [What the content must deliver.]
+
+## Design Requirements
+
+- [Layout and visual direction constraints.]
+
+## Localization Requirements
+
+- [Languages, text direction, content separation.]
+
+## Portability Requirements
+
+- [Tool, IDE, and AI-agent independence.]
+
+## MVP Constraints
+
+- [What the MVP must not require.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+For a notes app: FR-01 — create, edit, and delete notes; FR-02 — search notes by title; NFR-01 — offline-first and fast; constraint — no accounts in the MVP.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">PLAN.md</h3>
+  <p className="apf-next-file__reason">Break the approved requirements into ordered implementation phases. <a href="/tools/prompt-generator/?file=plan&action=create&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Requirements lifecycle stage](/lifecycle/requirements/).

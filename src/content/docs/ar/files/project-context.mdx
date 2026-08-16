@@ -1,0 +1,99 @@
+---
+title: PROJECT_CONTEXT.md
+description: "السياق الدائم للمشروع: الغرض، والمستخدم الأساسي، وشكل المنتج، والنطاق، والقواعد."
+---
+
+`PROJECT_CONTEXT.md` هو السجل الدائم لماهية المشروع والقواعد التي يتبعها. يجعل المشروع مفسّرًا لذاته لأي إنسان أو وكيل ذكاء اصطناعي — دون الحاجة إلى سجل محادثة.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">ما الخطوة التالية</div>
+  <h3 className="apf-primary-action__file">PROJECT_CONTEXT.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/ar/tools/prompt-generator/?file=project-context&action=create&size=standard">إنشاء</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=project-context&action=review&size=standard">مراجعة</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=project-context&action=update&size=standard">تحديث</a>
+    <a className="apf-action" href="/ar/tools/prompt-generator/?file=project-context&action=recover&size=standard">استعادة</a>
+  </div>
+</div>
+
+## الغرض
+
+مصدر حقيقة واحد لغرض المشروع، والمستخدم الأساسي، وشكل المنتج، والـ MVP الحالي، والقواعد الأساسية — بحيث يشرح المستودع نفسه دون الحاجة إلى المحادثة الأصلية.
+
+## متى تستخدمه
+
+- **إنشاء** — في بداية المشروع، مباشرة بعد الاستكشاف.
+- **تحديث** — بعد تغيير ذي معنى في الغرض أو النطاق أو الـ MVP أو شكل المنتج أو القواعد.
+
+## المدخلات المطلوبة
+
+- غرض المشروع والمستخدم الأساسي.
+- شكل المنتج الحالي ونطاق الـ MVP.
+- النطاق المستقبلي، منفصلًا عن الـ MVP.
+- القواعد والقيود الأساسية للمشروع.
+
+## يقرأ من ويُغذّي
+
+- يقرأ من مرحلة الاستكشاف ومن القرارات المتفق عليها.
+- يُغذّي `PLAN.md` و `PROJECT_STATUS.md` و `AGENTS.md` وكل مطالبة يولّدها مولّد المطالبات.
+
+## القالب
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">القالب</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# PROJECT_CONTEXT.md
+
+## Project Purpose
+
+[Describe what this project is and why it exists.]
+
+## Primary User
+
+[Describe who this project is for.]
+
+## Current Product Form
+
+[Describe what the product looks like today.]
+
+## Current MVP
+
+[The smallest useful first version, in a few bullets.]
+
+## Future Scope
+
+[What comes after the MVP, clearly separated.]
+
+## Languages and Portability
+
+[Languages, frameworks, and portability goals.]
+
+## Core Project Rules
+
+- [Rule 1]
+- [Rule 2]
+
+## Current Status
+
+[One short paragraph on where the project stands today.]`}</pre>
+  </div>
+</div>
+
+## مثال
+
+لمشروع توثيق صغير، يبدأ `PROJECT_CONTEXT.md` بـ:
+
+- **غرض المشروع** — موقع مرجعي ثنائي اللغة لسير عمل مدعوم بالذكاء الاصطناعي.
+- **المستخدم الأساسي** — مالك المشروع.
+- **الـ MVP الحالي** — صفحات مرجعية بمحتوى قابل للنسخ؛ دون خلفية برمجية.
+- **قاعدة أساسية** — إبقاء المحتوى قابلاً لإعادة الاستخدام وخاليًا من المطالبات المكررة الطويلة.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">الملف الموصى به التالي</div>
+  <h3 className="apf-next-file__file">docs/MVP.md</h3>
+  <p className="apf-next-file__reason">حدّد أصغر نسخة مفيدة أولى قبل التخطيط لطريقة البناء. <a href="/ar/tools/prompt-generator/?file=mvp&action=create&size=standard">أنشئ مطالبتها</a>.</p>
+</div>
+
+القسم ذو الصلة: [مرحلة سياق المشروع](/ar/lifecycle/project-context/).

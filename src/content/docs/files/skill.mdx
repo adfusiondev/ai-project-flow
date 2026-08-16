@@ -1,0 +1,84 @@
+---
+title: SKILL.md
+description: A reusable workflow for a specific project task.
+---
+A `SKILL.md` file (one per directory under `skills/`) defines a reusable workflow for a specific project task, making it portable across agents and environments.
+
+<div className="apf-primary-action">
+  <div className="apf-primary-action__label">What to do next</div>
+  <h3 className="apf-primary-action__file">SKILL.md</h3>
+  <div className="apf-action-group apf-action-group--actions">
+    <a className="apf-action apf-action--primary" href="/tools/prompt-generator/?file=skill&action=create&size=standard">Create</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=skill&action=review&size=standard">Review</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=skill&action=update&size=standard">Update</a>
+    <a className="apf-action" href="/tools/prompt-generator/?file=skill&action=recover&size=standard">Recover</a>
+  </div>
+</div>
+
+## Purpose
+
+Skills turn repeatable tasks — discovery, MVP planning, verification, handoff — into consistent, specialized workflows any agent can follow.
+
+## When to use it
+
+**Required** for Advanced projects; **optional** for Standard; **not used** for Small.
+
+- **Create** — when a task will repeat across projects, or an agent should follow a specific workflow.
+- **Update** — when the workflow or its inputs and outputs change.
+- **Skip** — when the workflow is unique to one project and unlikely to be reused.
+
+## Required inputs
+
+- The task's purpose and when to use it.
+- The workflow steps and rules.
+- Expected output files and a quality gate.
+
+## Reads from and feeds into
+
+- Reads from `AGENTS.md` (working rules) and `PROJECT_CONTEXT.md`.
+- Feeds into the work agents perform and the Skills section documentation.
+
+## Template
+
+<div className="prompt-block">
+  <div className="prompt-block__header">
+    <span className="prompt-block__label">Template</span>
+  </div>
+  <div className="prompt-block__body">
+    <pre className="apf-template">{`# {Skill Name}
+
+## Purpose
+
+[What this skill is for and when to use it.]
+
+## When to Use
+
+- [Trigger conditions.]
+
+## Workflow
+
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+## Expected Outputs
+
+- [Files or artifacts produced.]
+
+## Quality Gate
+
+- [How to verify the work is complete.]`}</pre>
+  </div>
+</div>
+
+## Example
+
+A "search before add" skill: when to use — before creating a duplicate note; workflow — run the search, review the matches, return the best results; quality gate — no duplicate notes created.
+
+<div className="apf-next-file">
+  <div className="apf-next-file__label">Next recommended file</div>
+  <h3 className="apf-next-file__file">PROJECT_STATUS.md</h3>
+  <p className="apf-next-file__reason">Track the project state while the skills guide the work. <a href="/tools/prompt-generator/?file=project-status&action=create&size=standard">Generate its prompt</a>.</p>
+</div>
+
+Related section: [Skills and Agent Instructions lifecycle stage](/lifecycle/skills-and-agent-instructions/).
