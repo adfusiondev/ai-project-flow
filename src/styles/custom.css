@@ -1027,6 +1027,96 @@ html[dir='rtl'] {
 	font-family: var(--apf-font-arabic);
 }
 
+/* Workflow navigation — contextual return-to-file / next-file links
+   on the Prompt Generator (the page has no sidebar prev/next). */
+.apf-workflow-nav {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: var(--apf-space-4) var(--apf-space-6);
+	border-top: 1px solid var(--apf-color-hairline);
+	margin-block-start: var(--apf-space-6);
+	padding-block-start: var(--apf-space-5);
+}
+
+.apf-workflow-nav__item {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--apf-space-1);
+	min-width: 0;
+}
+
+.apf-workflow-nav__item:last-child {
+	align-items: flex-end;
+	text-align: end;
+}
+
+.apf-workflow-nav__label {
+	font-family: var(--apf-font-mono);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--apf-color-text-secondary);
+}
+
+.apf-workflow-nav__link {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	column-gap: var(--apf-space-2);
+	font-weight: 600;
+	font-size: 1rem;
+	line-height: 1.25;
+	color: var(--apf-color-accent-high);
+}
+
+.apf-workflow-nav__link:hover {
+	text-decoration: underline;
+}
+
+.apf-workflow-nav__file {
+	font-family: var(--apf-font-mono);
+	font-size: 0.875rem;
+	color: var(--apf-color-text-secondary);
+}
+
+.apf-workflow-nav__gen {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--apf-color-accent-high);
+}
+
+.apf-workflow-nav__gen:hover {
+	text-decoration: underline;
+}
+
+/* RTL — nav text follows the Arabic font. */
+[dir='rtl'] .apf-workflow-nav__label,
+[dir='rtl'] .apf-workflow-nav__link,
+[dir='rtl'] .apf-workflow-nav__gen {
+	font-family: var(--apf-font-arabic);
+}
+
+[dir='rtl'] .apf-workflow-nav__label {
+	text-transform: none;
+}
+
+@media (max-width: 32em) {
+	.apf-workflow-nav {
+		flex-direction: column;
+		align-items: stretch;
+		gap: var(--apf-space-4);
+	}
+
+	.apf-workflow-nav__item:last-child {
+		align-items: flex-start;
+		text-align: start;
+	}
+}
+
 /* ------------------------------------------------------------
    14. Start a New Project guided widget (Phase C prototype)
    ------------------------------------------------------------ */

@@ -2,6 +2,21 @@
 
 All meaningful project changes should be recorded here.
 
+## 2026-08-16 — Prompt Generator workflow navigation
+
+### Added
+
+- Contextual navigation on the Prompt Generator (`/tools/prompt-generator/` + Arabic): a **Back to <file>** link returns to the target file's guide page, and a **Next recommended file** block links to the next file in the workflow plus a **Generate its prompt** deep link. The links are derived from the current `?file=`/`?size=` state (shared `FLOW_ORDER` / `nextFile` data) and re-render when the target file or size changes; the last file in a flow shows only the back link. Direct visits without query params default to the same context (`project-context`, current size).
+
+### Fixed
+
+- Users landing on the generator from a file-guide action (Create / Review / Update / Recover), a "Generate its prompt" link, or the Start widget previously had no navigation on the destination page. The generator is the only Project Files workflow page outside the Starlight sidebar, so it had no Previous/Next pagination and no way back to the originating file or forward to the next recommended file. A traditional sidebar Previous/Next is not appropriate here because the generator's context is dynamic (not sidebar-ordered), so the workflow-consistent contextual Back / Next recommended-file pattern is used instead. All `/files/*` pages keep their native Starlight pagination unchanged.
+
+### Verified
+
+- EN + AR × desktop (1280px) × mobile (390px): nav present and correct (RTL mirrored with Back on the reading-start side, stacked full-width on mobile, no horizontal overflow); Back returns to the originating file guide; next links and deep links follow the recommended file order per size; file-guide pages keep native pagination; no console errors; production build passes (145 pages).
+- **Known issue — deferred intentionally to the next session:** a scroll/viewport behavior issue remains on some of the pages where this navigation work was added. It is recorded here only; no speculative fix was applied.
+
 ## 2026-08-16 — Phase C2 / Project Files Reconciliation approved and committed
 
 ### Completed

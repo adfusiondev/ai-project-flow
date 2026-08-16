@@ -2,15 +2,15 @@
 
 ## Current Phase
 
-Project Files Workflow Redesign — Phase C2: Project Files Reconciliation
+Project Files Workflow Redesign — Phase C2 + Navigation Consistency
 
-Status: Completed — approved and committed
+Status: Completed — implemented, verified, and committed (2026-08-16)
 
-Phase C2 (Project Files Reconciliation) of the approved Project Files Workflow Redesign is complete and committed: the Project Files UI/UX reconciliation standardized every workflow action on the shared 40px `.apf-action` system, the visual refinement pass made the Prompt Generator one continuous workflow surface, and the button/control alignment fixes unified every generator and Start widget control on the shared 40px height and closed a Starlight sibling-margin leak inside both panels. EN/AR verification is complete and the production build passes (145 pages). The intermittent page-bottom scroll issue remains only as an observation — no speculative scroll or layout-height fix was applied. Phases D-E are pending. The site remains live on Vercel at https://ai-project-flow.vercel.app.
+Phase C2 (Project Files Reconciliation) of the approved Project Files Workflow Redesign is complete and committed: the Project Files UI/UX reconciliation standardized every workflow action on the shared 40px `.apf-action` system, the visual refinement pass made the Prompt Generator one continuous workflow surface, and the button/control alignment fixes unified every generator and Start widget control on the shared 40px height and closed a Starlight sibling-margin leak inside both panels. A Navigation Consistency pass then closed the last navigation gap: the Prompt Generator (EN + AR) had no Previous/Next because it sits outside the Starlight sidebar, so a contextual Back-to-file / Next-recommended-file navigation was added (derived from the shared workflow data) and verified EN/AR × desktop × mobile. EN/AR verification is complete and the production build passes (145 pages). Known issue — intentionally deferred to the next session: a scroll/viewport behavior issue remains on some of the pages where the navigation work was added; no speculative fix was applied. Phases D-E are pending. The site remains live on Vercel at https://ai-project-flow.vercel.app.
 
 ## Overall Status
 
-Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. In progress — Project Files Workflow Redesign (Phases A-Foundation, B-Prompt Generator, C-Prototype Pages, and C2-Reconciliation implemented and committed; Phases D-E pending).
+Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. In progress — Project Files Workflow Redesign (Phases A-Foundation, B-Prompt Generator, C-Prototype Pages, C2-Reconciliation, and Navigation Consistency implemented and committed; Phases D-E pending).
 
 ---
 
@@ -57,6 +57,13 @@ Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) deli
 * No routing, data-model, deep-link, prompt-building, copy, scroll, or layout-height behavior changed.
 * Checkpoint passed — approved and committed as Phase C2 (2026-08-16).
 
+
+### Project Files Workflow Redesign — Navigation Consistency (Prompt Generator)
+
+* Closed the last navigation gap in the Project Files workflow: the Prompt Generator (`/tools/prompt-generator/` + `/ar/tools/prompt-generator/`) is outside the Starlight sidebar, so it had no Previous/Next and no way to return to the originating file or continue to the next recommended file.
+* Added a contextual Back-to-file / Next-recommended-file navigation (EN + AR), derived from the shared `FLOW_ORDER` / `nextFile` workflow data and re-rendered when the target file or size changes. Traditional sidebar Previous/Next is intentionally not used because the generator's context is dynamic, not sidebar-ordered; all `/files/*` pages keep their native Starlight pagination unchanged.
+* Verified: EN/AR × 1280px desktop × 390px mobile; Back returns to the originating file guide; next links and "Generate its prompt" deep links follow the recommended order per size; RTL mirrored; stacked full-width on mobile without overflow; no console errors; production build passes (145 pages).
+* Known issue — deferred intentionally to the next session: a scroll/viewport behavior issue remains on some of the pages where this navigation work was added. No speculative fix was applied.
 
 ### Project Files Workflow Redesign — Phase B (Prompt Generator)
 

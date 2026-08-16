@@ -22,11 +22,13 @@ A personal learning and reusable reference project for documenting the complete 
 
 ## Current Phase
 
-Project Files Workflow Redesign — Phase C2: Project Files Reconciliation
+Project Files Workflow Redesign — Phase C2 (Reconciliation) + Navigation Consistency
 
-Status: Completed — approved and committed
+Status: Completed — implemented, verified, and committed (2026-08-16)
 
 Phase C (prototype pages) of the approved Project Files Workflow Redesign is implemented: the rewritten Project Files Overview, the new "Start a New Project" page with an interactive size selector and recommended file sequence, and the redesigned `PROJECT_CONTEXT.md` and `PROJECT_STATUS.md` pages (EN + AR) with primary action bars, copyable templates, and next-file guidance. The Phase C checkpoint was approved and the reconciliation committed (Phase C2) on 2026-08-16; Phases D-E are pending. A UI/UX reconciliation pass standardized all workflow action buttons on the shared 40px `.apf-action` system (Primary/Secondary only, no compact size), unified the Arabic Recover label to `استعادة`, removed the orphaned `.apf-matrix` CSS, and recorded the canonical Action System in `docs/DESIGN_SYSTEM.md`. A final visual refinement pass then made the workflow one coherent product: the Prompt Generator is now a single continuous workflow surface (steps, collapsible Project details, and Generate action share one panel with hairline dividers) and its output renders as a standard `.prompt-block`, the generator's `<details>/<summary>` no longer picks up Starlight's generic details styling, the Start hint gap was normalized to the shared 16px rhythm, and the duplicated step/index badge rules were merged. No routing, data-model, deep-link, prompt-building, copy, scroll, or layout-height behavior changed. A button-alignment pass then unified every generator control on the shared 40px action height (segmented pills and the Target File dropdown had inherited Starlight's markdown line-height and rendered at 42px/44px), and closed a Starlight sibling-margin leak inside the generator panel by opting the flow out with the `not-content` class while making the 16px section rhythm explicit — step badges now sit centered on their controls (delta 0) and the segmented pills form one aligned row. The same leak was then closed on the Start a New Project widget (which reuses the generator's size selector): its segmented row now renders 40px with aligned pills and the sequence rows return to their intended 8px gaps. Approved and committed as Phase C2 on 2026-08-16.
+
+A Navigation Consistency pass (2026-08-16) then closed the last navigation gap in the Project Files workflow: the Prompt Generator (`/tools/prompt-generator/` + `/ar/tools/prompt-generator/`) is outside the Starlight sidebar, so it had no Previous/Next and no way to return to the originating file or continue to the next recommended file. The generator now shows a contextual Back-to-file / Next-recommended-file navigation (EN + AR) built from the shared `FLOW_ORDER` / `nextFile` workflow data and re-rendered when the target file or size changes; all `/files/*` pages keep their native Starlight pagination. Verified EN/AR × desktop × mobile. Known issue — intentionally deferred to the next session: a scroll/viewport behavior issue remains on some of the pages where this navigation work was added; recorded only, no speculative fix applied.
 
 The site remains deployed and live at https://ai-project-flow.vercel.app. The core English MVP (Phases 0-10) is complete and verified, and the Arabic localization (Phases 1-3) is complete.
 
@@ -48,7 +50,7 @@ Phase 10's handoff checkpoint is complete. The repository alone lets a new agent
 
 Deployment is complete: the site is live on Vercel at https://ai-project-flow.vercel.app. The production build, sitemap, and Pagefind index generate from the configured `site` URL, and the deployment configuration was unchanged.
 
-The planned English MVP and the Arabic localization (Phases 1-3) are complete, and the site is deployed and live on Vercel. The Project Files Workflow Redesign is the active improvement plan: Phases A (Foundation), B (Prompt Generator), C (Prototype Pages), and C2 (Reconciliation) are complete and committed; Phases D-E are pending.
+The planned English MVP and the Arabic localization (Phases 1-3) are complete, and the site is deployed and live on Vercel. The Project Files Workflow Redesign is the active improvement plan: Phases A (Foundation), B (Prompt Generator), C (Prototype Pages), C2 (Reconciliation), and Navigation Consistency are complete and committed; Phases D-E are pending.
 
 ---
 

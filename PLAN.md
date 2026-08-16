@@ -691,7 +691,7 @@ Selected stack:
 
 The English MVP is complete and verified, and the Arabic localization (Phases 1-3) is complete. The Arabic locale is fully translated across the site.
 
-The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. A new improvement plan is now active: the **Project Files Workflow Redesign** (see the section above). Phases A (Foundation), B (Prompt Generator), C (Prototype Pages), and C2 (Project Files Reconciliation) are complete and committed; Phases D-E are pending.
+The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. A new improvement plan is now active: the **Project Files Workflow Redesign** (see the section above). Phases A (Foundation), B (Prompt Generator), C (Prototype Pages), C2 (Project Files Reconciliation), and Navigation Consistency are complete and committed; Phases D-E are pending. A scroll/viewport issue observed on some of the pages where the navigation work was added is intentionally deferred to the next session.
 
 Next steps:
 

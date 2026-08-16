@@ -53,6 +53,10 @@ interface Labels {
 	idea: string;
 	users: string;
 	stack: string;
+	workflowNav: string;
+	backTo: string;
+	nextRecommended: string;
+	generateItsPrompt: string;
 }
 
 const EN: Labels = {
@@ -80,6 +84,10 @@ const EN: Labels = {
 	idea: 'Idea',
 	users: 'Target users',
 	stack: 'Languages / tech stack',
+	workflowNav: 'Project Files navigation',
+	backTo: 'Back to',
+	nextRecommended: 'Next recommended file',
+	generateItsPrompt: 'Generate its prompt',
 };
 
 const AR: Labels = {
@@ -107,6 +115,10 @@ const AR: Labels = {
 	idea: 'الفكرة',
 	users: 'المستخدمون المستهدفون',
 	stack: 'اللغات / التقنيات',
+	workflowNav: 'التنقل في ملفات المشروع',
+	backTo: 'العودة إلى',
+	nextRecommended: 'الملف الموصى به التالي',
+	generateItsPrompt: 'أنشئ مطالبتها',
 };
 
 function getLabels(): Labels {
@@ -196,7 +208,7 @@ interface GeneratorState {
 		languages: HTMLInputElement;
 		constraints: HTMLTextAreaElement;
 	};
-	file: { value: () => FileId; set: (id: FileId) => void; element: HTMLElement };
+	file: { value: () => FileId; set: (id: FileId) => void; onChange: (cb: () => void) => void; element: HTMLElement };
 	output: HTMLDivElement;
 }
 
@@ -243,6 +255,7 @@ function makeSegmented(name: string, options: { value: string; label: string }[]
 function makeFileDropdown(): GeneratorState['file'] {
 	const isArabic = document.documentElement.lang === 'ar';
 	let current: FileId = 'project-context';
+	let notify: () => void = () => {};
 
 	const wrap = el('div', { className: 'apf-generator__dropdown' });
 	const trigger = el('button', {
@@ -302,6 +315,7 @@ function makeFileDropdown(): GeneratorState['file'] {
 		renderValue();
 		close();
 		trigger.focus();
+		notify();
 	}
 
 	function open(): void {
@@ -351,6 +365,7 @@ function makeFileDropdown(): GeneratorState['file'] {
 		options.forEach((o) => o.button.setAttribute('aria-selected', o.id === current ? 'true' : 'false'));
 		renderValue();
 		next.button.focus();
+		notify();
 	});
 
 	wrap.addEventListener('focusout', (event) => {
@@ -363,6 +378,9 @@ function makeFileDropdown(): GeneratorState['file'] {
 		element: wrap,
 		value: () => current,
 		set: (id: FileId) => select(id),
+		onChange: (cb: () => void) => {
+			notify = cb;
+		},
 	};
 }
 
@@ -475,6 +493,54 @@ function generate(state: GeneratorState): void {
 	enhancePromptBlocks();
 }
 
+function workflowNav(state: GeneratorState): void {
+	const mount = document.getElementById('apf-workflow-nav');
+	if (!mount) return;
+	const labels = getLabels();
+	const isArabic = document.documentElement.lang === 'ar';
+	const prefix = isArabic ? '/ar' : '';
+	const file = state.file.value();
+	const size = readSegmented(state.form, 'size') as ProjectSize;
+	const info = FILES[file];
+
+	mount.classList.add('not-content');
+	mount.replaceChildren();
+
+	const nav = el('nav', { className: 'apf-workflow-nav', 'aria-label': labels.workflowNav });
+
+	const back = el('div', { className: 'apf-workflow-nav__item' });
+	back.appendChild(el('span', { className: 'apf-workflow-nav__label' }, labels.backTo));
+	const backLink = el('a', {
+		className: 'apf-workflow-nav__link apf-workflow-nav__back-link',
+		href: `${prefix}/files/${file}/`,
+	});
+	backLink.appendChild(el('span', { className: 'apf-workflow-nav__title' }, isArabic ? info.ar : info.en));
+	backLink.appendChild(el('span', { className: 'apf-workflow-nav__file' }, info.file));
+	back.appendChild(backLink);
+	nav.appendChild(back);
+
+	const next = nextFile(size, file);
+	if (next) {
+		const nextInfo = FILES[next];
+		const nextBox = el('div', { className: 'apf-workflow-nav__item' });
+		nextBox.appendChild(el('span', { className: 'apf-workflow-nav__label' }, labels.nextRecommended));
+		const nextLink = el('a', {
+			className: 'apf-workflow-nav__link apf-workflow-nav__next-link',
+			href: `${prefix}/files/${next}/`,
+		});
+		nextLink.appendChild(el('span', { className: 'apf-workflow-nav__title' }, isArabic ? nextInfo.ar : nextInfo.en));
+		nextLink.appendChild(el('span', { className: 'apf-workflow-nav__file' }, nextInfo.file));
+		nextBox.appendChild(nextLink);
+		nextBox.appendChild(el('a', {
+			className: 'apf-workflow-nav__gen',
+			href: `${prefix}/tools/prompt-generator/?file=${next}&action=create&size=${size}`,
+		}, labels.generateItsPrompt));
+		nav.appendChild(nextBox);
+	}
+
+	mount.appendChild(nav);
+}
+
 function init() {
 	const root = document.getElementById(GENERATOR_ID);
 	if (!root) return;
@@ -483,6 +549,13 @@ function init() {
 
 	const state = buildForm();
 	root.appendChild(state.form);
+
+	const renderNav = (): void => workflowNav(state);
+	state.file.onChange(renderNav);
+	state.form.querySelectorAll<HTMLInputElement>('input[name="size"]').forEach((input) => {
+		input.addEventListener('change', renderNav);
+	});
+	renderNav();
 
 	state.form.addEventListener('submit', (event) => {
 		event.preventDefault();
@@ -511,6 +584,7 @@ function init() {
 	if (action && ACTIONS.some((a) => a.id === action) && setRadio('action', action)) prefilled = true;
 
 	if (prefilled) generate(state);
+	renderNav();
 }
 
 if (document.readyState === 'loading') {
