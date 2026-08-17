@@ -339,6 +339,17 @@ export const FILE_TEMPLATES: Partial<Record<FileId, FileTemplate>> = {
 			{ heading: 'MVP Success Criteria', placeholder: { en: '- [How you will know the MVP is finished and works.]', ar: '- [كيف ستعرف أن الحد الأدنى للمنتج منجز ويعمل.]' } },
 		],
 	},
+	'architecture': {
+		file: 'architecture',
+		sections: [
+			{ heading: 'Purpose', field: 'projectIdea', placeholder: { en: '[What this document defines and the principles it follows.]', ar: '[ما يُعرّفه هذا المستند والمبادئ التي يتبعها.]' } },
+			{ heading: 'Architecture Principles', placeholder: { en: '- [Keep it simple, portable, and maintainable.]', ar: '- [حافظ على البساطة والقابلية للنقل والصيانة.]' } },
+			{ heading: 'Current Application Type', field: 'projectType', placeholder: { en: '[Application type and what the MVP does not require.]', ar: '[نوع التطبيق وما لا يحتاجه الحد الأدنى للمنتج.]' } },
+			{ heading: 'Selected Technology', field: 'languages', placeholder: { en: '- [Framework / language / tools.]', ar: '- [الإطار / اللغة / الأدوات.]' } },
+			{ heading: 'High-Level Structure', placeholder: { en: '[Simple ASCII diagram showing component relationships.]', ar: '[مخطط ASCII بسيط يُظهر علاقات المكونات.]' } },
+			{ heading: 'Rejected Alternatives', placeholder: { en: '- [Approaches considered and why they were not chosen.]', ar: '- [المناهج التي تم рассмотрتها ولماذا لم تُختار.]' } },
+		],
+	},
 	'requirements': {
 		file: 'requirements',
 		sections: [

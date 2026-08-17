@@ -60,6 +60,8 @@ interface Labels {
 	nextRecommended: string;
 	generateItsPrompt: string;
 	generateFile: string;
+	aiGenerate: string;
+	aiGenerating: string;
 	outputLabelFile: string;
 	fileContentMode: string;
 	promptMode: string;
@@ -95,6 +97,8 @@ const EN: Labels = {
 	nextRecommended: 'Next recommended file',
 	generateItsPrompt: 'Generate its prompt',
 	generateFile: 'Generate file',
+	aiGenerate: 'AI Generate',
+	aiGenerating: 'Generating...',
 	outputLabelFile: 'Generated file',
 	fileContentMode: 'File Content',
 	promptMode: 'Prompt',
@@ -130,6 +134,8 @@ const AR: Labels = {
 	nextRecommended: 'الملف الموصى به التالي',
 	generateItsPrompt: 'أنشئ مطالبتها',
 	generateFile: 'إنشاء ملف',
+	aiGenerate: 'إنشاء بالذكاء الاصطناعي',
+	aiGenerating: 'جارٍ الإنشاء...',
 	outputLabelFile: 'الملف المُولَّدة',
 	fileContentMode: 'محتوى الملف',
 	promptMode: 'المطالبة',
@@ -224,7 +230,7 @@ interface GeneratorState {
 	};
 	file: { value: () => FileId; set: (id: FileId) => void; onChange: (cb: () => void) => void; element: HTMLElement };
 	output: HTMLDivElement;
-	mode: 'prompt' | 'file';
+	mode: 'prompt' | 'file' | 'ai';
 	submitBtn: HTMLButtonElement;
 	updateMode: () => void;
 }
@@ -479,20 +485,43 @@ function buildForm(): GeneratorState {
 
 	form.appendChild(el('div', { className: 'apf-generator__output' }));
 
-	let currentMode: 'prompt' | 'file' = 'prompt';
+	let currentMode: 'prompt' | 'file' | 'ai' = 'prompt';
 
-	const state = { form, inputs, file, output: form.querySelector<HTMLDivElement>('.apf-generator__output')!, mode: currentMode as 'prompt' | 'file', submitBtn: submit, updateMode: () => {} };
+	const state = { form, inputs, file, output: form.querySelector<HTMLDivElement>('.apf-generator__output')!, mode: currentMode as 'prompt' | 'file' | 'ai', submitBtn: submit, updateMode: () => {} };
 
 	function updateMode(): void {
 		const hasTemplate = FILE_TEMPLATES[state.file.value()] != null;
+		const hasAI = hasTemplate && state.file.value() === 'architecture';
 		modeRow.hidden = !hasTemplate;
 		if (!hasTemplate) currentMode = 'prompt';
 		else {
+			// Add or remove AI option based on file
+			const existingAI = form.querySelector<HTMLInputElement>('input[name="output-mode"][value="ai"]');
+			if (hasAI && !existingAI) {
+				const segGroup = modeRow.querySelector('.apf-generator__seg');
+				if (segGroup) {
+					const aiItem = document.createElement('label');
+					aiItem.className = 'apf-generator__seg-item';
+					const aiInput = document.createElement('input');
+					aiInput.type = 'radio';
+					aiInput.className = 'apf-generator__seg-input';
+					aiInput.name = 'output-mode';
+					aiInput.value = 'ai';
+					const aiSpan = document.createElement('span');
+					aiSpan.className = 'apf-generator__seg-label';
+					aiSpan.textContent = labels.aiGenerate;
+					aiItem.appendChild(aiInput);
+					aiItem.appendChild(aiSpan);
+					segGroup.appendChild(aiItem);
+				}
+			} else if (!hasAI && existingAI) {
+				existingAI.parentElement?.remove();
+			}
 			const checked = form.querySelector<HTMLInputElement>('input[name="output-mode"]:checked');
-			currentMode = (checked?.value as 'prompt' | 'file') ?? 'prompt';
+			currentMode = (checked?.value as 'prompt' | 'file' | 'ai') ?? 'prompt';
 		}
 		state.mode = currentMode;
-		submit.textContent = currentMode === 'file' ? labels.generateFile : labels.generate;
+		submit.textContent = currentMode === 'file' ? labels.generateFile : currentMode === 'ai' ? labels.aiGenerate : labels.generate;
 	}
 
 	state.updateMode = updateMode;
@@ -562,6 +591,74 @@ function generateFile(state: GeneratorState): void {
 	block.appendChild(body);
 	state.output.appendChild(block);
 	enhancePromptBlocks();
+}
+
+
+
+async function generateAIArchitecture(state: GeneratorState): Promise<void> {
+	const input = collectInput(state);
+	const lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+	const labels = getLabels();
+	const isArabic = lang === 'ar';
+
+	// Show loading state
+	state.output.replaceChildren();
+	const loadingBlock = el('div', { className: 'ai-block ai-block--loading' });
+	const loadingHeader = el('div', { className: 'ai-block__header' });
+	loadingHeader.appendChild(el('span', { className: 'ai-block__label' }, labels.aiGenerating));
+	const loadingBody = el('div', { className: 'ai-block__body' });
+	const spinner = el('div', { className: 'ai-block__spinner' });
+	loadingBody.appendChild(spinner);
+	loadingBlock.appendChild(loadingHeader);
+	loadingBlock.appendChild(loadingBody);
+	state.output.appendChild(loadingBlock);
+
+	try {
+		const response = await fetch('/api/generate-architecture', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				projectName: input.projectName,
+				projectType: input.projectType,
+				projectIdea: input.projectIdea,
+				platform: input.platform,
+				languages: input.languages,
+				constraints: input.constraints,
+				lang,
+			}),
+		});
+
+		const data = await response.json();
+
+		if (!response.ok) {
+			state.output.replaceChildren();
+			const errorBlock = el('div', { className: 'ai-block ai-block--error' });
+			errorBlock.appendChild(el('p', {}, data.error || 'Generation failed.'));
+			state.output.appendChild(errorBlock);
+			return;
+		}
+
+		state.output.replaceChildren();
+		const block = el('div', { className: 'file-block' });
+		const header = el('div', { className: 'file-block__header' });
+		header.appendChild(el('span', { className: 'file-block__label' }, labels.outputLabelFile));
+		if (data.model) {
+			header.appendChild(el('span', { className: 'file-block__model' }, data.model));
+		}
+		const body = el('div', { className: 'file-block__body' });
+		const pre = el('pre', { className: 'file-block__content' });
+		pre.textContent = data.content;
+		body.appendChild(pre);
+		block.appendChild(header);
+		block.appendChild(body);
+		state.output.appendChild(block);
+		enhancePromptBlocks();
+	} catch (error) {
+		state.output.replaceChildren();
+		const errorBlock = el('div', { className: 'ai-block ai-block--error' });
+		errorBlock.appendChild(el('p', {}, isArabic ? 'حدث خطأ غير متوقع.' : 'An unexpected error occurred.'));
+		state.output.appendChild(errorBlock);
+	}
 }
 
 function workflowNav(state: GeneratorState): void {
@@ -643,6 +740,8 @@ function init() {
 		event.preventDefault();
 		if (state.mode === 'file') {
 			generateFile(state);
+		} else if (state.mode === 'ai') {
+			generateAIArchitecture(state);
 		} else {
 			generatePrompt(state);
 		}
