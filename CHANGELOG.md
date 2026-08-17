@@ -2,6 +2,44 @@
 
 All meaningful project changes should be recorded here.
 
+## 2026-08-17 — Phase F: Recovery & Continuity (Documentation)
+
+### Completed
+
+- Designed and implemented the Recovery & Continuity documentation section (DEC-013): five bilingual workflow pages covering recovery, session continuity, model switching, and agent failure handling.
+- Created 5 EN pages: Overview, Recovery, Session Continuity, Model Switching, Agent Failure Handling (`src/content/docs/recovery/`).
+- Created 5 AR mirrors (`src/content/docs/ar/recovery/`).
+- Integrated the Recovery & Continuity section into the sidebar after Handoff and before Reference, expanded by default.
+- Added cross-links from Lifecycle, Handoff, and Verification overviews to Recovery & Continuity (EN + AR).
+- Updated `docs/SCREEN_MAP.md` with the new section.
+- Recorded DEC-013 in `docs/DECISIONS.md`.
+- Verified: 155 pages build successfully; all 10 recovery pages accessible; EN/AR structural parity; Arabic RTL and technical LTR behavior; no broken links; no horizontal overflow; no regressions in adjacent sections.
+
+### Files changed
+
+- `astro.config.mjs` — sidebar section added
+- `src/content/docs/recovery/overview.md` — new
+- `src/content/docs/recovery/recovery.md` — new
+- `src/content/docs/recovery/session-continuity.md` — new
+- `src/content/docs/recovery/model-switching.md` — new
+- `src/content/docs/recovery/agent-failure.md` — new
+- `src/content/docs/ar/recovery/overview.md` — new
+- `src/content/docs/ar/recovery/recovery.md` — new
+- `src/content/docs/ar/recovery/session-continuity.md` — new
+- `src/content/docs/ar/recovery/model-switching.md` — new
+- `src/content/docs/ar/recovery/agent-failure.md` — new
+- `docs/DECISIONS.md` — DEC-013 added
+- `docs/SCREEN_MAP.md` — Recovery & Continuity section added
+- `src/content/docs/lifecycle/overview.md` — cross-link added
+- `src/content/docs/handoff/overview.md` — cross-link added
+- `src/content/docs/verification/overview.md` — cross-link added
+- `src/content/docs/ar/lifecycle/overview.md` — cross-link added
+- `src/content/docs/ar/handoff/overview.md` — cross-link added
+- `src/content/docs/ar/verification/overview.md` — cross-link added
+
+---
+
+
 ## 2026-08-16 — Phase E: Validate and Decide (Project Files Workflow Redesign closure)
 
 ### Completed

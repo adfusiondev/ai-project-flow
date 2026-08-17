@@ -703,9 +703,8 @@ Selected stack:
 
 The English MVP is complete and verified, and the Arabic localization (Phases 1-3) is complete. The Arabic locale is fully translated across the site.
 
-The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. A new improvement plan is now active: the **Project Files Workflow Redesign** (see the section above). All phases of the Project Files Workflow Redesign (A–E) are complete and committed.
+The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. The **Project Files Workflow Redesign** (Phases A–E) is complete and committed. The **Recovery & Continuity** section (Phase F) is complete and committed.
 
 Next steps:
 
-1. The Project Files Workflow Redesign is complete.
-2. Deferred future-scope items are listed in `PROJECT_CONTEXT.md` Future Scope.
+1. Deferred future-scope items are listed in `PROJECT_CONTEXT.md` Future Scope.

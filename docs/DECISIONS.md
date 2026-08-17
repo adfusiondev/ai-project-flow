@@ -347,9 +347,38 @@ The existing file pages are explanatory ("what the file is / why it exists") and
 - Phase D (Navigation and Documentation Reconciliation) implemented and verified: Project Files sidebar reorganized into five workflow categories; Tools section added with the Prompt Generator entry; documentation updated.
 - Phase E (Validate and Decide) implemented and verified: end-to-end workflow validation completed; AR sidebar label bug fixed; stale documentation cleaned up. Project Files Workflow Redesign is fully completed.
 
+### DEC-013: Recovery & Continuity Section
+
+**Context:** The existing documentation covers the happy-path lifecycle (discover, plan, implement, verify, handoff). The unhappy path — recovery from broken states, session interruption, model switching, and agent failure — had no dedicated workflows. Users encountering these situations had no documented guidance.
+
+**Decision:** A new `recovery/` sidebar section called "Recovery & Continuity" will be added after Handoff and before Reference. It contains five pages:
+
+- **Overview** — landing page with shared principles and section orientation.
+- **Recovery** — how to return to a known-good state after something breaks.
+- **Session Continuity** — how to preserve state when a session ends and resume cleanly.
+- **Model Switching** — how to change AI models or tools mid-project without losing progress.
+- **Agent Failure Handling** — how to respond when an agent produces incorrect results or violates constraints.
+
+The section follows the Symptom-First Principle and treats the repository as the source of truth. Content is tool-agnostic, model-agnostic, and lifecycle-stage-agnostic.
+
+**Alternatives considered:**
+
+- Extending the existing Handoff section — rejected because Handoff covers happy-path transfer, not unhappy-path recovery.
+- Merging into Verification — rejected because verification confirms success, while recovery handles failure.
+- A single "Troubleshooting" page — rejected because the four workflows are distinct enough to warrant separate pages.
+
+**Reason:** The repository files are the source of truth, but users need guidance on what to do when those files are stale, the build is broken, or the agent failed. This section fills that gap.
+
+### Implementation Status
+
+- Phase F1 (Design) completed: information architecture, page outlines, shared principles, EN/AR labels, cross-link plan, and writing plan approved.
+- Phase F2 (Content) completed: 5 EN pages + 5 AR mirrors written; DEC-013 recorded.
+- Phase F3 (Integration) in progress: sidebar integration, cross-links, SCREEN_MAP updated.
+
 ---
 
 ## Current Decision Summary
+
 
 Accepted decisions:
 
@@ -365,3 +394,4 @@ Accepted decisions:
 - Astro + Starlight selected for the documentation MVP.
 - IBM Plex Sans Arabic for the Arabic locale.
 - Project Files Workflow Redesign (Phases A-E implemented, validated, and committed — complete).
+- Recovery & Continuity section (DEC-013): five-page workflow section for recovery, session continuity, model switching, and agent failure handling.

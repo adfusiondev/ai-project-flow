@@ -40,6 +40,7 @@ The primary navigation is organized into the following sections:
 | Prompts | Reusable AI prompts for common project tasks. |
 | Verification | How to confirm work is complete. |
 | Handoff | Making a project portable between environments. |
+| Recovery & Continuity | Workflows for recovery, session continuity, model switching, and agent failure handling. |
 | Reference | Supporting reference content. |
 | Tools | Interactive workflow tools (Prompt Generator). |
 

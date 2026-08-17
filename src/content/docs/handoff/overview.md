@@ -23,3 +23,7 @@ A receiving agent should be able to determine, from the repository alone:
 - [Running This Project](/handoff/running-the-project/) — the setup and run commands for this repository.
 
 Related skill: [Handoff](/skills/handoff/). Related prompt: [Handoff](/prompts/handoff/).
+
+## When handoff is not enough
+
+If something breaks during or after transfer, see [Recovery & Continuity](/recovery/overview/) for workflows that cover recovery, session continuity, model switching, and agent failure handling.

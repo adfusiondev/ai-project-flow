@@ -168,6 +168,18 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'Recovery & Continuity',
+					translations: { ar: 'الاستعادة والاستمرارية' },
+					collapsed: false,
+					items: [
+						{ label: 'Overview', slug: 'recovery/overview', translations: { ar: 'نظرة عامة' } },
+						{ label: 'Recovery', slug: 'recovery/recovery', translations: { ar: 'الاستعادة' } },
+						{ label: 'Session Continuity', slug: 'recovery/session-continuity', translations: { ar: 'استمرارية الجلسة' } },
+						{ label: 'Model Switching', slug: 'recovery/model-switching', translations: { ar: 'تبديل النموذج' } },
+						{ label: 'Agent Failure Handling', slug: 'recovery/agent-failure', translations: { ar: 'التعامل مع فشل الوكيل' } },
+					],
+				},
+				{
 					label: 'Reference',
 					translations: { ar: 'المراجع' },
 					items: [

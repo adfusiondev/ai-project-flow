@@ -25,3 +25,7 @@ A task should only be considered complete when:
 - Documentation has been updated where needed.
 
 Related skill: [Verification](/skills/verification/).
+
+## When verification reveals a problem
+
+If verification uncovers a broken state, an agent error, or a need to switch models, see [Recovery & Continuity](/recovery/overview/) for workflows that cover recovery, session continuity, model switching, and agent failure handling.

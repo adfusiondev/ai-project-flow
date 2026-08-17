@@ -350,9 +350,9 @@ None currently.
 
 ## Next Recommended Step
 
-The Project Files Workflow Redesign is complete. All phases (A–E) are implemented, validated, and committed.
+The Recovery & Continuity section is complete. All phases (A–F) of the project are implemented, validated, and committed.
 
-Deferred (not started): Recovery / Session Continuity / Model Switching / Agent Failure Handling documentation and the cross-tool transfer benchmark.
+Deferred (not started): Cross-tool transfer benchmark.
 
 ---
 

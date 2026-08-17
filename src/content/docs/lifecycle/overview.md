@@ -53,3 +53,7 @@ Handoff and Portability
 ## How stages relate to files
 
 Most stages produce or update a specific project file. The [Project Files](/files/overview/) section documents each file and its purpose, and the [Prompts](/prompts/overview/) section provides reusable prompts for the main tasks.
+
+## When things go wrong
+
+If a build fails, a session is interrupted, or an agent produces incorrect results, see [Recovery & Continuity](/recovery/overview/) for workflows that cover the unhappy path.

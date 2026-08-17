@@ -2,15 +2,15 @@
 
 ## Current Phase
 
-Project Files Workflow Redesign — Phase E (Validate and Decide)
+Recovery & Continuity — Phase F (Validate and Close)
 
-Status: Completed — validated, follow-up fixes committed (2026-08-16)
+Status: Completed — all pages written, sidebar integrated, cross-links verified, production deployed (2026-08-17)
 
-Phase C2 (Project Files Reconciliation) of the approved Project Files Workflow Redesign is complete and committed: the Project Files UI/UX reconciliation standardized every workflow action on the shared 40px `.apf-action` system, the visual refinement pass made the Prompt Generator one continuous workflow surface, and the button/control alignment fixes unified every generator and Start widget control on the shared 40px height and closed a Starlight sibling-margin leak inside both panels. A Navigation Consistency pass then closed the last navigation gap: the Prompt Generator (EN + AR) had no Previous/Next because it sits outside the Starlight sidebar, so a contextual Back-to-file / Next-recommended-file navigation was added (derived from the shared workflow data) and verified EN/AR × desktop × mobile. EN/AR verification is complete and the production build passes (145 pages). Phase E (Validate and Decide) is pending. The site remains live on Vercel at https://ai-project-flow.vercel.app.
+Recovery & Continuity documentation (Phase F) is complete: five bilingual workflow pages (Overview, Recovery, Session Continuity, Model Switching, Agent Failure Handling) written in EN and AR, sidebar integrated after Handoff and before Reference, cross-links added from Lifecycle, Handoff, and Verification overviews, DEC-013 recorded. The site remains live on Vercel at https://ai-project-flow.vercel.app (155 pages).
 
 ## Overall Status
 
-Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. Complete — Project Files Workflow Redesign (Phases A-E all implemented, validated, and committed).
+Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. Complete — Project Files Workflow Redesign (Phases A-E all implemented, validated, and committed). Complete — Recovery & Continuity (Phase F implemented, validated, and committed).
 
 ---
 
