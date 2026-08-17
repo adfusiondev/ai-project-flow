@@ -341,7 +341,11 @@ The existing file pages are explanatory ("what the file is / why it exists") and
 
 - Phase A (Foundation) implemented and verified: shared workflow CSS blocks, shared bilingual prompt rules and file registry in `src/scripts/prompt-data.ts`, the Prompt Generator script skeleton in `src/scripts/prompt-generator.ts`, and the `apf-prompt-generator` script-injection integration.
 - Phase B (Prompt Generator) implemented and verified: bilingual tool pages at `/tools/prompt-generator/` and `/ar/tools/prompt-generator/`, the full frontend-only form, URL-prefilled state, and reuse of the existing prompt-block copy behavior.
-- Phases C-E (prototype pages, navigation/documentation reconciliation, validation) are pending.
+- Phase C (Prototype Pages) implemented and verified: rewritten Project Files Overview, Start a New Project page with interactive size selector, redesigned PROJECT_CONTEXT.md and PROJECT_STATUS.md pages (EN + AR).
+- Phase C2 (Reconciliation) approved and committed: UI/UX reconciliation, visual refinement, button/control alignment.
+- Navigation Consistency implemented and verified: contextual Back-to-file / Next-recommended-file navigation on the Prompt Generator.
+- Phase D (Navigation and Documentation Reconciliation) implemented and verified: Project Files sidebar reorganized into five workflow categories; Tools section added with the Prompt Generator entry; documentation updated (SCREEN_MAP, WORKFLOWS, ARCHITECTURE, DESIGN_SYSTEM, README).
+- Phase E (Validate and Decide) is pending.
 
 ---
 
@@ -360,4 +364,4 @@ Accepted decisions:
 - Arabic and English readiness.
 - Astro + Starlight selected for the documentation MVP.
 - IBM Plex Sans Arabic for the Arabic locale.
-- Project Files Workflow Redesign (Phases A-Foundation and B-Prompt Generator implemented, Phases C-E pending).
+- Project Files Workflow Redesign (Phases A-D implemented and committed; Phase E pending).

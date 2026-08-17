@@ -57,6 +57,20 @@ Handoff and Portability
 | Change Documentation | `CHANGELOG.md`, `docs/DECISIONS.md` |
 | Handoff and Portability | `HANDOFF.md` |
 
+## Project Files categories
+
+The Project Files sidebar organizes files into five workflow categories. Each category groups files by their role in the project lifecycle:
+
+| Category | Files | Purpose |
+| --- | --- | --- |
+| Define the Project | `PROJECT_CONTEXT.md`, `docs/MVP.md` | Establish what the project is and its first useful version. |
+| Design the Solution | `docs/REQUIREMENTS.md`, `docs/ARCHITECTURE.md`, `docs/DECISIONS.md` | Define what the project must do, its technical shape, and key choices. |
+| Execute & Track | `PLAN.md`, `PROJECT_STATUS.md`, `CHANGELOG.md` | Plan phases, track progress, and record changes. |
+| Guide AI Agents | `AGENTS.md`, `SKILL.md` | Set working rules and reusable workflows for AI coding agents. |
+| Transfer & Continue | `HANDOFF.md` | Make the project portable between environments. |
+
+The category assignments are defined in `src/scripts/prompt-data.ts` and mirrored in the sidebar configuration (`astro.config.mjs`).
+
 ## The per-phase working loop
 
 Work advances in phases. Each phase follows the same working loop, and the loop is repeated for every phase until the lifecycle reaches handoff:

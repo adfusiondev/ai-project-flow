@@ -646,10 +646,20 @@ Status: Completed (approved and committed)
 
 ### Phase D — Navigation and Documentation Reconciliation
 
-Status: Pending
+Status: Completed
 
-- Regroup the sidebar Project Files section into the five categories; add the tools entry.
-- Update `docs/WORKFLOWS.md`, `docs/SCREEN_MAP.md`, `docs/DESIGN_SYSTEM.md`, `docs/ARCHITECTURE.md`, `AGENTS.md` reading order, `README.md`, and status documents as needed.
+Implemented:
+
+- Reorganized the Project Files sidebar from a flat list of 13 items into five workflow categories (Define the Project, Design the Solution, Execute & Track, Guide AI Agents, Transfer & Continue), each expanded by default. Overview and Start a New Project remain as standalone entries.
+- Added a top-level Tools sidebar section with the Prompt Generator entry.
+- Updated `docs/SCREEN_MAP.md` (category structure + Tools row), `docs/WORKFLOWS.md` (category-to-lifecycle cross-reference), `docs/ARCHITECTURE.md` (navigation structure), `docs/DESIGN_SYSTEM.md` (no changes needed — sidebar styling is generic), `docs/DECISIONS.md` (DEC-012 status), and `README.md` (status line).
+
+Verified:
+
+- Production build passes (145 pages).
+- EN/AR sidebar shows correct categories and Arabic labels; all links resolve (HTTP 200).
+- Mobile drawer renders all groups expanded; no horizontal overflow.
+- Prompt Generator accessible from Tools section; active state correct.
 
 ### Phase E — Validate and Decide
 
@@ -691,7 +701,7 @@ Selected stack:
 
 The English MVP is complete and verified, and the Arabic localization (Phases 1-3) is complete. The Arabic locale is fully translated across the site.
 
-The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. A new improvement plan is now active: the **Project Files Workflow Redesign** (see the section above). Phases A (Foundation), B (Prompt Generator), C (Prototype Pages), C2 (Project Files Reconciliation), and Navigation Consistency are complete and committed; Phases D-E are pending.
+The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. A new improvement plan is now active: the **Project Files Workflow Redesign** (see the section above). Phases A (Foundation), B (Prompt Generator), C (Prototype Pages), C2 (Project Files Reconciliation), Navigation Consistency, and Phase D (Navigation and Documentation Reconciliation) are complete and committed; Phase E (Validate and Decide) is pending.
 
 Next steps:
 

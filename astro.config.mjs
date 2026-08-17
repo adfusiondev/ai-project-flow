@@ -48,17 +48,52 @@ export default defineConfig({
 					items: [
 						{ label: 'Overview', slug: 'files/overview', translations: { ar: 'نظرة عامة' } },
 						{ label: 'Start a New Project', slug: 'files/start', translations: { ar: 'ابدأ مشروعًا جديدًا' } },
-						{ label: 'PROJECT_CONTEXT.md', slug: 'files/project-context', translations: { ar: 'PROJECT_CONTEXT.md' } },
-						{ label: 'docs/MVP.md', slug: 'files/mvp', translations: { ar: 'docs/MVP.md' } },
-						{ label: 'docs/REQUIREMENTS.md', slug: 'files/requirements', translations: { ar: 'docs/REQUIREMENTS.md' } },
-						{ label: 'docs/ARCHITECTURE.md', slug: 'files/architecture', translations: { ar: 'docs/ARCHITECTURE.md' } },
-						{ label: 'docs/DECISIONS.md', slug: 'files/decisions', translations: { ar: 'docs/DECISIONS.md' } },
-						{ label: 'PLAN.md', slug: 'files/plan', translations: { ar: 'PLAN.md' } },
-						{ label: 'PROJECT_STATUS.md', slug: 'files/project-status', translations: { ar: 'PROJECT_STATUS.md' } },
-						{ label: 'AGENTS.md', slug: 'files/agents', translations: { ar: 'AGENTS.md' } },
-						{ label: 'CHANGELOG.md', slug: 'files/changelog', translations: { ar: 'CHANGELOG.md' } },
-						{ label: 'HANDOFF.md', slug: 'files/handoff', translations: { ar: 'HANDOFF.md' } },
-						{ label: 'SKILL.md', slug: 'files/skill', translations: { ar: 'SKILL.md' } },
+						{
+							label: 'Define the Project',
+							translations: { ar: 'تحديد المشروع' },
+							collapsed: false,
+							items: [
+								{ label: 'PROJECT_CONTEXT.md', slug: 'files/project-context', translations: { ar: 'PROJECT_CONTEXT.md' } },
+								{ label: 'docs/MVP.md', slug: 'files/mvp', translations: { ar: 'docs/MVP.md' } },
+							],
+						},
+						{
+							label: 'Design the Solution',
+							translations: { ar: 'تصميم الحل' },
+							collapsed: false,
+							items: [
+								{ label: 'docs/REQUIREMENTS.md', slug: 'files/requirements', translations: { ar: 'docs/REQUIREMENTS.md' } },
+								{ label: 'docs/ARCHITECTURE.md', slug: 'files/architecture', translations: { ar: 'docs/ARCHITECTURE.md' } },
+								{ label: 'docs/DECISIONS.md', slug: 'files/decisions', translations: { ar: 'docs/DECISIONS.md' } },
+							],
+						},
+						{
+							label: 'Execute & Track',
+							translations: { ar: 'التنفيذ والتتبع' },
+							collapsed: false,
+							items: [
+								{ label: 'PLAN.md', slug: 'files/plan', translations: { ar: 'PLAN.md' } },
+								{ label: 'PROJECT_STATUS.md', slug: 'files/project-status', translations: { ar: 'PROJECT_STATUS.md' } },
+								{ label: 'CHANGELOG.md', slug: 'files/changelog', translations: { ar: 'CHANGELOG.md' } },
+							],
+						},
+						{
+							label: 'Guide AI Agents',
+							translations: { ar: 'توجه وكلاء الذكاء الاصطناعي' },
+							collapsed: false,
+							items: [
+								{ label: 'AGENTS.md', slug: 'files/agents', translations: { ar: 'AGENTS.md' } },
+								{ label: 'SKILL.md', slug: 'files/skill', translations: { ar: 'SKILL.md' } },
+							],
+						},
+						{
+							label: 'Transfer & Continue',
+							translations: { ar: 'ال转让 والمتابعة' },
+							collapsed: false,
+							items: [
+								{ label: 'HANDOFF.md', slug: 'files/handoff', translations: { ar: 'HANDOFF.md' } },
+							],
+						},
 					],
 				},
 				{
@@ -139,6 +174,13 @@ export default defineConfig({
 						{ label: 'Overview', slug: 'reference/overview', translations: { ar: 'نظرة عامة' } },
 						{ label: 'Workflow at a Glance', slug: 'reference/workflow-at-a-glance', translations: { ar: 'سير العمل بنظرة سريعة' } },
 						{ label: 'Reading Order', slug: 'reference/reading-order', translations: { ar: 'ترتيب القراءة' } },
+					],
+				},
+				{
+					label: 'Tools',
+					translations: { ar: 'الأدوات' },
+					items: [
+						{ label: 'Prompt Generator', slug: 'tools/prompt-generator', translations: { ar: 'مولد المطالبات' } },
 					],
 				},
 			],

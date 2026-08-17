@@ -2,11 +2,11 @@
 
 ## Current Phase
 
-Project Files Workflow Redesign — Phase C2 + Navigation Consistency
+Project Files Workflow Redesign — Phase D (Navigation and Documentation Reconciliation)
 
 Status: Completed — implemented, verified, and committed (2026-08-16)
 
-Phase C2 (Project Files Reconciliation) of the approved Project Files Workflow Redesign is complete and committed: the Project Files UI/UX reconciliation standardized every workflow action on the shared 40px `.apf-action` system, the visual refinement pass made the Prompt Generator one continuous workflow surface, and the button/control alignment fixes unified every generator and Start widget control on the shared 40px height and closed a Starlight sibling-margin leak inside both panels. A Navigation Consistency pass then closed the last navigation gap: the Prompt Generator (EN + AR) had no Previous/Next because it sits outside the Starlight sidebar, so a contextual Back-to-file / Next-recommended-file navigation was added (derived from the shared workflow data) and verified EN/AR × desktop × mobile. EN/AR verification is complete and the production build passes (145 pages). Phases D-E are pending. The site remains live on Vercel at https://ai-project-flow.vercel.app.
+Phase C2 (Project Files Reconciliation) of the approved Project Files Workflow Redesign is complete and committed: the Project Files UI/UX reconciliation standardized every workflow action on the shared 40px `.apf-action` system, the visual refinement pass made the Prompt Generator one continuous workflow surface, and the button/control alignment fixes unified every generator and Start widget control on the shared 40px height and closed a Starlight sibling-margin leak inside both panels. A Navigation Consistency pass then closed the last navigation gap: the Prompt Generator (EN + AR) had no Previous/Next because it sits outside the Starlight sidebar, so a contextual Back-to-file / Next-recommended-file navigation was added (derived from the shared workflow data) and verified EN/AR × desktop × mobile. EN/AR verification is complete and the production build passes (145 pages). Phase E (Validate and Decide) is pending. The site remains live on Vercel at https://ai-project-flow.vercel.app.
 
 ## Overall Status
 
@@ -63,6 +63,14 @@ Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) deli
 * Closed the last navigation gap in the Project Files workflow: the Prompt Generator (`/tools/prompt-generator/` + `/ar/tools/prompt-generator/`) is outside the Starlight sidebar, so it had no Previous/Next and no way to return to the originating file or continue to the next recommended file.
 * Added a contextual Back-to-file / Next-recommended-file navigation (EN + AR), derived from the shared `FLOW_ORDER` / `nextFile` workflow data and re-rendered when the target file or size changes. Traditional sidebar Previous/Next is intentionally not used because the generator's context is dynamic, not sidebar-ordered; all `/files/*` pages keep their native Starlight pagination unchanged.
 * Verified: EN/AR × 1280px desktop × 390px mobile; Back returns to the originating file guide; next links and "Generate its prompt" deep links follow the recommended order per size; RTL mirrored; stacked full-width on mobile without overflow; no console errors; production build passes (145 pages).
+### Project Files Workflow Redesign — Phase D (Navigation and Documentation Reconciliation)
+
+* Reorganized the Project Files sidebar from a flat list of 13 items into five workflow categories: Define the Project, Design the Solution, Execute & Track, Guide AI Agents, and Transfer & Continue. Each category group is expanded by default; Overview and Start a New Project remain as standalone entries above the categories.
+* Added a top-level Tools sidebar section with the Prompt Generator entry (`/tools/prompt-generator/` + Arabic), making the generator discoverable from the sidebar for the first time.
+* Updated documentation: `docs/SCREEN_MAP.md` (category structure + Tools row), `docs/WORKFLOWS.md` (category-to-lifecycle cross-reference), `docs/ARCHITECTURE.md` (navigation structure), `docs/DECISIONS.md` (DEC-012 status), and `README.md` (status line).
+* Verified: production build passes (145 pages); EN/AR sidebar shows correct categories and Arabic labels; all sidebar links resolve (HTTP 200); mobile drawer renders all groups expanded; Prompt Generator accessible from Tools section.
+* No content pages were modified; this phase is purely navigation/documentation reconciliation.
+
 ### Project Files Workflow Redesign — Phase B (Prompt Generator)
 
 * Implemented the bilingual Prompt Generator (frontend-only, no backend):

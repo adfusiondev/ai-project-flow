@@ -58,6 +58,25 @@ The current MVP will use:
 Astro + Starlight was selected because it provides a simple, fast, documentation-focused foundation with strong Markdown support and minimal unnecessary complexity.
 ---
 
+## Navigation Structure
+
+The site sidebar organizes content into sections:
+
+- **Start Here** — introduction and quick start.
+- **Project Lifecycle** — the 12 lifecycle stages from idea to handoff.
+- **Project Files** — file documentation organized into five workflow categories (Define the Project, Design the Solution, Execute & Track, Guide AI Agents, Transfer & Continue), with Overview and Start a New Project as standalone entries.
+- **Skills** — reusable AI agent workflows.
+- **Commands** — terminal commands with explanations.
+- **Prompts** — reusable AI prompts.
+- **Verification** — how to confirm work is complete.
+- **Handoff** — making a project portable.
+- **Reference** — supporting reference content.
+- **Tools** — interactive workflow tools (Prompt Generator).
+
+Sidebar categories and their file mappings are defined in `astro.config.mjs` and `src/scripts/prompt-data.ts`.
+
+---
+
 ## Recommended Technical Shape
 
 The MVP should use a simple frontend-oriented architecture.

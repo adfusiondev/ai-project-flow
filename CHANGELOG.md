@@ -2,6 +2,24 @@
 
 All meaningful project changes should be recorded here.
 
+## 2026-08-16 — Phase D: Navigation and Documentation Reconciliation
+
+### Changed
+
+- **Project Files sidebar restructured** — the flat list of 13 Project Files items was reorganized into five workflow categories (Define the Project, Design the Solution, Execute & Track, Guide AI Agents, Transfer & Continue), each expanded by default. Overview and Start a New Project remain as standalone entries at the top of the section.
+- **Tools section added** — a new top-level Tools sidebar section was added with the Prompt Generator entry (`/tools/prompt-generator/` + Arabic), making the generator discoverable from the sidebar for the first time (previously deferred from Phase B).
+- **Documentation updated** — `docs/SCREEN_MAP.md` (category structure + Tools row), `docs/WORKFLOWS.md` (category-to-lifecycle cross-reference table), `docs/ARCHITECTURE.md` (navigation structure section), `docs/DECISIONS.md` (DEC-012 implementation status), and `README.md` (status line).
+- No content pages were modified; this phase is purely navigation/documentation reconciliation.
+
+### Verified
+
+- Production build passes (145 pages).
+- EN sidebar: 5 category groups rendered under Project Files with correct items; Tools section with Prompt Generator.
+- AR sidebar: same structure with correct Arabic labels (تحديد المشروع, تصميم الحل, التنفيذ والتتبع, توجه وكلاء الذكاء الاصطناعي,转让 والمتابعة, الأدوات).
+- All sidebar links resolve (HTTP 200).
+- Mobile drawer renders all groups expanded; no horizontal overflow at 390px.
+- Prompt Generator accessible from the new Tools sidebar entry; active state highlights correctly.
+
 ## 2026-08-16 — Prompt Generator workflow navigation
 
 ### Added

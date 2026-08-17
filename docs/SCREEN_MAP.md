@@ -34,13 +34,14 @@ The primary navigation is organized into the following sections:
 | --- | --- |
 | Start Here | Introduction to the documentation and how to use it. |
 | Project Lifecycle | The main stages from idea to handoff. |
-| Project Files | The purpose of the important project files. |
+| Project Files | The purpose of the important project files, organized into five workflow categories: Define the Project, Design the Solution, Execute & Track, Guide AI Agents, and Transfer & Continue. |
 | Skills | Reusable workflows for AI coding agents. |
 | Commands | Terminal commands with explanations. |
 | Prompts | Reusable AI prompts for common project tasks. |
 | Verification | How to confirm work is complete. |
 | Handoff | Making a project portable between environments. |
 | Reference | Supporting reference content. |
+| Tools | Interactive workflow tools (Prompt Generator). |
 
 ---
 
