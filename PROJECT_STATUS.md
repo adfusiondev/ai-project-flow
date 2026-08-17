@@ -2,15 +2,15 @@
 
 ## Current Phase
 
-Project Files Workflow Redesign — Phase D (Navigation and Documentation Reconciliation)
+Project Files Workflow Redesign — Phase E (Validate and Decide)
 
-Status: Completed — implemented, verified, and committed (2026-08-16)
+Status: Completed — validated, follow-up fixes committed (2026-08-16)
 
 Phase C2 (Project Files Reconciliation) of the approved Project Files Workflow Redesign is complete and committed: the Project Files UI/UX reconciliation standardized every workflow action on the shared 40px `.apf-action` system, the visual refinement pass made the Prompt Generator one continuous workflow surface, and the button/control alignment fixes unified every generator and Start widget control on the shared 40px height and closed a Starlight sibling-margin leak inside both panels. A Navigation Consistency pass then closed the last navigation gap: the Prompt Generator (EN + AR) had no Previous/Next because it sits outside the Starlight sidebar, so a contextual Back-to-file / Next-recommended-file navigation was added (derived from the shared workflow data) and verified EN/AR × desktop × mobile. EN/AR verification is complete and the production build passes (145 pages). Phase E (Validate and Decide) is pending. The site remains live on Vercel at https://ai-project-flow.vercel.app.
 
 ## Overall Status
 
-Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. In progress — Project Files Workflow Redesign (Phases A-Foundation, B-Prompt Generator, C-Prototype Pages, C2-Reconciliation, and Navigation Consistency implemented and committed; Phases D-E pending).
+Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. Complete — Project Files Workflow Redesign (Phases A-E all implemented, validated, and committed).
 
 ---
 
@@ -63,6 +63,13 @@ Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) deli
 * Closed the last navigation gap in the Project Files workflow: the Prompt Generator (`/tools/prompt-generator/` + `/ar/tools/prompt-generator/`) is outside the Starlight sidebar, so it had no Previous/Next and no way to return to the originating file or continue to the next recommended file.
 * Added a contextual Back-to-file / Next-recommended-file navigation (EN + AR), derived from the shared `FLOW_ORDER` / `nextFile` workflow data and re-rendered when the target file or size changes. Traditional sidebar Previous/Next is intentionally not used because the generator's context is dynamic, not sidebar-ordered; all `/files/*` pages keep their native Starlight pagination unchanged.
 * Verified: EN/AR × 1280px desktop × 390px mobile; Back returns to the originating file guide; next links and "Generate its prompt" deep links follow the recommended order per size; RTL mirrored; stacked full-width on mobile without overflow; no console errors; production build passes (145 pages).
+### Project Files Workflow Redesign — Phase E (Validate and Decide)
+
+* End-to-end validation of the complete Project Files workflow: Project Files Overview, Start a New Project, category-based sidebar navigation, individual file guides, Create/Review/Update/Recover actions, Prompt Generator, workflow navigation, EN/AR, desktop/mobile, light/dark.
+* Found and fixed one live production bug: the AR sidebar label for "Transfer & Continue" contained Chinese characters (`转让`) instead of Arabic (`النقل`).
+* Cleaned up stale documentation: updated all "Phase D pending" references to reflect Phase D completion, updated Next Recommended Step sections to Phase E, corrected SCREEN_MAP.md Arabic translation status, removed stale "not yet committed" notes from HANDOFF.md.
+* Validation result: Project Files Workflow Redesign is ready to close. No remaining issues.
+
 ### Project Files Workflow Redesign — Phase D (Navigation and Documentation Reconciliation)
 
 * Reorganized the Project Files sidebar from a flat list of 13 items into five workflow categories: Define the Project, Design the Solution, Execute & Track, Guide AI Agents, and Transfer & Continue. Each category group is expanded by default; Overview and Start a New Project remain as standalone entries above the categories.
@@ -320,11 +327,7 @@ None currently.
 
 ## Next Recommended Step
 
-Continue the approved Project Files Workflow Redesign:
-
-1. **Phase C — Prototype pages**: add the Start a New Project page and redesign the `PROJECT_CONTEXT.md` and `PROJECT_STATUS.md` pages (English and Arabic), adding the compact structure and deep links to the generator.
-2. **Phase D — Navigation and documentation reconciliation**: regroup the sidebar Project Files section into the five categories, add the tools entry, and update the related docs.
-3. **Phase E — Validate and decide**: end-to-end test and rollout decision.
+The Project Files Workflow Redesign is complete. All phases (A–E) are implemented, validated, and committed.
 
 Deferred (not started): Recovery / Session Continuity / Model Switching / Agent Failure Handling documentation and the cross-tool transfer benchmark.
 

@@ -65,7 +65,7 @@ Verification is complete: the MVP satisfies the documented requirements and succ
 
 Arabic localization is complete: the home page, all section overview pages (Phase 1), all 12 Project Lifecycle stage pages plus all 11 Project Files pages (Phase 2), and all Skills, Commands, Prompts, Verification, Handoff, and Reference pages (Phase 3) are translated into professional Arabic with exact structural parity.
 
-Status: Complete — planned English MVP delivered (Phases 0-10); Arabic localization delivered (Phases 1-3 complete); Project Files Workflow Redesign Phases A-C2 and Navigation Consistency delivered; Phase D (sidebar categories + Tools entry) delivered; site live on Vercel at https://ai-project-flow.vercel.app.
+Status: Complete — planned English MVP delivered (Phases 0-10); Arabic localization delivered (Phases 1-3 complete); Project Files Workflow Redesign Phases A-C2 and Navigation Consistency delivered; Phases A–E (complete Project Files Workflow Redesign) delivered; site live on Vercel at https://ai-project-flow.vercel.app.
 
 See:
 

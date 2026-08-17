@@ -88,7 +88,7 @@ export default defineConfig({
 						},
 						{
 							label: 'Transfer & Continue',
-							translations: { ar: 'ال转让 والمتابعة' },
+							translations: { ar: 'النقل والمتابعة' },
 							collapsed: false,
 							items: [
 								{ label: 'HANDOFF.md', slug: 'files/handoff', translations: { ar: 'HANDOFF.md' } },

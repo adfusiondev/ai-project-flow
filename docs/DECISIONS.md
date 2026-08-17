@@ -344,8 +344,8 @@ The existing file pages are explanatory ("what the file is / why it exists") and
 - Phase C (Prototype Pages) implemented and verified: rewritten Project Files Overview, Start a New Project page with interactive size selector, redesigned PROJECT_CONTEXT.md and PROJECT_STATUS.md pages (EN + AR).
 - Phase C2 (Reconciliation) approved and committed: UI/UX reconciliation, visual refinement, button/control alignment.
 - Navigation Consistency implemented and verified: contextual Back-to-file / Next-recommended-file navigation on the Prompt Generator.
-- Phase D (Navigation and Documentation Reconciliation) implemented and verified: Project Files sidebar reorganized into five workflow categories; Tools section added with the Prompt Generator entry; documentation updated (SCREEN_MAP, WORKFLOWS, ARCHITECTURE, DESIGN_SYSTEM, README).
-- Phase E (Validate and Decide) is pending.
+- Phase D (Navigation and Documentation Reconciliation) implemented and verified: Project Files sidebar reorganized into five workflow categories; Tools section added with the Prompt Generator entry; documentation updated.
+- Phase E (Validate and Decide) implemented and verified: end-to-end workflow validation completed; AR sidebar label bug fixed; stale documentation cleaned up. Project Files Workflow Redesign is fully completed.
 
 ---
 
@@ -364,4 +364,4 @@ Accepted decisions:
 - Arabic and English readiness.
 - Astro + Starlight selected for the documentation MVP.
 - IBM Plex Sans Arabic for the Arabic locale.
-- Project Files Workflow Redesign (Phases A-D implemented and committed; Phase E pending).
+- Project Files Workflow Redesign (Phases A-E implemented, validated, and committed — complete).

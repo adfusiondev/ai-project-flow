@@ -2,6 +2,24 @@
 
 All meaningful project changes should be recorded here.
 
+## 2026-08-16 — Phase E: Validate and Decide (Project Files Workflow Redesign closure)
+
+### Completed
+
+- End-to-end validation of the complete Project Files workflow across all 10 evaluation areas (workflow clarity, navigation continuity, visual consistency, Prompt Generator usefulness, project-size behavior, file/action deep-links, template/copy behavior, RTL/LTR correctness, responsive behavior, remaining friction).
+- Found and fixed one live production bug: the AR sidebar label for "Transfer & Continue" contained Chinese characters (`转让`) instead of the correct Arabic (`النقل`). Fixed in `astro.config.mjs`.
+- Cleaned up stale documentation: updated all "Phase D pending" references in `PROJECT_STATUS.md`, `HANDOFF.md`, `CHANGELOG.md`, `PLAN.md`; updated Next Recommended Step sections to Phase E; corrected `docs/SCREEN_MAP.md` Arabic translation status; removed stale "not yet committed" notes from `HANDOFF.md`.
+- Validation result: Project Files Workflow Redesign is fully completed and validated. All phases (A–E) are implemented, validated, and committed.
+
+### Files changed
+
+- `astro.config.mjs` — AR sidebar label corrected
+- `PROJECT_STATUS.md` — Phase E marked complete, overall status updated
+- `HANDOFF.md` — Phase E marked complete, stale text removed
+- `PLAN.md` — Phase E marked complete, next steps updated
+- `CHANGELOG.md` — Phase E entry added
+- `docs/SCREEN_MAP.md` — Arabic translation status corrected
+
 ## 2026-08-16 — Phase D: Navigation and Documentation Reconciliation
 
 ### Changed
@@ -44,7 +62,7 @@ All meaningful project changes should be recorded here.
 ### Notes
 
 - Temporary review/report artifacts (`.report-c2.md`, `.review-*.png`) were removed from the repository.
-- Phase D (navigation and documentation reconciliation) and Phase E (validate and decide) remain pending.
+- Phase E (validate and decide) remains pending.
 
 ## 2026-08-16 — Button alignment pass (unified control heights and vertical alignment)
 
