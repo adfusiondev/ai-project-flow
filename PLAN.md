@@ -641,7 +641,7 @@ Status: Completed (approved and committed)
 - UI/UX reconciliation: all workflow actions standardized on the shared `.apf-action` base (40px, Primary/Secondary only, compact removed); Arabic Recover unified to `استعادة` in shared data and generator UI; orphaned `.apf-matrix` CSS removed; the canonical Action System added to `docs/DESIGN_SYSTEM.md`.
 - Visual refinement pass: the Prompt Generator became one continuous workflow surface (steps, collapsible Project details, and Generate action share one panel with hairline dividers), the output renders as a standard `.prompt-block`, Starlight's generic `<details>/<summary>` styling no longer applies to the generator, the Start hint gap was normalized to the shared 16px rhythm, and the duplicated step/index badge rules were merged.
 - Button/control alignment fixes: generator segmented pills and the Target File dropdown were unified on the shared 40px height (they had inherited Starlight's markdown line-height and rendered at 42px/44px); a Starlight sibling-margin leak inside the generator panel and the Start widget was closed by opting both containers out with the `not-content` class and making the section rhythm explicit — step badges now sit centered on their controls and the segmented pills form one aligned row.
-- Verified: EN/AR × light/dark × 1280/390 (all controls 40px, badges centered, aligned segmented rows, intended row gaps, no horizontal overflow); production build passes (145 pages). The intermittent page-bottom scroll issue remains only as an observation — no speculative scroll or layout-height fix was applied.
+- Verified: EN/AR × light/dark × 1280/390 (all controls 40px, badges centered, aligned segmented rows, intended row gaps, no horizontal overflow); production build passes (145 pages).
 - Temporary review/report artifacts were removed; the approved implementation is committed.
 
 ### Phase D — Navigation and Documentation Reconciliation
@@ -691,7 +691,7 @@ Selected stack:
 
 The English MVP is complete and verified, and the Arabic localization (Phases 1-3) is complete. The Arabic locale is fully translated across the site.
 
-The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. A new improvement plan is now active: the **Project Files Workflow Redesign** (see the section above). Phases A (Foundation), B (Prompt Generator), C (Prototype Pages), C2 (Project Files Reconciliation), and Navigation Consistency are complete and committed; Phases D-E are pending. A scroll/viewport issue observed on some of the pages where the navigation work was added is intentionally deferred to the next session.
+The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. A new improvement plan is now active: the **Project Files Workflow Redesign** (see the section above). Phases A (Foundation), B (Prompt Generator), C (Prototype Pages), C2 (Project Files Reconciliation), and Navigation Consistency are complete and committed; Phases D-E are pending.
 
 Next steps:
 

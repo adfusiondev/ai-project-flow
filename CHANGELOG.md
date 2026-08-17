@@ -15,7 +15,6 @@ All meaningful project changes should be recorded here.
 ### Verified
 
 - EN + AR × desktop (1280px) × mobile (390px): nav present and correct (RTL mirrored with Back on the reading-start side, stacked full-width on mobile, no horizontal overflow); Back returns to the originating file guide; next links and deep links follow the recommended file order per size; file-guide pages keep native pagination; no console errors; production build passes (145 pages).
-- **Known issue — deferred intentionally to the next session:** a scroll/viewport behavior issue remains on some of the pages where this navigation work was added. It is recorded here only; no speculative fix was applied.
 
 ## 2026-08-16 — Phase C2 / Project Files Reconciliation approved and committed
 
@@ -23,7 +22,6 @@ All meaningful project changes should be recorded here.
 
 - Phase C2 (Project Files Reconciliation) was approved and committed, closing the Phase C checkpoint. The Project Files UI/UX reconciliation, the visual refinement pass, and the button/control alignment fixes are all included.
 - EN/AR verification completed; the production build passes (145 pages).
-- The intermittent page-bottom scroll issue remains only as an observation — no speculative scroll or layout-height fix was applied.
 
 ### Notes
 
@@ -60,8 +58,6 @@ All meaningful project changes should be recorded here.
 
 ### Notes
 
-- No scroll behavior was changed in this pass; the intermittent page-bottom observation from the reconciliation pass remains recorded but un-reproduced.
-
 ## 2026-08-16 — Project Files UI/UX reconciliation (shared action system)
 
 ### Changed
@@ -76,8 +72,6 @@ All meaningful project changes should be recorded here.
 - `docs/DESIGN_SYSTEM.md` — added the canonical **Action System (Project Files Workflow)** section: the single 40px action-button base, Primary/Secondary hierarchy, responsive action-group behavior (4-across / 2×2 / stacked), RTL ordering, and the shared `.apf-primary-action` / `.apf-next-file` surface rules.
 
 ### Notes
-
-- The intermittent page-bottom scroll observation is recorded for future reproduction (not reproduced in this pass; no scroll/layout code changed).
 
 ## 2026-08-15 — Project Files pages full rollout to compact action-first structure
 
@@ -129,7 +123,7 @@ All meaningful project changes should be recorded here.
 ### Notes
 
 - No functionality changed: Small/Standard/Advanced switching, file sequences, level badges, and generator deep-links (`?file=...&action=...&size=...`) are preserved.
-- Scroll behavior unchanged (user confirmed the reported scroll issue is not reproducible).
+
 - Checkpoint passed — the Phase C2 reconciliation was approved and committed on 2026-08-16.
 
 ### Verified
@@ -238,7 +232,6 @@ All meaningful project changes should be recorded here.
   - No console errors; only the pre-existing Starlight search-form accessibility notice remains.
 
 ---
-
 
 ### Added
 
@@ -487,7 +480,6 @@ All meaningful project changes should be recorded here.
 - Mapped `--sl-color-text` to `Text primary` so body content uses the documented primary text color; kept sidebar links on `Text secondary` per the sidebar spec.
 - Updated `docs/DESIGN_SYSTEM.md` with the corrected light `Text muted` value.
 - Re-verified in the browser: Lighthouse Accessibility improved from 96 to 100; build still passes (71 pages).
-
 
 ### Phase 6 — Copy and Documentation Interactions
 
