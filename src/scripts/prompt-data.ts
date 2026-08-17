@@ -330,6 +330,15 @@ export const FILE_TEMPLATES: Partial<Record<FileId, FileTemplate>> = {
 			{ heading: 'Current Status', placeholder: { en: '[One short paragraph on where the project stands today.]', ar: '[فقرة قصيرة عن موقف المشروع اليوم.]' } },
 		],
 	},
+	'mvp': {
+		file: 'mvp',
+		sections: [
+			{ heading: 'MVP Goal', placeholder: { en: '[The smallest useful first version, in one sentence.]', ar: '[أصغر نسخة أولى مفيدة، في جملة واحدة.]' } },
+			{ heading: 'MVP Scope', placeholder: { en: '- [What the first version includes.]', ar: '- [ما تشمله النسخة الأولى.]' } },
+			{ heading: 'Out of Scope', placeholder: { en: '- [What is deliberately excluded from the MVP.]', ar: '- [ما يتم استبعاده عن قصد من الحد الأدنى للمنتج.]' } },
+			{ heading: 'MVP Success Criteria', placeholder: { en: '- [How you will know the MVP is finished and works.]', ar: '- [كيف ستعرف أن الحد الأدنى للمنتج منجز ويعمل.]' } },
+		],
+	},
 };
 
 export function generateFileContent(input: import('./prompt-generator.js').GeneratorInput, lang: 'en' | 'ar'): string | null {
@@ -337,7 +346,7 @@ export function generateFileContent(input: import('./prompt-generator.js').Gener
 	if (!template) return null;
 
 	const lines: string[] = [];
-	const headingPrefix = input.file === 'project-context' ? '# PROJECT_CONTEXT.md' : `# ${FILES[input.file].file}`;
+	const headingPrefix = input.file === 'project-context' ? '# PROJECT_CONTEXT.md' : input.file === 'mvp' ? `# ${input.projectName ? input.projectName + ' — ' : ''}MVP` : `# ${FILES[input.file].file}`;
 	lines.push(headingPrefix);
 	lines.push('');
 
