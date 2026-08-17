@@ -1,10 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://ai-project-flow.vercel.app',
+	adapter: vercel(),
 	integrations: [
 		starlight({
 			title: 'AI Project Flow',
