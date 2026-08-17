@@ -308,3 +308,54 @@ export function nextFile(size: ProjectSize, fileId: FileId): FileId | null {
 	if (index === -1 || index === order.length - 1) return null;
 	return order[index + 1];
 }
+
+// --- G1: File Content Generation (PROJECT_CONTEXT.md only) ---
+
+export interface FileTemplate {
+	file: FileId;
+	sections: { heading: string; field?: keyof import('./prompt-generator.js').GeneratorInput; placeholder: Record<'en' | 'ar', string> }[];
+}
+
+export const FILE_TEMPLATES: Partial<Record<FileId, FileTemplate>> = {
+	'project-context': {
+		file: 'project-context',
+		sections: [
+			{ heading: 'Project Purpose', field: 'projectIdea', placeholder: { en: '[Describe what this project is and why it exists.]', ar: '[صف ما هذا المشروع ولماذا существует.]' } },
+			{ heading: 'Primary User', field: 'targetUsers', placeholder: { en: '[Describe who this project is for.]', ar: '[صف لمن هذا المشروع.]' } },
+			{ heading: 'Current Product Form', field: 'platform', placeholder: { en: '[Describe what the product looks like today.]', ar: '[صف كيف يبدو المنتج اليوم.]' } },
+			{ heading: 'Current MVP', field: 'projectType', placeholder: { en: '[The smallest useful first version, in a few bullets.]', ar: '[أصغر نسخة أولى مفيدة، في بضعة فقرات.]' } },
+			{ heading: 'Future Scope', placeholder: { en: '[What comes after the MVP, clearly separated.]', ar: '[ما يأتي بعد الحد الأدنى للمنتج، مفصّل بوضوح.]' } },
+			{ heading: 'Languages and Portability', field: 'languages', placeholder: { en: '[Languages, frameworks, and portability goals.]', ar: '[اللغات والأطر وأهداف القابلية للنقل.]' } },
+			{ heading: 'Core Project Rules', field: 'constraints', placeholder: { en: '[Rule 1]\n- [Rule 2]', ar: '[القاعدة 1]\n- [القاعدة 2]' } },
+			{ heading: 'Current Status', placeholder: { en: '[One short paragraph on where the project stands today.]', ar: '[فقرة قصيرة عن موقف المشروع اليوم.]' } },
+		],
+	},
+};
+
+export function generateFileContent(input: import('./prompt-generator.js').GeneratorInput, lang: 'en' | 'ar'): string | null {
+	const template = FILE_TEMPLATES[input.file];
+	if (!template) return null;
+
+	const lines: string[] = [];
+	const headingPrefix = input.file === 'project-context' ? '# PROJECT_CONTEXT.md' : `# ${FILES[input.file].file}`;
+	lines.push(headingPrefix);
+	lines.push('');
+
+	for (const section of template.sections) {
+		lines.push(`## ${section.heading}`);
+		lines.push('');
+		if (section.field) {
+			const value = input[section.field];
+			if (value && value.trim().length > 0) {
+				lines.push(value.trim());
+			} else {
+				lines.push(section.placeholder[lang]);
+			}
+		} else {
+			lines.push(section.placeholder[lang]);
+		}
+		lines.push('');
+	}
+
+	return lines.join('\n').trimEnd() + '\n';
+}

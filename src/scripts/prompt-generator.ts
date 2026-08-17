@@ -3,8 +3,10 @@ import {
 	CATEGORIES,
 	FILE_IDS,
 	FILES,
+	FILE_TEMPLATES,
 	PROMPT_RULES,
 	SIZES,
+	generateFileContent,
 	getAction,
 	nextFile,
 	type Action,
@@ -57,6 +59,10 @@ interface Labels {
 	backTo: string;
 	nextRecommended: string;
 	generateItsPrompt: string;
+	generateFile: string;
+	outputLabelFile: string;
+	fileContentMode: string;
+	promptMode: string;
 }
 
 const EN: Labels = {
@@ -88,6 +94,10 @@ const EN: Labels = {
 	backTo: 'Back to',
 	nextRecommended: 'Next recommended file',
 	generateItsPrompt: 'Generate its prompt',
+	generateFile: 'Generate file',
+	outputLabelFile: 'Generated file',
+	fileContentMode: 'File Content',
+	promptMode: 'Prompt',
 };
 
 const AR: Labels = {
@@ -119,6 +129,10 @@ const AR: Labels = {
 	backTo: 'العودة إلى',
 	nextRecommended: 'الملف الموصى به التالي',
 	generateItsPrompt: 'أنشئ مطالبتها',
+	generateFile: 'إنشاء ملف',
+	outputLabelFile: 'الملف المُولَّدة',
+	fileContentMode: 'محتوى الملف',
+	promptMode: 'المطالبة',
 };
 
 function getLabels(): Labels {
@@ -210,6 +224,9 @@ interface GeneratorState {
 	};
 	file: { value: () => FileId; set: (id: FileId) => void; onChange: (cb: () => void) => void; element: HTMLElement };
 	output: HTMLDivElement;
+	mode: 'prompt' | 'file';
+	submitBtn: HTMLButtonElement;
+	updateMode: () => void;
 }
 
 function makeInput(name: string): HTMLInputElement {
@@ -438,6 +455,22 @@ function buildForm(): GeneratorState {
 	details.appendChild(detailsBody);
 	flow.appendChild(details);
 
+	// Mode toggle (only visible when file has a template)
+	const modeRow = el('div', { className: 'apf-generator__mode' });
+	const modeLabel = el('span', { className: 'apf-generator__mode-label' });
+	const modeSeg = makeSegmented(
+		'output-mode',
+		[
+			{ value: 'prompt', label: labels.promptMode },
+			{ value: 'file', label: labels.fileContentMode },
+		],
+		'prompt',
+	);
+	modeRow.appendChild(modeLabel);
+	modeRow.appendChild(modeSeg);
+	modeRow.hidden = true;
+	flow.appendChild(modeRow);
+
 	const actions = el('div', { className: 'apf-generator__actions apf-action-group' });
 	actions.appendChild(el('span', { className: 'apf-generator__step-num' }, '4'));
 	const submit = el('button', { type: 'submit', className: 'apf-action apf-action--primary apf-generator__submit' }, labels.generate);
@@ -446,7 +479,24 @@ function buildForm(): GeneratorState {
 
 	form.appendChild(el('div', { className: 'apf-generator__output' }));
 
-	return { form, inputs, file, output: form.querySelector<HTMLDivElement>('.apf-generator__output')! };
+	let currentMode: 'prompt' | 'file' = 'prompt';
+
+	const state = { form, inputs, file, output: form.querySelector<HTMLDivElement>('.apf-generator__output')!, mode: currentMode as 'prompt' | 'file', submitBtn: submit, updateMode: () => {} };
+
+	function updateMode(): void {
+		const hasTemplate = FILE_TEMPLATES[state.file.value()] != null;
+		modeRow.hidden = !hasTemplate;
+		if (!hasTemplate) currentMode = 'prompt';
+		else {
+			const checked = form.querySelector<HTMLInputElement>('input[name="output-mode"]:checked');
+			currentMode = (checked?.value as 'prompt' | 'file') ?? 'prompt';
+		}
+		state.mode = currentMode;
+		submit.textContent = currentMode === 'file' ? labels.generateFile : labels.generate;
+	}
+
+	state.updateMode = updateMode;
+	return state;
 }
 
 function readSegmented(form: HTMLFormElement, name: string): string {
@@ -473,7 +523,7 @@ function collectInput(state: GeneratorState): GeneratorInput {
 	};
 }
 
-function generate(state: GeneratorState): void {
+function generatePrompt(state: GeneratorState): void {
 	const text = buildPrompt(collectInput(state));
 	const labels = getLabels();
 	state.output.replaceChildren();
@@ -487,6 +537,27 @@ function generate(state: GeneratorState): void {
 		p.innerHTML = highlight(paragraph).replace(/\n/g, '<br>');
 		body.appendChild(p);
 	}
+	block.appendChild(header);
+	block.appendChild(body);
+	state.output.appendChild(block);
+	enhancePromptBlocks();
+}
+
+function generateFile(state: GeneratorState): void {
+	const input = collectInput(state);
+	const lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+	const text = generateFileContent(input, lang);
+	if (!text) return;
+	const labels = getLabels();
+	state.output.replaceChildren();
+
+	const block = el('div', { className: 'file-block' });
+	const header = el('div', { className: 'file-block__header' });
+	header.appendChild(el('span', { className: 'file-block__label' }, labels.outputLabelFile));
+	const body = el('div', { className: 'file-block__body' });
+	const pre = el('pre', { className: 'file-block__content' });
+	pre.textContent = text;
+	body.appendChild(pre);
 	block.appendChild(header);
 	block.appendChild(body);
 	state.output.appendChild(block);
@@ -551,15 +622,30 @@ function init() {
 	root.appendChild(state.form);
 
 	const renderNav = (): void => workflowNav(state);
-	state.file.onChange(renderNav);
 	state.form.querySelectorAll<HTMLInputElement>('input[name="size"]').forEach((input) => {
 		input.addEventListener('change', renderNav);
 	});
 	renderNav();
 
+	// Mode toggle change
+	state.form.querySelectorAll<HTMLInputElement>('input[name="output-mode"]').forEach((input) => {
+		input.addEventListener('change', () => {
+			state.updateMode();
+		});
+	});
+
+	state.file.onChange(() => {
+		state.updateMode();
+		renderNav();
+	});
+
 	state.form.addEventListener('submit', (event) => {
 		event.preventDefault();
-		generate(state);
+		if (state.mode === 'file') {
+			generateFile(state);
+		} else {
+			generatePrompt(state);
+		}
 		state.output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 	});
 
@@ -583,7 +669,12 @@ function init() {
 	}
 	if (action && ACTIONS.some((a) => a.id === action) && setRadio('action', action)) prefilled = true;
 
-	if (prefilled) generate(state);
+	if (prefilled) {
+		state.updateMode();
+		if (state.mode === 'file') generateFile(state);
+		else generatePrompt(state);
+	}
+	state.updateMode();
 	renderNav();
 }
 
