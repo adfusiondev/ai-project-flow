@@ -339,6 +339,19 @@ export const FILE_TEMPLATES: Partial<Record<FileId, FileTemplate>> = {
 			{ heading: 'MVP Success Criteria', placeholder: { en: '- [How you will know the MVP is finished and works.]', ar: '- [كيف ستعرف أن الحد الأدنى للمنتج منجز ويعمل.]' } },
 		],
 	},
+	'requirements': {
+		file: 'requirements',
+		sections: [
+			{ heading: 'Purpose', field: 'projectIdea', placeholder: { en: '[What this document defines and what it must stay aligned with.]', ar: '[ما يُعرّفه هذا المستند وما يجب أن يتوافق معه.]' } },
+			{ heading: 'Functional Requirements', placeholder: { en: '### FR-01 — {Requirement Title}\n\n[Verifiable behavior: what the project must do.]\n\n### FR-02 — {Requirement Title}\n\n[Verifiable behavior.]', ar: '### FR-01 — {عنوان المتطلب}\n\n[سلوك قابل للتحقق: ما يجب أن يفعله المشروع.]\n\n### FR-02 — {عنوان المتطلب}\n\n[سلوك قابل للتحقق.]' } },
+			{ heading: 'Non-Functional Requirements', field: 'platform', placeholder: { en: '- [Simplicity, performance, accessibility, portability, etc.]', ar: '- [البساطة والأداء والوصول والقابلية للنقل، إلخ.]' } },
+			{ heading: 'Content Requirements', placeholder: { en: '- [What the content must deliver.]', ar: '- [ما يجب أن تقدمه المحتويات.]' } },
+			{ heading: 'Design Requirements', placeholder: { en: '- [Layout and visual direction constraints.]', ar: '- [قيود التخطيط والتوجيه البصري.]' } },
+			{ heading: 'Localization Requirements', field: 'languages', placeholder: { en: '- [Languages, text direction, content separation.]', ar: '- [اللغات واتجاه النص وفصل المحتوى.]' } },
+			{ heading: 'Portability Requirements', field: 'constraints', placeholder: { en: '- [Tool, IDE, and AI-agent independence.]', ar: '- [استقلالية الأداة وبيئة التطوير ووكيل الذكاء الاصطناعي.]' } },
+			{ heading: 'MVP Constraints', placeholder: { en: '- [What the MVP must not require.]', ar: '- [ما يجب ألا يشترطه الحد الأدنى للمنتج.]' } },
+		],
+	},
 };
 
 export function generateFileContent(input: import('./prompt-generator.js').GeneratorInput, lang: 'en' | 'ar'): string | null {
@@ -346,7 +359,7 @@ export function generateFileContent(input: import('./prompt-generator.js').Gener
 	if (!template) return null;
 
 	const lines: string[] = [];
-	const headingPrefix = input.file === 'project-context' ? '# PROJECT_CONTEXT.md' : input.file === 'mvp' ? `# ${input.projectName ? input.projectName + ' — ' : ''}MVP` : `# ${FILES[input.file].file}`;
+	const headingPrefix = input.file === 'project-context' ? '# PROJECT_CONTEXT.md' : input.file === 'mvp' ? `# ${input.projectName ? input.projectName + ' — ' : ''}MVP` : input.file === 'requirements' ? `# ${input.projectName ? input.projectName + ' — ' : ''}Requirements` : `# ${FILES[input.file].file}`;
 	lines.push(headingPrefix);
 	lines.push('');
 
