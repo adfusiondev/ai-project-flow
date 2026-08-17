@@ -329,7 +329,7 @@ None currently.
 
 The Recovery & Continuity section (Phase F) is complete. All phases (A–F) of the project are implemented, validated, and committed.
 
-Deferred (not started): Cross-tool transfer benchmark.
+Cross-tool Transfer Benchmark v1 framework is prepared (baseline and fixture tags established, no runs executed). Next step: first actual benchmark run.
 
 ---
 
