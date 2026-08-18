@@ -1,3 +1,27 @@
+## 2026-08-18 — G5c: AI-Assisted ARCHITECTURE.md Generation via OpenRouter
+
+### Completed
+
+- Implemented AI-assisted ARCHITECTURE.md generation using OpenRouter's free tier.
+- Added `/api/generate-architecture.ts` server endpoint (`export const prerender = false`) that calls OpenRouter API and returns generated ARCHITECTURE.md content.
+- Added AI Generate mode to the Prompt Generator UI (architecture file only, not other files).
+- Added architecture template to `FILE_TEMPLATES` in `prompt-data.ts` (6 sections: Purpose, Architecture Principles, Current Application Type, Selected Technology, High-Level Structure, Rejected Alternatives).
+- Added AI block styles (loading spinner, error state, model label) in `custom.css`.
+- Fixed Vite env access: `import.meta.env.OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY` (Vite dev + Vercel production fallback).
+- Added `.vercel/` to `.gitignore`.
+- Configured `OPENROUTER_API_KEY` in Vercel production environment.
+- Verified: production endpoint generates valid ARCHITECTURE.md; model observed: `openai/gpt-oss-20b:free`; no API key exposure in response, client bundle, or server bundle.
+
+### Files changed
+
+- `src/pages/api/generate-architecture.ts` — new OpenRouter endpoint
+- `src/scripts/prompt-data.ts` — architecture template added to FILE_TEMPLATES
+- `src/scripts/prompt-generator.ts` — AI Generate mode added (architecture only)
+- `src/styles/custom.css` — AI block styles added
+- `.gitignore` — `.vercel/` added
+
+---
+
 # AI Project Flow — Changelog
 
 All meaningful project changes should be recorded here.

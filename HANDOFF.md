@@ -22,15 +22,15 @@ A personal learning and reusable reference project for documenting the complete 
 
 ## Current Phase
 
-Project Files Workflow Redesign — Complete
+G5c: AI-Assisted ARCHITECTURE.md Generation — Complete
 
-Status: All phases (A–E) implemented, validated, and committed (2026-08-16)
+Status: Production endpoint live, AI generation working (2026-08-18)
 
 Phase C (prototype pages) of the approved Project Files Workflow Redesign is implemented: the rewritten Project Files Overview, the new "Start a New Project" page with an interactive size selector and recommended file sequence, and the redesigned `PROJECT_CONTEXT.md` and `PROJECT_STATUS.md` pages (EN + AR) with primary action bars, copyable templates, and next-file guidance. The Phase C checkpoint was approved and the reconciliation committed (Phase C2) on 2026-08-16; Phase D completed and committed; Phase E completed and committed. A UI/UX reconciliation pass standardized all workflow action buttons on the shared 40px `.apf-action` system (Primary/Secondary only, no compact size), unified the Arabic Recover label to `استعادة`, removed the orphaned `.apf-matrix` CSS, and recorded the canonical Action System in `docs/DESIGN_SYSTEM.md`. A final visual refinement pass then made the workflow one coherent product: the Prompt Generator is now a single continuous workflow surface (steps, collapsible Project details, and Generate action share one panel with hairline dividers) and its output renders as a standard `.prompt-block`, the generator's `<details>/<summary>` no longer picks up Starlight's generic details styling, the Start hint gap was normalized to the shared 16px rhythm, and the duplicated step/index badge rules were merged. No routing, data-model, deep-link, prompt-building, copy, scroll, or layout-height behavior changed. A button-alignment pass then unified every generator control on the shared 40px action height (segmented pills and the Target File dropdown had inherited Starlight's markdown line-height and rendered at 42px/44px), and closed a Starlight sibling-margin leak inside the generator panel by opting the flow out with the `not-content` class while making the 16px section rhythm explicit — step badges now sit centered on their controls (delta 0) and the segmented pills form one aligned row. The same leak was then closed on the Start a New Project widget (which reuses the generator's size selector): its segmented row now renders 40px with aligned pills and the sequence rows return to their intended 8px gaps. Approved and committed as Phase C2 on 2026-08-16.
 
 A Navigation Consistency pass (2026-08-16) then closed the last navigation gap in the Project Files workflow: the Prompt Generator (`/tools/prompt-generator/` + `/ar/tools/prompt-generator/`) is outside the Starlight sidebar, so it had no Previous/Next and no way to return to the originating file or continue to the next recommended file. The generator now shows a contextual Back-to-file / Next-recommended-file navigation (EN + AR) built from the shared `FLOW_ORDER` / `nextFile` workflow data and re-rendered when the target file or size changes; all `/files/*` pages keep their native Starlight pagination. Verified EN/AR × desktop × mobile.
 
-The site remains deployed and live at https://ai-project-flow.vercel.app. The core English MVP (Phases 0-10) is complete and verified, and the Arabic localization (Phases 1-3) is complete.
+G5c is complete: AI-assisted ARCHITECTURE.md generation works in production via OpenRouter free tier. The site remains deployed and live at https://ai-project-flow.vercel.app. The core English MVP (Phases 0-10) is complete and verified, and the Arabic localization (Phases 1-3) is complete.
 
 Phase 1 (High-Level Overview Pages) is complete: sidebar translations, the localized prompt copy script, the Arabic home page, and all 8 section overview pages.
 
@@ -73,7 +73,7 @@ The MVP currently excludes:
 - Authentication.
 - User accounts.
 - Dynamic project generation.
-- Automatic file generation.
+- Automatic file generation (AI-assisted ARCHITECTURE.md generation is available via OpenRouter).
 
 ---
 
@@ -190,6 +190,16 @@ The MVP currently excludes:
   - Confirmed the repository alone lets a new agent determine what the project is, how to run it, what is complete, what remains, what decisions were made, and the next step.
   - Run instructions match `package.json` scripts; build (141 pages) and development server re-verified.
   - Fixed the stale Current Phase header; updated `PLAN.md`, `PROJECT_STATUS.md`, `CHANGELOG.md`, `README.md`, and `PROJECT_CONTEXT.md` to record the completed plan.
+
+
+- Completed G5c: AI-Assisted ARCHITECTURE.md Generation via OpenRouter:
+  - `src/pages/api/generate-architecture.ts` — OpenRouter endpoint (`export const prerender = false`) that generates ARCHITECTURE.md content.
+  - `src/scripts/prompt-data.ts` — architecture template added to `FILE_TEMPLATES`.
+  - `src/scripts/prompt-generator.ts` — AI Generate mode added (architecture file only).
+  - `src/styles/custom.css` — AI block styles (loading, error, model label).
+  - `.gitignore` — `.vercel/` added.
+  - Environment: `OPENROUTER_API_KEY` configured in Vercel production.
+  - Verified: production endpoint works; model observed: `openai/gpt-oss-20b:free`; no API key exposure.
 - Completed deployment to Vercel:
   - The site is live at https://ai-project-flow.vercel.app.
   - The production build, sitemap, and Pagefind index generate from the configured `site` URL; the deployment configuration is unchanged.
@@ -350,9 +360,7 @@ None currently.
 
 ## Next Recommended Step
 
-The Recovery & Continuity section is complete. All phases (A–F) of the project are implemented, validated, and committed.
-
-Cross-tool Transfer Benchmark v1 framework is prepared (baseline and fixture tags established, no runs executed). Next step: first actual benchmark run.
+G5c is complete. The next step is to extend AI-assisted generation to additional project files if needed, or proceed with other future-scope items documented in PROJECT_CONTEXT.md.
 
 ---
 

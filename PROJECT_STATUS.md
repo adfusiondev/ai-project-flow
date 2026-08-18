@@ -2,15 +2,15 @@
 
 ## Current Phase
 
-Recovery & Continuity — Phase F (Validate and Close)
+G5c: AI-Assisted ARCHITECTURE.md Generation
 
-Status: Completed — all pages written, sidebar integrated, cross-links verified, production deployed (2026-08-17)
+Status: Completed — production endpoint live, AI generation working (2026-08-18)
 
 Recovery & Continuity documentation (Phase F) is complete: five bilingual workflow pages (Overview, Recovery, Session Continuity, Model Switching, Agent Failure Handling) written in EN and AR, sidebar integrated after Handoff and before Reference, cross-links added from Lifecycle, Handoff, and Verification overviews, DEC-013 recorded. The site remains live on Vercel at https://ai-project-flow.vercel.app (155 pages).
 
 ## Overall Status
 
-Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. Complete — Project Files Workflow Redesign (Phases A-E all implemented, validated, and committed). Complete — Recovery & Continuity (Phase F implemented, validated, and committed).
+Complete — English MVP (Phases 0-10) and Arabic localization (Phases 1-3) delivered; site live on Vercel. Complete — Project Files Workflow Redesign (Phases A-E all implemented, validated, and committed). Complete — Recovery & Continuity (Phase F implemented, validated, and committed). Complete — G5c: AI-Assisted ARCHITECTURE.md Generation via OpenRouter.
 
 ---
 
@@ -318,7 +318,7 @@ None currently.
 * No database in the current MVP.
 * No authentication or user accounts.
 * No dynamic project generation.
-* No automatic file generation.
+* AI-assisted generation limited to ARCHITECTURE.md only (via OpenRouter free tier).
 * Keep the project portable across IDEs and AI coding agents.
 * Preserve Arabic and English readiness.
 * Follow the documented OpenCode-inspired visual direction.
@@ -327,9 +327,7 @@ None currently.
 
 ## Next Recommended Step
 
-The Recovery & Continuity section (Phase F) is complete. All phases (A–F) of the project are implemented, validated, and committed.
-
-Cross-tool Transfer Benchmark v1 framework is prepared (baseline and fixture tags established, no runs executed). Next step: first actual benchmark run.
+G5c is complete. The next step is to extend AI-assisted generation to additional project files if needed, or proceed with other future-scope items documented in PROJECT_CONTEXT.md.
 
 ---
 

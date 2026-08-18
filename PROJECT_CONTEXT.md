@@ -35,7 +35,7 @@ It includes:
 - Ready-to-use AI prompts.
 - Copyable code blocks and reference content.
 
-The MVP does not currently require dynamic project generation, a backend, user accounts, or a database.
+The MVP does not currently require dynamic project generation, a backend, user accounts, or a database. AI-assisted ARCHITECTURE.md generation is available via OpenRouter.
 
 ## Saved Experiment — OpenCode-style Logo Benchmark
 
@@ -50,7 +50,7 @@ A private visual benchmark was executed in `docs/logo-benchmark/` to evaluate ho
 Possible future expansions may include:
 
 - An interactive project setup wizard.
-- Automatic generation of project files and templates.
+- Automatic generation of additional project files and templates (ARCHITECTURE.md AI generation is already implemented via OpenRouter).
 - Downloadable project starter packs.
 - Reusable project templates for different project types.
 - Interactive skills and command libraries.
@@ -144,4 +144,4 @@ The Arabic localization is complete:
 
 The Arabic locale provides fully translated content across the entire site, and the site is deployed and live on Vercel at https://ai-project-flow.vercel.app.
 
-An approved improvement phase is now active: the **Project Files Workflow Redesign** transforms the Project Files section from static documentation into a fast, action-first workflow that guides the owner when starting any new software project with any AI coding agent. It introduces a Start a New Project entry point, Small/Standard/Advanced project modes, Create/Review/Update/Recover prompts, full copyable templates, and a frontend-only Prompt Generator, and it stays bilingual (English/Arabic). Phases A (Foundation) and B (Prompt Generator — live at `/tools/prompt-generator/`) are complete; Phases C-E are pending. See `PLAN.md` for the plan and `docs/DECISIONS.md` (DEC-012) for the approved scope.
+The **Project Files Workflow Redesign** (Phases A-E) is complete and committed. The **Recovery & Continuity** section (Phase F) is complete and committed. **G5c: AI-Assisted ARCHITECTURE.md Generation** is complete and deployed: the Prompt Generator now offers an AI Generate mode for ARCHITECTURE.md using OpenRouter's free tier, and the production endpoint at `/api/generate-architecture` generates valid ARCHITECTURE.md content. See `PLAN.md` for the plan and `docs/DECISIONS.md` for approved decisions.

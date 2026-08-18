@@ -673,6 +673,29 @@ End-to-end validation of the complete Project Files workflow completed:
 
 ---
 
+
+
+### G5c: AI-Assisted ARCHITECTURE.md Generation
+
+Status: Completed
+
+Implemented:
+
+- `/api/generate-architecture.ts` — server endpoint (`export const prerender = false`) that calls OpenRouter API and returns generated ARCHITECTURE.md content.
+- AI Generate mode added to the Prompt Generator UI (architecture file only).
+- Architecture template added to `FILE_TEMPLATES` in `prompt-data.ts` (6 sections).
+- AI block styles (loading spinner, error state, model label) in `custom.css`.
+- Vite env access fixed: `import.meta.env.OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY`.
+- `.vercel/` added to `.gitignore`.
+- `OPENROUTER_API_KEY` configured in Vercel production environment.
+
+Verified:
+
+- Production endpoint generates valid ARCHITECTURE.md content.
+- Model observed: `openai/gpt-oss-20b:free` (OpenRouter free tier).
+- No API key exposure in response, client bundle, or server bundle.
+- Build passes (155 pages).
+
 ## Current Plan Status
 
 Status:
@@ -703,8 +726,9 @@ Selected stack:
 
 The English MVP is complete and verified, and the Arabic localization (Phases 1-3) is complete. The Arabic locale is fully translated across the site.
 
-The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. The **Project Files Workflow Redesign** (Phases A–E) is complete and committed. The **Recovery & Continuity** section (Phase F) is complete and committed.
+The completed MVP plan (Phases 0-10, Arabic Phases 1-3) is delivered and deployed. The **Project Files Workflow Redesign** (Phases A–E) is complete and committed. The **Recovery & Continuity** section (Phase F) is complete and committed. **G5c: AI-Assisted ARCHITECTURE.md Generation** is complete and deployed.
 
 Next steps:
 
-1. Deferred future-scope items are listed in `PROJECT_CONTEXT.md` Future Scope.
+1. Extend AI-assisted generation to additional project files if needed.
+2. Deferred future-scope items are listed in `PROJECT_CONTEXT.md` Future Scope.
