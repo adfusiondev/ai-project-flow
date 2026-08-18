@@ -363,6 +363,15 @@ export const FILE_TEMPLATES: Partial<Record<FileId, FileTemplate>> = {
 			{ heading: 'MVP Constraints', placeholder: { en: '- [What the MVP must not require.]', ar: '- [ما يجب ألا يشترطه الحد الأدنى للمنتج.]' } },
 		],
 	},
+		'skill': {
+		file: 'skill',
+		sections: [
+			{ heading: 'Purpose', field: 'projectIdea', placeholder: { en: '[What this skill does and when to use it.]', ar: '[ما تفعله هذه المهارة ومتى تستخدمها.]' } },
+			{ heading: 'Rules', field: 'constraints', placeholder: { en: '- [Rule 1]\n- [Rule 2]', ar: '- [القاعدة 1]\n- [القاعدة 2]' } },
+			{ heading: 'Output', placeholder: { en: 'Create or update:\n\n- `[Target file]`', ar: 'أنشئ أو حدّث:\n\n- `[الملف المستهدف]`' } },
+			{ heading: 'Quality Gate', placeholder: { en: 'Skill is complete when:\n\n- [Criterion 1]\n- [Criterion 2]', ar: 'المهارة مكتملة عندما:\n\n- [المعيار 1]\n- [المعيار 2]' } },
+		],
+	},
 };
 
 export function generateFileContent(input: import('./prompt-generator.js').GeneratorInput, lang: 'en' | 'ar'): string | null {
