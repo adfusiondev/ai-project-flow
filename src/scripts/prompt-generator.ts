@@ -6,8 +6,13 @@ import {
 	FILE_TEMPLATES,
 	PROMPT_RULES,
 	SIZES,
+	SMALL_WORKFLOW,
 	generateFileContent,
 	getAction,
+	getWorkflowIndex,
+	getWorkflowNext,
+	isWorkflowComplete,
+	isWorkflowFile,
 	nextFile,
 	type Action,
 	type FileId,
@@ -65,6 +70,10 @@ interface Labels {
 	outputLabelFile: string;
 	fileContentMode: string;
 	promptMode: string;
+	workflowStep: string;
+	workflowContinue: string;
+	workflowComplete: string;
+	workflowCompleteHint: string;
 }
 
 const EN: Labels = {
@@ -102,6 +111,10 @@ const EN: Labels = {
 	outputLabelFile: 'Generated file',
 	fileContentMode: 'File Content',
 	promptMode: 'Prompt',
+	workflowStep: 'Step',
+	workflowContinue: 'Continue to next file',
+	workflowComplete: 'Workflow complete!',
+	workflowCompleteHint: 'You have generated all 3 files for your Small project.',
 };
 
 const AR: Labels = {
@@ -139,6 +152,10 @@ const AR: Labels = {
 	outputLabelFile: 'الملف المُولَّدة',
 	fileContentMode: 'محتوى الملف',
 	promptMode: 'المطالبة',
+	workflowStep: 'الخطوة',
+	workflowContinue: 'متابعة إلى الملف التالي',
+	workflowComplete: 'اكتملت سير العمل!',
+	workflowCompleteHint: 'لقد قمت بإنشاء جميع الملفات الثلاثة لمشروعك الصغير.',
 };
 
 function getLabels(): Labels {
@@ -196,7 +213,12 @@ export function buildPrompt(input: GeneratorInput): string {
 	paragraphs.push(action.instruction[isArabic ? 'ar' : 'en'].replace('{file}', file.file));
 
 	if (input.size) {
-		const next = nextFile(input.size, input.file);
+		let next: FileId | null = null;
+		if (input.size === 'small' && isWorkflowFile(input.file)) {
+			next = getWorkflowNext(input.file);
+		} else {
+			next = nextFile(input.size, input.file);
+		}
 		if (next) paragraphs.push(`${labels.next}: ${FILES[next].file}`);
 	}
 
@@ -233,6 +255,14 @@ interface GeneratorState {
 	mode: 'prompt' | 'file' | 'ai';
 	submitBtn: HTMLButtonElement;
 	updateMode: () => void;
+	workflow: {
+		enabled: boolean;
+		stepIndicator: HTMLDivElement;
+		continueBtn: HTMLButtonElement;
+		completion: HTMLDivElement;
+		update: () => void;
+		advance: () => void;
+	};
 }
 
 function makeInput(name: string): HTMLInputElement {
@@ -483,11 +513,30 @@ function buildForm(): GeneratorState {
 	actions.appendChild(submit);
 	flow.appendChild(actions);
 
+	// Workflow elements (G7: Progressive Project Generation)
+	const workflowStep = el('div', { className: 'apf-generator__workflow-step' });
+	workflowStep.hidden = true;
+	flow.appendChild(workflowStep);
+
+	const continueRow = el('div', { className: 'apf-generator__continue' });
+	const continueBtn = el('button', { type: 'button', className: 'apf-action apf-action--primary apf-generator__continue-btn' }, labels.workflowContinue);
+	continueRow.appendChild(continueBtn);
+	continueRow.hidden = true;
+	flow.appendChild(continueRow);
+
+	const completion = el('div', { className: 'apf-generator__completion' });
+	const completionTitle = el('div', { className: 'apf-generator__completion-title' }, labels.workflowComplete);
+	const completionHint = el('div', { className: 'apf-generator__completion-hint' }, labels.workflowCompleteHint);
+	completion.appendChild(completionTitle);
+	completion.appendChild(completionHint);
+	completion.hidden = true;
+	flow.appendChild(completion);
+
 	form.appendChild(el('div', { className: 'apf-generator__output' }));
 
 	let currentMode: 'prompt' | 'file' | 'ai' = 'prompt';
 
-	const state = { form, inputs, file, output: form.querySelector<HTMLDivElement>('.apf-generator__output')!, mode: currentMode as 'prompt' | 'file' | 'ai', submitBtn: submit, updateMode: () => {} };
+	const state = { form, inputs, file, output: form.querySelector<HTMLDivElement>('.apf-generator__output')!, mode: currentMode as 'prompt' | 'file' | 'ai', submitBtn: submit, updateMode: () => {}, workflow: { enabled: false, stepIndicator: workflowStep, continueBtn, completion, update: () => {}, advance: () => {} } };
 
 	function updateMode(): void {
 		const hasTemplate = FILE_TEMPLATES[state.file.value()] != null;
@@ -525,6 +574,72 @@ function buildForm(): GeneratorState {
 	}
 
 	state.updateMode = updateMode;
+
+	// Workflow logic (G7: Progressive Project Generation)
+	function isWorkflowMode(): boolean {
+		const size = readSegmented(form, 'size') as ProjectSize;
+		return size === 'small' && isWorkflowFile(state.file.value());
+	}
+
+	function getWorkflowStep(): number {
+		return getWorkflowIndex(state.file.value()) + 1;
+	}
+
+	function updateWorkflow(): void {
+		const workflowEnabled = isWorkflowMode();
+		state.workflow.enabled = workflowEnabled;
+
+		if (!workflowEnabled) {
+			workflowStep.hidden = true;
+			continueRow.hidden = true;
+			completion.hidden = true;
+			return;
+		}
+
+		const step = getWorkflowStep();
+		const total = SMALL_WORKFLOW.length;
+		const isComplete = isWorkflowComplete(state.file.value());
+
+		// Update step indicator
+		workflowStep.hidden = false;
+		workflowStep.textContent = `${labels.workflowStep} ${step}/${total}`;
+
+		// Update continue button and completion
+		if (isComplete) {
+			continueRow.hidden = true;
+			completion.hidden = false;
+		} else {
+			continueRow.hidden = false;
+			completion.hidden = true;
+		}
+	}
+
+	function advanceWorkflow(): void {
+		const nextFile = getWorkflowNext(state.file.value());
+		if (!nextFile) return;
+
+		// Update file dropdown
+		state.file.set(nextFile);
+
+		// Trigger mode update
+		state.updateMode();
+
+		// Update workflow UI
+		updateWorkflow();
+
+		// Auto-regenerate prompt for the new file
+		generatePrompt(state);
+
+		// Scroll to top of form
+		form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
+
+	state.workflow.update = updateWorkflow;
+	state.workflow.advance = advanceWorkflow;
+
+	// Initialize workflow state
+	updateWorkflow();
+
 	return state;
 }
 
@@ -786,8 +901,13 @@ function init() {
 	root.appendChild(state.form);
 
 	const renderNav = (): void => workflowNav(state);
+	const updateWorkflow = (): void => state.workflow.update();
+
 	state.form.querySelectorAll<HTMLInputElement>('input[name="size"]').forEach((input) => {
-		input.addEventListener('change', renderNav);
+		input.addEventListener('change', () => {
+			renderNav();
+			updateWorkflow();
+		});
 	});
 	renderNav();
 
@@ -801,6 +921,12 @@ function init() {
 	state.file.onChange(() => {
 		state.updateMode();
 		renderNav();
+		updateWorkflow();
+	});
+
+	// Continue button click
+	state.workflow.continueBtn.addEventListener('click', () => {
+		state.workflow.advance();
 	});
 
 	state.form.addEventListener('submit', (event) => {
@@ -846,6 +972,7 @@ function init() {
 	}
 	state.updateMode();
 	renderNav();
+	updateWorkflow();
 }
 
 if (document.readyState === 'loading') {

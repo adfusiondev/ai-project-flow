@@ -210,6 +210,29 @@ export const FLOW_ORDER: Record<ProjectSize, FileId[]> = {
 	],
 };
 
+
+// --- G7: Progressive Project Generation Workflow (Small projects) ---
+
+export const SMALL_WORKFLOW: FileId[] = ['project-context', 'mvp', 'requirements'];
+
+export function isWorkflowFile(fileId: FileId): boolean {
+	return SMALL_WORKFLOW.includes(fileId);
+}
+
+export function getWorkflowIndex(fileId: FileId): number {
+	return SMALL_WORKFLOW.indexOf(fileId);
+}
+
+export function getWorkflowNext(currentFileId: FileId): FileId | null {
+	const index = getWorkflowIndex(currentFileId);
+	if (index === -1 || index >= SMALL_WORKFLOW.length - 1) return null;
+	return SMALL_WORKFLOW[index + 1];
+}
+
+export function isWorkflowComplete(currentFileId: FileId): boolean {
+	return getWorkflowNext(currentFileId) === null;
+}
+
 export const LEVEL_LABELS: Record<FileLevel, { en: string; ar: string }> = {
 	core: { en: 'Required', ar: 'أساسي' },
 	recommended: { en: 'Recommended', ar: 'موصى به' },

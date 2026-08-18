@@ -1558,3 +1558,84 @@ html[dir='rtl'] {
 	margin-left: 0;
 	margin-right: auto;
 }
+
+/* ------------------------------------------------------------
+   17. G7 Workflow — Progressive Project Generation
+   ------------------------------------------------------------ */
+/* Workflow step indicator */
+.apf-generator__workflow-step {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--apf-space-3) var(--apf-space-5);
+	background: var(--apf-color-accent-low);
+	border: 1px solid var(--apf-color-accent);
+	border-radius: var(--apf-radius-medium);
+	font-family: var(--apf-font-mono);
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--apf-color-accent-high);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.apf-generator__workflow-step[hidden] {
+	display: none;
+}
+
+/* Continue button row */
+.apf-generator__continue {
+	display: flex;
+	justify-content: center;
+	padding: var(--apf-space-4) var(--apf-space-5);
+	border-top: 1px solid var(--apf-color-hairline);
+}
+
+.apf-generator__continue[hidden] {
+	display: none;
+}
+
+.apf-generator__continue-btn {
+	min-width: 12rem;
+}
+
+/* Completion checkpoint */
+.apf-generator__completion {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--apf-space-2);
+	padding: var(--apf-space-5);
+	background: var(--apf-color-accent-low);
+	border: 2px solid var(--apf-color-accent);
+	border-radius: var(--apf-radius-medium);
+	text-align: center;
+}
+
+.apf-generator__completion[hidden] {
+	display: none;
+}
+
+.apf-generator__completion-title {
+	font-size: 1.125rem;
+	font-weight: 700;
+	color: var(--apf-color-accent-high);
+}
+
+.apf-generator__completion-hint {
+	font-size: 0.875rem;
+	color: var(--apf-color-text-secondary);
+}
+
+/* RTL/LTR — workflow labels follow the Arabic font */
+[dir='rtl'] .apf-generator__workflow-step,
+[dir='rtl'] .apf-generator__continue-btn,
+[dir='rtl'] .apf-generator__completion-title,
+[dir='rtl'] .apf-generator__completion-hint {
+	font-family: var(--apf-font-arabic);
+}
+
+[dir='rtl'] .apf-generator__workflow-step {
+	text-transform: none;
+	letter-spacing: normal;
+}

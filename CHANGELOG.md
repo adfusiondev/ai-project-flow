@@ -1,3 +1,26 @@
+## 2026-08-18 — G7: Progressive Project Generation Workflow (Small projects)
+
+### Completed
+
+- Implemented 3-step Progressive Project Generation Workflow for Small projects in the Prompt Generator.
+- Added `SMALL_WORKFLOW` constant and helpers (`isWorkflowFile`, `getWorkflowIndex`, `getWorkflowNext`, `isWorkflowComplete`) to `prompt-data.ts`.
+- Added workflow UI elements (step indicator, Continue button, completion checkpoint) with EN/AR labels to `prompt-generator.ts`.
+- Added workflow CSS styles (section 17) to `custom.css`: step indicator, continue button row, completion checkpoint, RTL overrides.
+- Workflow activates when size=small and file is one of the 3 workflow files (project-context, mvp, requirements).
+- Manual file selection still works — switching to non-workflow file or non-small size exits workflow mode.
+- Fixed two bugs found during testing:
+  - `advanceWorkflow()` now calls `generatePrompt()` after advancing so the prompt auto-regenerates for the new file.
+  - `buildPrompt()` now uses `getWorkflowNext()` for workflow files instead of `nextFile()`, so "Next file:" correctly shows docs/MVP.md and docs/REQUIREMENTS.md instead of PROJECT_STATUS.md.
+- Verified: production build passes; 3-step workflow (PROJECT_CONTEXT.md → docs/MVP.md → docs/REQUIREMENTS.md) works end-to-end; prompt content changes correctly per file; Next file follows PROJECT_CONTEXT → MVP → REQUIREMENTS; EN/AR both work; File Content mode unchanged; ARCHITECTURE AI Generate unchanged; SKILL AI Generate unchanged; no regressions.
+
+### Files changed
+
+- `src/scripts/prompt-data.ts` — SMALL_WORKFLOW constant and helper functions added
+- `src/scripts/prompt-generator.ts` — workflow UI/logic, EN/AR labels, auto-regeneration fix, Next file fix
+- `src/styles/custom.css` — section 17: workflow step indicator, continue button, completion checkpoint, RTL overrides
+
+---
+
 ## 2026-08-18 — G5c: AI-Assisted ARCHITECTURE.md Generation via OpenRouter
 
 ### Completed
